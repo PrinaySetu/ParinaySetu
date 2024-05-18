@@ -33,7 +33,7 @@ export const updateFamilyDetails = async (data, token) => {
     const toastId = toast.loading("Updating family details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_FAMILY_DETAILS_API, data, {
+        const response = await apiConnector("PUT", UPDATE_FAMILY_DETAILS_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -52,7 +52,7 @@ export const updateBrother = async (data, token) => {
     const toastId = toast.loading("Updating brother details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_BROTHER_API, data, {
+        const response = await apiConnector("PUT", UPDATE_BROTHER_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -71,7 +71,7 @@ export const updateSister = async (data, token) => {
     const toastId = toast.loading("Updating sister details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_SISTER_API, data, {
+        const response = await apiConnector("PUT", UPDATE_SISTER_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -90,7 +90,7 @@ export const removeSibling = async (data, token) => {
     const toastId = toast.loading("Removing sibling...");
     let result = null;
     try {
-        const response = await apiConnector("POST", REMOVE_SIBLING_API, data, {
+        const response = await apiConnector("PUT", REMOVE_SIBLING_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

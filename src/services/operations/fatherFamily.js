@@ -70,7 +70,7 @@ export const updateBua = async (data, token) => {
     const toastId = toast.loading("Updating Bua details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_BUA_API, data, {
+        const response = await apiConnector("PUT", UPDATE_BUA_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

@@ -27,7 +27,7 @@ export const updateProperty = async (data, token) => {
     const toastId = toast.loading("Updating property...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_PROPERTY_API, data, {
+        const response = await apiConnector("PUT", UPDATE_PROPERTY_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

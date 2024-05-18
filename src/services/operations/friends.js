@@ -27,7 +27,7 @@ export const updateFriend = async (data, token) => {
     const toastId = toast.loading("Updating friend...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_FRIEND_API, data, {
+        const response = await apiConnector("PUT", UPDATE_FRIEND_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -46,7 +46,7 @@ export const deleteFriend = async (data, token) => {
     const toastId = toast.loading("Deleting friend...");
     let result = null;
     try {
-        const response = await apiConnector("POST", DELETE_FRIEND_API, data, {
+        const response = await apiConnector("DELETE", DELETE_FRIEND_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

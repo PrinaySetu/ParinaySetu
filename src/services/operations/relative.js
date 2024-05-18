@@ -27,7 +27,7 @@ export const updateRelative = async (data, token) => {
     const toastId = toast.loading("Updating relative...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_RELATIVE_API, data, {
+        const response = await apiConnector("PUT", UPDATE_RELATIVE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -46,7 +46,7 @@ export const deleteRelative = async (data, token) => {
     const toastId = toast.loading("Deleting relative...");
     let result = null;
     try {
-        const response = await apiConnector("POST", DELETE_RELATIVE_API, data, {
+        const response = await apiConnector("DELETE", DELETE_RELATIVE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

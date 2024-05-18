@@ -27,7 +27,7 @@ export const updateWorking = async (data, token) => {
     const toastId = toast.loading("Updating working details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_WORKING_API, data, {
+        const response = await apiConnector("PUT", UPDATE_WORKING_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -46,7 +46,7 @@ export const deleteWorking = async (data, token) => {
     const toastId = toast.loading("Deleting working details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", DELETE_WORKING_API, data, {
+        const response = await apiConnector("DELETE", DELETE_WORKING_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

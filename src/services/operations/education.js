@@ -27,7 +27,7 @@ export const updateEducation = async (data, token) => {
     const toastId = toast.loading("Updating education record...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_EDUCATION_API, data, {
+        const response = await apiConnector("PUT", UPDATE_EDUCATION_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

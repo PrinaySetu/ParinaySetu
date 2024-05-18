@@ -28,7 +28,7 @@ export const updateDocument = async (data, token) => {
     const toastId = toast.loading("Updating document...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_DOCUMENT_API, data, {
+        const response = await apiConnector("PUT", UPDATE_DOCUMENT_API, data, {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
         });

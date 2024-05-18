@@ -34,7 +34,7 @@ export const updateProfile = async (data, token) => {
     const toastId = toast.loading("Updating profile...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_PROFILE_API, data, {
+        const response = await apiConnector("PUT", UPDATE_PROFILE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -53,7 +53,7 @@ export const deleteProfile = async (data, token) => {
     const toastId = toast.loading("Deleting profile...");
     let result = null;
     try {
-        const response = await apiConnector("POST", DELETE_PROFILE_API, data, {
+        const response = await apiConnector("DELETE", DELETE_PROFILE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -72,7 +72,7 @@ export const getProfileById = async (profileId, token) => {
     const toastId = toast.loading("Fetching profile...");
     let result = null;
     try {
-        const response = await apiConnector("POST", GET_PROFILE_BY_ID_API, { profileId }, {
+        const response = await apiConnector("GET", GET_PROFILE_BY_ID_API, { profileId }, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -90,7 +90,7 @@ export const addRecommendedProfile = async (data, token) => {
     const toastId = toast.loading("Adding recommended profile...");
     let result = null;
     try {
-        const response = await apiConnector("POST", ADD_RECOMMENDED_PROFILE_API, data, {
+        const response = await apiConnector("PUT", ADD_RECOMMENDED_PROFILE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -109,7 +109,7 @@ export const removeRecommendedProfile = async (data, token) => {
     const toastId = toast.loading("Removing recommended profile...");
     let result = null;
     try {
-        const response = await apiConnector("POST", REMOVE_RECOMMENDED_PROFILE_API, data, {
+        const response = await apiConnector("DELETE", REMOVE_RECOMMENDED_PROFILE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {

@@ -27,7 +27,7 @@ export const updateSpecial = async (data, token) => {
     const toastId = toast.loading("Updating special relation...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_SPECIAL_API, data, {
+        const response = await apiConnector("PUT", UPDATE_SPECIAL_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -46,7 +46,7 @@ export const deleteSpecial = async (data, token) => {
     const toastId = toast.loading("Deleting special relation...");
     let result = null;
     try {
-        const response = await apiConnector("POST", DELETE_SPECIAL_API, data, {
+        const response = await apiConnector("DELETE", DELETE_SPECIAL_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
