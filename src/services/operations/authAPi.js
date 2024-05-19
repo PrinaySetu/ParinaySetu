@@ -57,14 +57,15 @@ export function signUp(
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
-        userType,
+        
         firstName,
         lastName,
         email,
         password,
         confirmPassword,
+        userType,
         otp,
-      })
+      });
 
       console.log("SIGNUP API RESPONSE............", response)
 

@@ -2,6 +2,8 @@ import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { profileEndpoints } from "../apis";
 
+import { setLoading, setUser } from "../../slices/profileSlice"
+import { logout } from "./authAPi"
 const {
     ADD_PROFILE_API,
     UPDATE_PROFILE_API,
@@ -9,6 +11,7 @@ const {
     GET_PROFILE_BY_ID_API,
     ADD_RECOMMENDED_PROFILE_API,
     REMOVE_RECOMMENDED_PROFILE_API,
+    GET_USER_DETAILS_API,
 } = profileEndpoints;
 
 export const addProfile = async (data, token) => {
@@ -123,3 +126,29 @@ export const removeRecommendedProfile = async (data, token) => {
     toast.dismiss(toastId);
     return result;
 };
+export function getUserDetails(token, navigate) {
+    return async (dispatch) => {
+      const toastId = toast.loading("Loading...")
+      dispatch(setLoading(true))
+      try {
+        const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
+          Authorization: `Bearer ${token}`,
+        })
+        console.log("GET_USER_DETAILS API RESPONSE............", response)
+  
+        if (!response.data.success) {
+          throw new Error(response.data.message)
+        }
+        const userImage = response.data.data.image
+          ? response.data.data.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.data.firstName} ${response.data.data.lastName}`
+        dispatch(setUser({ ...response.data.data, image: userImage }))
+      } catch (error) {
+        dispatch(logout(navigate))
+        console.log("GET_USER_DETAILS API ERROR............", error)
+        toast.error("Could Not Get User Details")
+      }
+      toast.dismiss(toastId)
+      dispatch(setLoading(false))
+    }
+  }
