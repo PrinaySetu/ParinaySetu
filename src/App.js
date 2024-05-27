@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 // React Router
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { getUserDetails } from "./services/operations/profile"
-import SignupForm from "./components/core/Auth/SignupForm"
+import Navbar from "./components/Common/Navbar"
+
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import Signup from "./pages/Signup"
@@ -24,6 +25,7 @@ function App() {
   }, [])
   return (
   <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
+  <Navbar/>
     <Routes>
     <Route
       path="signup"

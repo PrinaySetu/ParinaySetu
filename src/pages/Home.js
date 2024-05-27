@@ -13,7 +13,7 @@ import linkedin from '../assets/Buttons/Icon-1.png'
 import facebook from '../assets/Buttons/Icon.png'
 import { useCallback } from 'react';
 
-
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -38,7 +38,8 @@ const Home = () => {
 
   return (
     <div className="w-full relative bg-white h-[3534px] overflow-hidden text-left text-5xl text-black font-body-text">
-      <div className="absolute top-[274px] left-[calc(50%_-_431px)] w-[857px] flex flex-col items-start justify-start p-2.5 box-border text-center text-45xl">
+      <div className="absolute top-[274px] left-[calc(50%_-_431px)] w-[857px] flex flex-col items-start 
+      justify-start p-2.5 box-border text-center text-45xl">
         <div className="w-[837px] flex flex-col items-center justify-start gap-[24px]">
           <b className="self-stretch relative tracking-[-0.02em]">
             <span>{`Choose `}</span>
@@ -114,9 +115,10 @@ const Home = () => {
           <div className="shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white flex flex-row items-center justify-center py-3.5 px-6 text-base text-red">
             <div className="relative leading-[150%] font-medium">Home</div>
           </div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onPricingTextClick}>Pricing</div>
+          <div className="relative leading-[150%] font-medium cursor-pointer" >Pricing</div>
           <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onContactUsTextClick}>Contact Us</div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onSignInTextClick}>Sign In</div>
+          <div className="relative leading-[150%] font-medium cursor-pointer" ><Link to='/signup'>Sign in</Link></div>
+          <div className="relative leading-[150%] font-medium cursor-pointer" ><Link to='/login'>Log In</Link> </div>
         </div>
         <div className="absolute top-[calc(50%_-_70.5px)] left-[32px] w-[241.6px] h-[133.3px] text-45xl font-niconne">
           <div className="absolute top-[calc(50%_-_66.65px)] left-[0px] inline-block w-[240.4px] h-[86.7px]">Parinay</div>
