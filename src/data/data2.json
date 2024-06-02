@@ -1,0 +1,14 @@
+{"documents": {
+    "fields": [
+      { "name": "photos", "type": "String" },
+      { "name": "familyPhoto", "type": "String" },
+      { "name": "educationDocuments", "type": "String" },
+      { "name": "incomeProofs", "type": "String" },
+      { "name": "propertyproofs", "type": "String" },
+      { "name": "addressProofs", "type": "String" },
+      { "name": "idProofs", "type": "String" },
+      { "name": "otherDocuments", "type": "String" }
+    ],
+    "createApi":"uploadDocument",
+      "updateApi":"updateDocument"
+  }}

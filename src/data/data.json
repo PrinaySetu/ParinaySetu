@@ -1,0 +1,159 @@
+{
+    "contact": {
+      "fields": [
+        { "name": "contactNumber", "type": "Number", "required": true },
+        { "name": "facebook", "type": "String" },
+        { "name": "instagram", "type": "String" },
+        { "name": "whatsappNumber", "type": "String" },
+        { "name": "backupContact", "type": "Number" },
+        { "name": "permanentAddress", "type": "String" },
+        { "name": "currentAddress", "type": "String" }
+      ],
+      "createApi":"createContact",
+        "updateApi":"updateContact"
+    },
+    
+    "education": {
+      "fields": [
+        { "name": "secondary", "type": "String" },
+        { "name": "secondaryYear", "type": "Date" },
+        { "name": "secondaryBoard", "type": "String" },
+        { "name": "secondayMarks", "type": "String" },
+        { "name": "seniorSecondary", "type": "String" },
+        { "name": "seniorSecondaryYear", "type": "Date" },
+        { "name": "seniorSecondaryBoard", "type": "String" },
+        { "name": "seniorSecondaryMarks", "type": "String" },
+        { "name": "graduation", "type": "String" },
+        { "name": "graduationYear", "type": "Date" },
+        { "name": "universityName", "type": "String" },
+        { "name": "graduationMarks", "type": "String" },
+        { "name": "postGraduation", "type": "String" },
+        { "name": "postGraduationYear", "type": "Date" },
+        { "name": "postGraduationUniversityName", "type": "String" },
+        { "name": "postGraduationMarks", "type": "String" },
+        { "name": "other", "type": "String" },
+        { "name": "diploma", "type": "String" },
+        { "name": "diplomaYear", "type": "Date" },
+        { "name": "diplomaBoard", "type": "String" },
+        { "name": "diplomaMarks", "type": "String" }
+      ],
+      "createApi":"createEducation",
+        "updateApi":"updateEducation"
+    },
+    "familyDetails": {
+      "fields": [
+        { "name": "fatherAge", "type": "Number" },
+        { "name": "fatherHealth", "type": "String" },
+        { "name": "fatherDeathAge", "type": "Number" },
+        { "name": "fatherDeathYear", "type": "Number" },
+        { "name": "motherAge", "type": "Number" },
+        { "name": "motherHealth", "type": "String" },
+        { "name": "motherDeathAge", "type": "Number" },
+        { "name": "motherDeathYear", "type": "Number" },
+        { "name": "brother", "type": "Array" },
+        { "name": "sister", "type": "Array" }
+      ],
+      "createApi":"addFamilyDetails",
+        "updateApi":"updateFamilyDetails"
+    },
+    "fatherFamily": {
+      "fields": [
+        { "name": "grandFather", "type": "String" },
+        { "name": "grandMother", "type": "String" },
+        { "name": "grandFatherAge", "type": "Number" },
+        { "name": "grandMotherAge", "type": "Number" },
+        { "name": "grandFatherStatus", "type": "Boolean", "default": false },
+        { "name": "grandMotherStatus", "type": "Boolean", "default": false },
+        { "name": "tau", "type": "Array" },
+        { "name": "bua", "type": "Array" },
+        { "name": "chacha", "type": "Array" }
+      ],
+        "createApi":"addFatherFamily",
+            "updateApi":"updateFatherFamily"
+    },
+    "friends": {
+      "fields": [
+        { "name": "firstFriendName", "type": "String" },
+        { "name": "firstFriendRelation", "type": "String" },
+        { "name": "firstFriendContact", "type": "Number" },
+        { "name": "firstFriendAddress", "type": "String" },
+        { "name": "secondFriendName", "type": "String" },
+        { "name": "secondFriendRelation", "type": "String" },
+        { "name": "secondFriendContact", "type": "Number" },
+        { "name": "secondFriendAddress", "type": "String" }
+      ],
+        "createApi":"addFriend",
+            "updateApi":"updateFriend"
+    },
+    
+    "property": {
+      "fields": [
+        { "name": "houseOwner", "type": "String" },
+        { "name": "houseAddress", "type": "String" },
+        { "name": "housePrice", "type": "Number" },
+        { "name": "houseLoan", "type": "Number", "default": 0 },
+        { "name": "flatOwner", "type": "String" },
+        { "name": "flatAddress", "type": "String" },
+        { "name": "flatType", "type": "String" },
+        { "name": "flatPrice", "type": "Number" },
+        { "name": "flatLoan", "type": "Number", "default": 0 },
+        { "name": "landOwner", "type": "String" },
+        { "name": "landAddress", "type": "String" },
+        { "name": "landPrice", "type": "Number" },
+        { "name": "landLoan", "type": "Number", "default": 0 },
+        { "name": "farmingOwner", "type": "String" },
+        { "name": "farmingAddress", "type":  "String" },
+        { "name": "farmingPrice", "type": "Number" },
+        { "name": "farmingLoan", "type": "Number", "default": 0 },
+        { "name": "shopOwner", "type": "String" },
+        { "name": "shopAddress", "type": "String" },
+        { "name": "shopPrice", "type": "Number" },
+        { "name": "shopLoan", "type": "Number", "default": 0 },
+        { "name": "other", "type": "String" }
+      ],
+        "createApi":"addProperty",
+            "updateApi":"updateProperty"
+    },
+    "relatives": {
+      "fields": [
+        { "name": "firstRelativeName", "type": "String" },
+        { "name": "firstRelativeRelation", "type": "String" },
+        { "name": "firstRelativeContact", "type": "Number" },
+        { "name": "firstRelativeAddress", "type": "String" },
+        { "name": "secondRelativeName", "type": "String" },
+        { "name": "secondRelativeRelation", "type": "String" },
+        { "name": "secondRelativeContact", "type": "Number" },
+        { "name": "secondRelativeAddress", "type": "String" }
+      ],
+        "createApi":"addRelative",
+            "updateApi":"updateRelative"
+    },
+    "special": {
+      "fields": [
+        { "name": "qualities", "type": "String" },
+        { "name": "specificCaste", "type": "String" },
+        { "name": "likes", "type": "String" },
+        { "name": "dislikes", "type": "String" },
+        { "name": "intercaste", "type": "String" },
+        { "name": "hobbies", "type": "String" },
+        { "name": "lifeStyle", "type": "String" }
+      ],
+        "createApi":"addSpecial",
+            "updateApi":"updateSpecial"
+    },
+    "working": {
+      "fields": [
+        { "name": "incomeSource", "type": "String" },
+        { "name": "employerName", "type": "String" },
+        { "name": "natureWork", "type": "String" },
+        { "name": "completedPeriod", "type": "String" },
+        { "name": "annualIncome", "type": "String" },
+        { "name": "otherSources", "type": "String" },
+        { "name": "financialResponsibility", "type": "String" },
+        { "name": "memberResponsibility", "type": "String" }
+      ],
+        "createApi":"addWorking",
+            "updateApi":"updateWorking"
+    }
+  }
+  

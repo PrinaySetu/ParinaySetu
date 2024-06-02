@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
-
+import EducationForm from "./components/core/Forms/EducationForm"
+import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
+import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Home from "./pages/Home"
@@ -57,6 +59,24 @@ function App() {
             </OpenRoute>
           }
         />  
+        <Route
+          path="/user"
+          element={
+
+          <PrivateRoute>
+            <ProfileDetails/>
+          </PrivateRoute>
+          }
+        />
+        <Route
+          path="/form"
+          element={
+
+          <PrivateRoute>
+            <EducationForm/>
+          </PrivateRoute>
+          }
+        />
     </Routes>
   </div>
   );

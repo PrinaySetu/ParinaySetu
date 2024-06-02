@@ -1,8 +1,8 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
-import { educationEndpoints } from "../apis";
+import { educationEndpoitns} from "../apis";
 
-const { CREATE_EDUCATION_API, UPDATE_EDUCATION_API } = educationEndpoints;
+const { CREATE_EDUCATION_API, UPDATE_EDUCATION_API } = educationEndpoitns;
 
 export const createEducation = async (data, token) => {
     const toastId = toast.loading("Creating education record...");
