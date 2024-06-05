@@ -7,6 +7,7 @@ import { Route, Routes, useNavigate } from "react-router-dom"
 import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
 import EducationForm from "./components/core/Forms/EducationForm"
+import SpecialForm from "./components/core/Forms/SpecialForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
@@ -74,6 +75,15 @@ function App() {
 
           <PrivateRoute>
             <EducationForm/>
+          </PrivateRoute>
+          }
+        />
+         <Route
+          path="/special"
+          element={
+
+          <PrivateRoute>
+            <SpecialForm/>
           </PrivateRoute>
           }
         />

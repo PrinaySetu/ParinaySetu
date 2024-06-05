@@ -64,7 +64,7 @@ export const relativeEndpoints = {
     DELETE_RELATIVE_API: BASE_URL + "/relative/deleteRelative",
 }
 export const specialEndpoints = {
-    ADD_SPECIAL_API: BASE_URL + "/special/addSpecial",
+    ADD_SPECIAL_API: BASE_URL + "/special/addSpecials",
     UPDATE_SPECIAL_API: BASE_URL + "/special/updateSpecial",
     DELETE_SPECIAL_API: BASE_URL + "/special/deleteSpecial",
 }
