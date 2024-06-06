@@ -45,8 +45,8 @@ export const friendsEndpoints = {
     DELETE_FRIEND_API: BASE_URL + "/friends/deleteFriends",
 }
 export const profileEndpoints = {
-        ADD_PROFILE_API:BASE_URL+"profile/createProfile",
-        UPDATE_PROFILE_API:BASE_URL+"profile/updateProfile",
+        ADD_PROFILE_API:BASE_URL+"/profile/createProfile",
+        UPDATE_PROFILE_API:BASE_URL+"/profile/updateProfile",
         DELETE_PROFILE_API:BASE_URL+"profile/deleteProfile",
         GET_PROFILE_BY_ID_API:BASE_URL+"profile/getProfileById",
         ADD_RECOMMENDED_PROFILE_API:BASE_URL+"profile/addRecommendedProfile",

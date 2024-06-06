@@ -1,4 +1,33 @@
 {
+  "profile": {
+    "fields": [
+      {"name": "fatherName", "type": "String"},
+      {"name": "motherName", "type": "String"},
+      {"name": "guardianName", "type": "String"},
+      {"name": "guardianRelation", "type": "String"},
+      {"name": "birthdate", "type": "Date"},
+      {"name": "birthPlace", "type": "String"},
+      {"name": "birthTime", "type": "String"},
+      {"name": "gender", "type": "String"},
+      {"name": "height", "type": "String"},
+      {"name": "weight", "type": "String"},
+      {"name": "bloodGroup", "type": "String"},
+      {"name": "color", "type": "String"},
+      {"name": "feast", "type": "String"},
+      {"name": "previousDisease", "type": "String"},
+      {"name": "identityMark", "type": "String"},
+      {"name": "maritalStatus", "type": "String"},
+      {"name": "residenceType", "type": "String"},
+      {"name": "gotra", "type": "String"},
+      {"name": "gotraMama", "type": "String"},
+      {"name": "religion", "type": "String"},
+      {"name": "caste", "type": "String"},
+      {"name": "upcaste", "type": "String"},
+      {"name": "manglikStatus", "type": "String"}
+    ],
+    "createApi": "addProfile",
+    "updateApi": "updateProfile"
+},
     "contact": {
       "fields": [
         { "name": "contactNumber", "type": "Number", "required": true },

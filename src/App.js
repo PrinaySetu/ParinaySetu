@@ -9,12 +9,16 @@ import Navbar from "./components/Common/Navbar"
 import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
+import ProfileForm from "./components/core/Forms/ProfileForm"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
+import AdminSignup from "./pages/AdminSignup"
+import AdminLogin from "./pages/AdminLogin"
 import Home from "./pages/Home"
+import Error from "./pages/Error"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -43,6 +47,22 @@ function App() {
       element={
         <OpenRoute>
           <Login/>
+        </OpenRoute>
+      }
+    />
+    <Route
+      path="adminlogin"
+      element={
+        <OpenRoute>
+          <AdminLogin/>
+        </OpenRoute>
+      }
+    />
+     <Route
+      path="adminsignup"
+      element={
+        <OpenRoute>
+          <AdminSignup/>
         </OpenRoute>
       }
     />
@@ -87,6 +107,20 @@ function App() {
           </PrivateRoute>
           }
         />
+         <Route
+          path="/profile"
+          element={
+
+          <PrivateRoute>
+            <ProfileForm/>
+          </PrivateRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Error/>
+          } />
     </Routes>
   </div>
   );
