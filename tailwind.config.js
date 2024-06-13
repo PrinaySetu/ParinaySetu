@@ -9,6 +9,7 @@ module.exports = {
         "white": "#fff",
         "black": "#000",
         "red": "#fe0505",
+        "cornsilk": "#fff8e1",
         "gainsboro": "#e6e6e6",
         "darkslategray": "#454545",
         "khaki": {
@@ -16,7 +17,15 @@ module.exports = {
           "200": "#fede79"
         },
         "whitesmoke": "#f7f7f7",
-        "gray": "#828282"
+        "gray": "#828282",
+        "lightcoral": "#ff6078",
+        "soft": "#ffc0cb",
+        "darkblue": "#2126c0",
+        "gray-900": "#02044a",
+        "stroke-little": "#c4cee8",
+        "gray-500": "#8687a8",
+        "lightpink": "#ffb6c1",
+        "aliceblue": "#dcf3ff"
       },
       "spacing": {
         "spacing-xs": "8px",
@@ -27,7 +36,9 @@ module.exports = {
       "fontFamily": {
         "body-text": "Inter",
         "norican": "Norican",
-        "niconne": "Niconne"
+        "niconne": "Niconne",
+        "montserrat": "Montserrat",
+        "body-normal-400": "Inter"
       }
     },
     "fontSize": {

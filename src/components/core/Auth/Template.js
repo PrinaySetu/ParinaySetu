@@ -1,11 +1,11 @@
 import React from 'react'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
-const Template = ({formtype}) => {
+const Template = ({ formtype }) => {
   return (
-    <div>
+    <div className="container mx-auto">
       {
-        formtype=== 'signup' ?(<SignupForm/>):(<LoginForm/>)
+        formtype === 'signup' ? (<SignupForm />) : (<LoginForm />)
       }
     </div>
   )

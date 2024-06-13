@@ -11,9 +11,12 @@ import instagram from '../assets/Buttons/Icon-3.png'
 import youtube from '../assets/Buttons/Icon-2.png'
 import linkedin from '../assets/Buttons/Icon-1.png'
 import facebook from '../assets/Buttons/Icon.png'
+import ProfileDropdown from "../components/core/Auth/ProfileDropDown";
 import { useCallback } from 'react';
 
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, matchPath } from 'react-router-dom';
 
 const Home = () => {
 
@@ -27,9 +30,22 @@ const Home = () => {
   }, []);
 
 
-  const onContactUsTextClick = useCallback(() => {
-    // Add your code here
-  }, []);
+  const { token } = useSelector((state) => state.auth);
+  const location = useLocation();
+
+  const matchRoute = (route) => {
+    return matchPath({ path: route }, location.pathname);
+  };
+
+  const onContactUsTextClick = () => {
+    // Implement the functionality for contact us click
+  };
+
+  const getNavItemClass = (path) => {
+    return matchRoute(path)
+      ? "shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white py-3.5 px-6 text-red"
+      : "text-gray-600 hover:text-red";
+  };
 
 
   const onSignInTextClick = useCallback(() => {
@@ -48,7 +64,7 @@ const Home = () => {
           </b>
           <div className="self-stretch relative text-5xl leading-[150%] text-gray">Find you perfect match here!</div>
           <div className="shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-khaki-200 flex flex-row items-center justify-center py-3.5 px-6 cursor-pointer text-left text-base" onClick={onButtonContainerClick}>
-            <div className="relative leading-[150%] font-medium">Register</div>
+            <div className="relative leading-[150%] font-medium"><Link to='/signup' style={{ color: 'inherit', textDecoration: 'none' }}>Begin</Link></div>
           </div>
         </div>
       </div>
@@ -110,19 +126,34 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="absolute w-[calc(100%_-_114px)] top-[35px] right-[60px] left-[54px] rounded-[30px] bg-khaki-100 h-[125px] overflow-hidden text-xl">
-        <div className="absolute top-[calc(50%_-_27.5px)] right-[129px] flex flex-row items-center justify-end gap-[48px]">
-          <div className="shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white flex flex-row items-center justify-center py-3.5 px-6 text-base text-red">
-            <div className="relative leading-[150%] font-medium">Home</div>
+      <div className="relative z-[999]">
+        <div className={`absolute w-[calc(100%_-_114px)] top-[35px] right-[60px] left-[54px] rounded-[30px] bg-khaki-100 h-[125px] text-xl ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`}>
+          <div className="absolute top-[calc(50%_-_27.5px)] right-[129px] flex flex-row items-center justify-end gap-[48px]">
+            <div className={getNavItemClass("/")}>
+              <div className="relative leading-[150%] font-medium"><Link to='/' style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link></div>
+            </div>
+            <div className="relative leading-[150%] font-medium cursor-pointer">Pricing</div>
+            <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onContactUsTextClick}>Contact Us</div>
+            {token === null && (
+              <>
+                <div className={getNavItemClass("/login")}>
+                  <div className="relative leading-[150%] font-medium">
+                    <Link to='/login' style={{ color: 'inherit', textDecoration: 'none' }}>Log In</Link>
+                  </div>
+                </div>
+                <div className={getNavItemClass("/signup")}>
+                  <div className="relative leading-[150%] font-medium">
+                    <Link to='/signup' style={{ color: 'inherit', textDecoration: 'none' }}>Sign Up</Link>
+                  </div>
+                </div>
+              </>
+            )}
+            {token !== null && <ProfileDropdown />}
           </div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" >Pricing</div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onContactUsTextClick}>Contact Us</div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" ><Link to='/signup'>Sign in</Link></div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" ><Link to='/login'>Log In</Link> </div>
-        </div>
-        <div className="absolute top-[calc(50%_-_70.5px)] left-[32px] w-[241.6px] h-[133.3px] text-45xl font-niconne">
-          <div className="absolute top-[calc(50%_-_66.65px)] left-[0px] inline-block w-[240.4px] h-[86.7px]">Parinay</div>
-          <div className="absolute top-[calc(50%_-_8.88px)] left-[123.98px] text-37xl text-red inline-block w-[117.7px] h-[75.5px]">Setu</div>
+          <div className="absolute top-[calc(50%_-_70.5px)] left-[32px] w-[241.6px] h-[133.3px] text-45xl font-niconne">
+            <div className="absolute top-[calc(50%_-_66.65px)] left-[0px] inline-block w-[240.4px] h-[86.7px]">Parinay</div>
+            <div className="absolute top-[calc(50%_-_8.88px)] left-[123.98px] text-37xl text-red inline-block w-[117.7px] h-[75.5px]">Setu</div>
+          </div>
         </div>
       </div>
       <img className="absolute right-[-370.7px] bottom-[510.49px] w-[1003.7px] h-[1096.6px] object-contain" alt="" src={Heartfirst} />

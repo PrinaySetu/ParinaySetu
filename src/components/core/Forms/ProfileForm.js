@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux"
 const ProfileForm = () => {
   return (
     <div>
-       <ProfileFormTemplate
+      <ProfileFormTemplate
         fields={data.profile.fields} // Access the education fields directly from data.education
         createFunction={addProfile}
         updateFunction={updateProfile}
-        />
+      />
     </div>
   )
 }
