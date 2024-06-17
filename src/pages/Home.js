@@ -62,7 +62,7 @@ const Home = () => {
             <span className="text-red">Right</span>
             <span>!</span>
           </b>
-          <div className="self-stretch relative text-5xl leading-[150%] text-gray">Find you perfect match here!</div>
+          <div className="self-stretch relative text-5xl leading-[150%] text-gray">Find your perfect match here!</div>
           <div className="shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-khaki-200 flex flex-row items-center justify-center py-3.5 px-6 cursor-pointer text-left text-base" onClick={onButtonContainerClick}>
             <div className="relative leading-[150%] font-medium"><Link to='/signup' style={{ color: 'inherit', textDecoration: 'none' }}>Begin</Link></div>
           </div>
