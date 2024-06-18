@@ -5,6 +5,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { TimeInput } from "@nextui-org/date-input";
 import Rightarrow from '../../../assets/img/bx-right-arrow-alt.png';
 import data from '../../../data/data.json';
+import { Link } from 'react-router-dom';
 
 
 
@@ -601,10 +602,13 @@ const Property1RegistrationForm = () => {
             </div>
           </div>
         </div>
-        <div className="absolute top-[1052px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base cursor-pointer">
-          <div className="relative leading-[150%] font-medium">Next</div>
-          <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
-        </div>
+        <Link to='/special' style={{ color: 'inherit', textDecoration: 'none' }}>
+          <div className="absolute top-[1052px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base cursor-pointer">
+            <div className="relative leading-[150%] font-medium">Next</div>
+            <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
+          </div>
+        </Link>
+
       </div>
     </div>
     {isDatePickerCalendarOpen && (
