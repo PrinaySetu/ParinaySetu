@@ -2,7 +2,7 @@ import React from 'react'
 import AdminTemplate from '../components/core/Auth/AdminTemplate'
 const AdminLogin = () => {
   return (
-    <div>
+    <div >
       <AdminTemplate
         formtype='login'
       />

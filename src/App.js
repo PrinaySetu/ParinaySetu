@@ -31,98 +31,100 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-  <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
-  <Navbar/>
-    <Routes>
-    <Route
-      path="signup"
-      element={
-        <OpenRoute>
-          <Signup/>
-        </OpenRoute>
-      }
-    />
-     <Route
-      path="login"
-      element={
-        <OpenRoute>
-          <Login/>
-        </OpenRoute>
-      }
-    />
-    <Route
-      path="adminlogin"
-      element={
-        <OpenRoute>
-          <AdminLogin/>
-        </OpenRoute>
-      }
-    />
-     <Route
-      path="adminsignup"
-      element={
-        <OpenRoute>
-          <AdminSignup/>
-        </OpenRoute>
-      }
-    />
-     <Route
-      path="/"
-      element={
-        <Home/>
-      }
-    />
-     <Route
+    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
+      {/* <Navbar /> */}
+      <Routes>
+        <Route
+          path="signup"
+          element={
+            <OpenRoute>
+              <Navbar />
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <OpenRoute>
+              <Navbar />
+              <Login />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="adminlogin"
+          element={
+            <OpenRoute>
+              <AdminLogin />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="adminsignup"
+          element={
+            <OpenRoute>
+              <AdminSignup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Home />
+          }
+        />
+        <Route
           path="verify-email"
           element={
             <OpenRoute>
-              <VerifyEmail/>
+              <VerifyEmail />
             </OpenRoute>
           }
-        />  
+        />
         <Route
           path="/user"
           element={
 
-          <PrivateRoute>
-            <ProfileDetails/>
-          </PrivateRoute>
+            <PrivateRoute>
+              <ProfileDetails />
+            </PrivateRoute>
           }
         />
         <Route
           path="/form"
           element={
 
-          <PrivateRoute>
-            <EducationForm/>
-          </PrivateRoute>
+            <PrivateRoute>
+              <EducationForm />
+            </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path="/special"
           element={
 
-          <PrivateRoute>
-            <SpecialForm/>
-          </PrivateRoute>
+            <PrivateRoute>
+              <SpecialForm />
+            </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path="/profile"
           element={
 
-          <PrivateRoute>
-            <ProfileForm/>
-          </PrivateRoute>
+            <PrivateRoute>
+              <ProfileForm />
+            </PrivateRoute>
           }
         />
         <Route
           path="*"
           element={
-            <Error/>
+            <Error />
           } />
-    </Routes>
-  </div>
+      </Routes>
+    </div>
   );
 }
 
