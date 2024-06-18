@@ -10,6 +10,7 @@ import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
+import ContactForm from "./components/core/Forms/ContactForm"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -92,7 +93,7 @@ function App() {
           }
         />
         <Route
-          path="/form"
+          path="/education"
           element={
 
             <PrivateRoute>
@@ -115,6 +116,15 @@ function App() {
 
             <PrivateRoute>
               <ProfileForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/contact-details"
+          element={
+
+            <PrivateRoute>
+              <ContactForm />
             </PrivateRoute>
           }
         />
