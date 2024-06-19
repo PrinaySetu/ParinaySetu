@@ -1,9 +1,7 @@
 import { useState, useCallback } from 'react';
-import DatePickerCalendar from "./DatePickerCalendar";
-import PortalPopup from "./PortalPopup";
 import { Dropdown } from 'primereact/dropdown';
-import { TimeInput } from "@nextui-org/date-input";
 import Rightarrow from '../../../assets/img/bx-right-arrow-alt.png';
+import logo from '../../../assets/img/Logo-parinay-setu.png';
 import data from '../../../data/data.json';
 import { Link } from 'react-router-dom';
 
@@ -11,15 +9,6 @@ import { Link } from 'react-router-dom';
 
 
 const Property1RegistrationForm = () => {
-  const [isDatePickerCalendarOpen, setDatePickerCalendarOpen] = useState(false);
-
-  const openDatePickerCalendar = useCallback(() => {
-    setDatePickerCalendarOpen(true);
-  }, []);
-
-  const closeDatePickerCalendar = useCallback(() => {
-    setDatePickerCalendarOpen(false);
-  }, []);
 
   const [selectedGender, setSelectedGender] = useState(null);
   const Genders = [
@@ -90,7 +79,7 @@ const Property1RegistrationForm = () => {
 
   const sections = [
     { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-primary-main", link: "" },
-    { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/education-work-history" },
+    { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/education" },
     { title: ["CONTACT", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/contact-details" },
     { title: ["FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/family-details" },
     { title: ["BACKGROUND", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/background-details" },
@@ -129,29 +118,6 @@ const Property1RegistrationForm = () => {
     setTime(event.target.value);
   };
 
-  const [formData, setFormData] = useState(() => {
-    const initialState = {};
-    data.profile.fields.forEach(field => {
-      initialState[field.name] = '';
-    });
-    return initialState;
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
-    // Here you can add code to save formData to your backend or local storage
-  };
-
-
-
   return (<>
     <div className="w-full relative bg-black-white-white h-[1979px] overflow-hidden text-left text-45xl text-black-white-black font-subheading">
       <div className="absolute top-[55px] left-[calc(50%_-_207px)] w-[413.6px] h-[141.1px] font-niconne">
@@ -159,7 +125,7 @@ const Property1RegistrationForm = () => {
           <div className="absolute top-[0px] left-[calc(50%_-_120.8px)] inline-block w-[240.4px] h-[91.7px]">Parinay</div>
           <div className="absolute top-[61.1px] left-[calc(50%_+_3.18px)] text-[56px] text-red inline-block w-[117.7px] h-[79.9px]">Setu</div>
         </div>
-        <img className="absolute top-[0px] left-[calc(50%_-_206.8px)] w-[132.3px] h-[141.1px] object-cover" alt="" src="Group 1.png" />
+        <img className="absolute top-[0px] left-[calc(50%_-_206.8px)] w-[132.3px] h-[141.1px] object-cover" alt="Logo" src={logo} />
       </div>
       <div className="absolute top-[270px] left-[calc(50%_-_435px)] w-[837px] flex flex-col items-center justify-start gap-[24px] text-center">
         <b className="self-stretch relative tracking-[-0.02em]">
@@ -251,11 +217,6 @@ const Property1RegistrationForm = () => {
             </div>
           </div>
         </div>
-        <div className="absolute top-[184px] left-[662px] w-[363px] h-[45px] hidden">
-          <div className="absolute top-[calc(50%_-_8.5px)] left-[0px] overflow-hidden flex flex-row flex-wrap items-center justify-center">
-            <div className="relative leading-[130%] font-medium">{`DOB : `}</div>
-          </div>
-        </div>
         <div className="absolute top-[255px] left-[56px] flex flex-row items-center justify-start gap-[47px]">
           <div className="overflow-hidden flex flex-row flex-wrap items-center justify-center">
             <div className="relative leading-[130%] font-medium">Birth Place</div>
@@ -304,7 +265,7 @@ const Property1RegistrationForm = () => {
                 <div className="self-stretch flex flex-row items-center justify-start gap-[4px]">
                   <div className="flex-1 flex flex-row items-end justify-start">
                     <Dropdown value={selectedGender} onChange={(e) => setSelectedGender(e.value)} options={Genders} optionLabel="name"
-                      placeholder="Select Gender" className="flex-1 relative leading-[150%] text-xsm" checkmark={true} highlightOnSelect={false} />
+                      placeholder="Select Gender" className="flex-1 relative leading-[150%] text-xs" checkmark={true} highlightOnSelect={false} />
                   </div>
                 </div>
               </div>
@@ -355,7 +316,7 @@ const Property1RegistrationForm = () => {
                       options={BloodGroups}
                       optionLabel="name"
                       placeholder="Select Blood Group"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -378,7 +339,7 @@ const Property1RegistrationForm = () => {
                       options={SkinColors}
                       optionLabel="name"
                       placeholder="Select Skin Color"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -401,7 +362,7 @@ const Property1RegistrationForm = () => {
                       options={DietTypes}
                       optionLabel="name"
                       placeholder="Select Diet Type"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -424,7 +385,7 @@ const Property1RegistrationForm = () => {
                       options={DiseasedStatuses}
                       optionLabel="name"
                       placeholder="Select if any disease"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -479,7 +440,7 @@ const Property1RegistrationForm = () => {
                       options={WeddingStatuses}
                       optionLabel="name"
                       placeholder="Select Wedding Status"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -518,7 +479,7 @@ const Property1RegistrationForm = () => {
                       options={ResidingStatuses}
                       optionLabel="name"
                       placeholder="Select Residing Status"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -544,7 +505,7 @@ const Property1RegistrationForm = () => {
                       options={MangalikStatuses}
                       optionLabel="name"
                       placeholder="Select Mangalik Status"
-                      className="flex-1 relative leading-[150%] text-xsm"
+                      className="flex-1 relative leading-[150%] text-xs"
                       checkmark={true}
                       highlightOnSelect={false}
                       dropdownClassName="dropdown-open:bg-white"
@@ -602,7 +563,7 @@ const Property1RegistrationForm = () => {
             </div>
           </div>
         </div>
-        <Link to='/special' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/education' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute top-[1052px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base cursor-pointer">
             <div className="relative leading-[150%] font-medium">Next</div>
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
@@ -611,20 +572,7 @@ const Property1RegistrationForm = () => {
 
       </div>
     </div>
-    {isDatePickerCalendarOpen && (
-      <PortalPopup
-        overlayColor="rgba(113, 113, 113, 0.3)"
-        placement="Centered"
-
-
-
-
-
-        onOutsideClick={closeDatePickerCalendar}
-      >
-        <DatePickerCalendar onClose={closeDatePickerCalendar} />
-      </PortalPopup>
-    )}</>);
+  </>);
 };
 
 export default Property1RegistrationForm;

@@ -2,13 +2,14 @@ import { useState, useCallback } from 'react';
 import data from '../../../data/data.json';
 import Rightarrow from '../../../assets/img/bx-right-arrow-alt.png';
 import Leftarrow from '../../../assets/img/bx-left-arrow-alt.png';
+import logo from '../../../assets/img/Logo-parinay-setu.png';
 import { Link } from 'react-router-dom';
 
-const Property1RegistrationForm = () => {
+const Property1SpecialForm = () => {
 
   const sections = [
     { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/profile" },
-    { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/education-work-history" },
+    { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/education" },
     { title: ["CONTACT", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/contact-details" },
     { title: ["FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/family-details" },
     { title: ["BACKGROUND", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/background-details" },
@@ -68,7 +69,14 @@ const Property1RegistrationForm = () => {
           <div className="absolute top-[0px] left-[calc(50%_-_120.8px)] inline-block w-[240.4px] h-[91.7px]">Parinay</div>
           <div className="absolute top-[61.1px] left-[calc(50%_+_3.18px)] text-[56px] text-red inline-block w-[117.7px] h-[79.9px]">Setu</div>
         </div>
-        <img className="absolute top-[0px] left-[calc(50%_-_206.8px)] w-[132.3px] h-[141.1px] object-cover" alt="" src="Group 1.png" />
+        <img className="absolute top-[0px] left-[calc(50%_-_206.8px)] w-[132.3px] h-[141.1px] object-cover" alt="Logo" src={logo} />
+      </div>
+      <div className="absolute top-[270px] left-[calc(50%_-_435px)] w-[837px] flex flex-col items-center justify-start gap-[24px] text-center">
+        <b className="self-stretch relative tracking-[-0.02em]">
+          <span>{`Register `}</span>
+          <span className="text-red">Yourself</span>
+        </b>
+        <div className="self-stretch relative text-5xl leading-[150%] text-gray">{`Tell us about yourself by filling up the form `}</div>
       </div>
       <div className="absolute top-[481px] left-[calc(50%_-_435px)] w-[870px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
         {sections.map((section, index) => (
@@ -136,7 +144,7 @@ const Property1RegistrationForm = () => {
         <div className="absolute top-[1489px] left-[calc(50%_+_430px)] tracking-[-0.02em] font-medium">
           Signature
         </div>
-        <Link to='/profile' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/education' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute bottom-[74px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
             <i className="relative leading-[150%] font-medium">Next</i>
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
@@ -149,17 +157,10 @@ const Property1RegistrationForm = () => {
           </div>
         </Link>
       </div>
-      <div className="absolute top-[270px] left-[calc(50%_-_435px)] w-[837px] flex flex-col items-center justify-start gap-[24px] text-center">
-        <b className="self-stretch relative tracking-[-0.02em]">
-          <span>{`Register `}</span>
-          <span className="text-red">Yourself</span>
-        </b>
-        <div className="self-stretch relative text-5xl leading-[150%] text-gray">{`Tell us about yourself by filling up the form `}</div>
-      </div>
     </div>);
 };
 
-export default Property1RegistrationForm;
+export default Property1SpecialForm;
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------
 
