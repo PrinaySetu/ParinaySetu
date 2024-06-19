@@ -224,13 +224,13 @@ const Property1RegistrationForm = () => {
             </div>
           </div>
         </div>
-        <Link to='/profile' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/contact-details' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute bottom-[74px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
             <i className="relative leading-[150%] font-medium">Next</i>
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
           </div>
         </Link>
-        <Link to='/special' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/profile' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute bottom-[74px] left-[80px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Leftarrow} />
             <i className="relative leading-[150%] font-medium">Previous</i>

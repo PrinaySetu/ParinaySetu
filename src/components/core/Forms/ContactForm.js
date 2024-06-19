@@ -140,7 +140,7 @@ const Property1ContactForm = () => {
                         <div className="absolute top-[0px] left-[0px] rounded-md bg-primary-light box-border w-[387px] h-[45px] border-[1px] border-solid border-primary-main">
                             <div className="absolute top-[13px] left-[32px] w-[105px] h-[21px]" />
                             <div className="absolute top-[calc(50%_-_8.5px)] left-[12px] flex flex-row items-center justify-center">
-                                <div className="w-[362px] relative leading-[130%] font-medium flex items-center shrink-0" />
+                                <input type="text" className="w-[362px] relative leading-[130%] font-medium flex items-center shrink-0 bg-inherit outline-none" />
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@ const Property1ContactForm = () => {
                         <div className="absolute top-[0px] left-[0px] rounded-md bg-primary-light box-border w-[387px] h-[45px] border-[1px] border-solid border-primary-main">
                             <div className="absolute top-[13px] left-[32px] w-[105px] h-[21px]" />
                             <div className="absolute top-[calc(50%_-_8.5px)] left-[12px] flex flex-row items-center justify-center">
-                                <div className="w-[362px] relative leading-[130%] font-medium flex items-center shrink-0" />
+                                <input type="text" className="w-[362px] relative leading-[130%] font-medium flex items-center shrink-0 bg-inherit outline-none" />
                             </div>
                         </div>
                     </div>
@@ -228,14 +228,18 @@ const Property1ContactForm = () => {
                         ))}
                     </div>
                 </div>
-                <div className="absolute top-[1306px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
-                    <i className="relative leading-[150%] font-medium">Next</i>
-                    <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
-                </div>
-                <div className="absolute top-[1306px] left-[80px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
-                    <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Leftarrow} />
-                    <i className="relative leading-[150%] font-medium">Previous</i>
-                </div>
+                <Link to='/family-details' style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <div className="absolute top-[1306px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
+                        <i className="relative leading-[150%] font-medium">Next</i>
+                        <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
+                    </div>
+                </Link>
+                <Link to='/education' style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <div className="absolute top-[1306px] left-[80px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
+                        <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Leftarrow} />
+                        <i className="relative leading-[150%] font-medium">Previous</i>
+                    </div>
+                </Link>
             </div>
         </div>);
 };

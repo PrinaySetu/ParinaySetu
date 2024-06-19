@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react';
 import { Dropdown } from 'primereact/dropdown';
+import 'primereact/resources/themes/saga-blue/theme.css'; // or any other theme
+import 'primereact/resources/primereact.css';
 import Rightarrow from '../../../assets/img/bx-right-arrow-alt.png';
 import logo from '../../../assets/img/Logo-parinay-setu.png';
 import data from '../../../data/data.json';
 import { Link } from 'react-router-dom';
-
 
 
 
@@ -265,7 +266,7 @@ const Property1RegistrationForm = () => {
                 <div className="self-stretch flex flex-row items-center justify-start gap-[4px]">
                   <div className="flex-1 flex flex-row items-end justify-start">
                     <Dropdown value={selectedGender} onChange={(e) => setSelectedGender(e.value)} options={Genders} optionLabel="name"
-                      placeholder="Select Gender" className="flex-1 relative leading-[150%] text-xs" checkmark={true} highlightOnSelect={false} />
+                      placeholder="Select Gender" className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none" checkmark={true} highlightOnSelect={false} />
                   </div>
                 </div>
               </div>
@@ -316,7 +317,7 @@ const Property1RegistrationForm = () => {
                       options={BloodGroups}
                       optionLabel="name"
                       placeholder="Select Blood Group"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -339,7 +340,7 @@ const Property1RegistrationForm = () => {
                       options={SkinColors}
                       optionLabel="name"
                       placeholder="Select Skin Color"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -362,7 +363,7 @@ const Property1RegistrationForm = () => {
                       options={DietTypes}
                       optionLabel="name"
                       placeholder="Select Diet Type"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -385,7 +386,7 @@ const Property1RegistrationForm = () => {
                       options={DiseasedStatuses}
                       optionLabel="name"
                       placeholder="Select if any disease"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -440,7 +441,7 @@ const Property1RegistrationForm = () => {
                       options={WeddingStatuses}
                       optionLabel="name"
                       placeholder="Select Wedding Status"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -479,7 +480,7 @@ const Property1RegistrationForm = () => {
                       options={ResidingStatuses}
                       optionLabel="name"
                       placeholder="Select Residing Status"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                     />
@@ -505,7 +506,7 @@ const Property1RegistrationForm = () => {
                       options={MangalikStatuses}
                       optionLabel="name"
                       placeholder="Select Mangalik Status"
-                      className="flex-1 relative leading-[150%] text-xs"
+                      className="flex-1 relative leading-[150%] text-xs bg-inherit outline-none"
                       checkmark={true}
                       highlightOnSelect={false}
                       dropdownClassName="dropdown-open:bg-white"
