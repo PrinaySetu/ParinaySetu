@@ -8,6 +8,7 @@ import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
 import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
+import FamilyForm from "./components/core/Forms/FamilyForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
 import ContactForm from "./components/core/Forms/ContactForm"
@@ -116,6 +117,15 @@ function App() {
 
             <PrivateRoute>
               <ProfileForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/family-details"
+          element={
+
+            <PrivateRoute>
+              <FamilyForm />
             </PrivateRoute>
           }
         />

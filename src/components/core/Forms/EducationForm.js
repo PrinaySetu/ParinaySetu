@@ -5,7 +5,7 @@ import Leftarrow from '../../../assets/img/bx-left-arrow-alt.png';
 import logo from '../../../assets/img/Logo-parinay-setu.png';
 import { Link } from 'react-router-dom';
 
-const Property1RegistrationForm = () => {
+const Property1EducationForm = () => {
   const sections = [
     { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/profile" },
     { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-primary-main", link: "" },
@@ -224,13 +224,13 @@ const Property1RegistrationForm = () => {
             </div>
           </div>
         </div>
-        <Link to='/profile' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/contact-details' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute bottom-[74px] left-[1025px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
             <i className="relative leading-[150%] font-medium">Next</i>
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Rightarrow} />
           </div>
         </Link>
-        <Link to='/special' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <Link to='/profile' style={{ color: 'inherit', textDecoration: 'none' }}>
           <div className="absolute bottom-[74px] left-[80px] shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-lg bg-primary-main flex flex-row items-center justify-center py-3.5 px-6 gap-[8px] text-base">
             <img className="w-6 relative h-6 overflow-hidden shrink-0" alt="" src={Leftarrow} />
             <i className="relative leading-[150%] font-medium">Previous</i>
@@ -240,7 +240,7 @@ const Property1RegistrationForm = () => {
     </div>);
 };
 
-export default Property1RegistrationForm;
+export default Property1EducationForm;
 
 
 
