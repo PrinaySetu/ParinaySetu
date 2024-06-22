@@ -5,7 +5,7 @@ import Leftarrow from '../../../assets/img/bx-left-arrow-alt.png';
 import logo from '../../../assets/img/Logo-parinay-setu.png';
 import { Link } from 'react-router-dom';
 
-const Property1RegistrationForm = () => {
+const Property1EducationForm = () => {
   const sections = [
     { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/profile" },
     { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-primary-main", link: "" },
@@ -240,7 +240,7 @@ const Property1RegistrationForm = () => {
     </div>);
 };
 
-export default Property1RegistrationForm;
+export default Property1EducationForm;
 
 
 

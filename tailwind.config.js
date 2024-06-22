@@ -49,6 +49,7 @@ module.exports = {
         "text-medium": "#494e50",
         "primary-enable": "#01a2f9",
         "blue-blue-500": "#2196f3",
+        "gainsboro": "rgba(217, 217, 217, 0)",
         "background-enable": "#f5f7fa"
       },
       "spacing": {
