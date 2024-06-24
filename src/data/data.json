@@ -1,7 +1,6 @@
 {
   "profile": {
     "fields": [
-      {"name": "Name", "type": "String"},
       {"name": "fatherName", "type": "String"},
       {"name": "motherName", "type": "String"},
       {"name": "guardianName", "type": "String"},

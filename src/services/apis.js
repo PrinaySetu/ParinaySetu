@@ -52,6 +52,7 @@ export const profileEndpoints = {
         ADD_RECOMMENDED_PROFILE_API:BASE_URL+"profile/addRecommendedProfile",
         REMOVE_RECOMMENDED_PROFILE_API:BASE_URL+"profile/removeRecommendation",
         GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
+        GET_USER_ADDITIONAL_DETAILS_API: BASE_URL + "/profile/getUserAdditionalDetails",
 }
 export const propertyEndpoints = {
     ADD_PROPERTY_API: BASE_URL + "/property/addProperty",

@@ -12,6 +12,7 @@ const {
     ADD_RECOMMENDED_PROFILE_API,
     REMOVE_RECOMMENDED_PROFILE_API,
     GET_USER_DETAILS_API,
+    GET_USER_ADDITIONAL_DETAILS_API
 } = profileEndpoints;
 
 export const addProfile = async (data, token) => {
@@ -153,3 +154,30 @@ export const getUserDetails = (token) => {
     };
   };
   
+  export const getUserAdditionalDetails = (token) => {
+    return async (dispatch) => {
+        const toastId = toast.loading("Loading...");
+        dispatch(setLoading(true));
+        try {
+            const response = await apiConnector("GET", GET_USER_ADDITIONAL_DETAILS_API, null, {
+                Authorization: `Bearer ${token}`,
+            });
+            console.log("GET_USER_ADDITIONAL_DETAILS API RESPONSE............", response);
+
+            if (!response.data.success) {
+                throw new Error(response.data.message);
+            }
+
+            const userData = response.data.data;
+                
+            dispatch(setUser(userData));
+            return userData; // Return the user data for further use
+        } catch (error) {
+            console.log("GET_USER_ADDITIONAL_DETAILS API ERROR............", error);
+            dispatch(logout());
+            toast.error("Could Not Get User Additional Details");
+        }
+        dispatch(setLoading(false));
+        toast.dismiss(toastId);
+    };
+};
