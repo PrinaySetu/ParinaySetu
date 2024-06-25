@@ -15,9 +15,25 @@ const profileSlice = createSlice({
     setLoading(state, value) {
       state.loading = value.payload
     },
+    setUserContacts(state, value) {
+      state.contacts = value.payload
   },
+  setUserEducation(state, value) {
+    state.education = value.payload 
+  },
+  setUserWorking(state, value) {
+    state.working = value.payload
+  },
+  setUserRelative(state, value) {
+    state.relative = value.payload
+  },
+  setUserFamily(state, value) {
+    state.family = value.payload
+  }
+
+}
 })
 
-export const { setUser, setLoading } = profileSlice.actions
+export const { setUser, setLoading,setUserContacts , setUserEducation,setUserFamily,setUserRelative,setUserWorking} = profileSlice.actions
 
 export default profileSlice.reducer

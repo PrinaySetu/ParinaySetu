@@ -90,6 +90,7 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData }
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -97,12 +98,14 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData }
     const fetchData = async () => {
       try {
         const data = await getData(token)(dispatch);
-        if (data) {
+        if (data && Object.keys(data).length > 0) {
           setIsEdit(true);
           reset(data); // Populate form with fetched data
         }
+        setDataFetched(true);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setDataFetched(true);
       }
     };
 
