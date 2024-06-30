@@ -12,6 +12,7 @@ import FamilyForm from "./components/core/Forms/FamilyForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
 import ContactForm from "./components/core/Forms/ContactForm"
+import DocumentUploader from "./components/core/Forms/DocumentForm"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -138,6 +139,14 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/docs"
+          element={
+
+            <PrivateRoute>
+              <DocumentUploader />
+            </PrivateRoute>
+          }/>
         <Route
           path="*"
           element={
