@@ -22,6 +22,7 @@ import AdminSignup from "./pages/AdminSignup"
 import AdminLogin from "./pages/AdminLogin"
 import Home from "./pages/Home"
 import Error from "./pages/Error"
+import WorkForm from "./components/core/Forms/WorkForm"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -147,6 +148,15 @@ function App() {
               <DocumentUploader />
             </PrivateRoute>
           }/>
+          <Route
+            path="/work"
+            element={
+
+              <PrivateRoute>
+                <WorkForm />
+              </PrivateRoute>
+            }
+          />
         <Route
           path="*"
           element={

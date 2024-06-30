@@ -1,8 +1,8 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { workingEndpoints } from "../apis";
-
-const { ADD_WORKING_API, UPDATE_WORKING_API, DELETE_WORKING_API } = workingEndpoints;
+import { setLoading, setUserWorking } from "../../slices/profileSlice"
+const { ADD_WORKING_API, UPDATE_WORKING_API, DELETE_WORKING_API,GET_USER_WORKING_API } = workingEndpoints;
 
 export const addWorking = async (data, token) => {
     const toastId = toast.loading("Adding working details...");
@@ -60,3 +60,36 @@ export const deleteWorking = async (data, token) => {
     toast.dismiss(toastId);
     return result;
 };
+export const getUserWorking = (token) => {
+    console.log("GET_USER_WORKING_API............", GET_USER_WORKING_API);
+    return async (dispatch) => {
+        const toastId = toast.loading("Retrieving working details...");
+        dispatch(setLoading(true));
+        try {
+            const response = await apiConnector("GET", GET_USER_WORKING_API, null, {
+                Authorization: `Bearer ${token}`,
+            });
+            console.log("GET_USER_WORKING_API RESPONSE............", response);
+            // if(!response.data.success){
+            //     throw new Error(response.data.message)
+            // }
+            const workingData = response.data.data;
+
+            if(workingData&& Object.keys(workingData).length>0){
+                dispatch(setUserWorking(workingData));
+            }
+            else{
+                toast.error("No working details found");
+                console.log("No working details found");
+            }
+            dispatch(setLoading(false));
+            toast.dismiss(toastId);
+            return workingData;
+            toast.success("Working details retrieved successfully");
+        } catch (error) {
+            toast.error(error.message);
+        }
+        toast.dismiss(toastId);
+        dispatch(setLoading(false));
+    }
+}
