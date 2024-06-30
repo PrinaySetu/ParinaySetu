@@ -23,6 +23,7 @@ import AdminLogin from "./pages/AdminLogin"
 import Home from "./pages/Home"
 import Error from "./pages/Error"
 import WorkForm from "./components/core/Forms/WorkForm"
+import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -154,6 +155,15 @@ function App() {
 
               <PrivateRoute>
                 <WorkForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/family"
+            element={
+
+              <PrivateRoute>
+                <FamileDetailsForm/>
               </PrivateRoute>
             }
           />
