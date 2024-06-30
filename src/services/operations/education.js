@@ -52,9 +52,9 @@ export const getUserEducation = (token) => {
                 Authorization: `Bearer ${token}`,
             });
             console.log("GET_USER_EDUCATION_API RESPONSE............", response);
-            if(!response.data.success){
-                throw new Error(response.data.message)
-            }
+            // if(!response.data.success){
+            //     throw new Error(response.data.message)
+            // }
             const educationData = response.data.data;
 
             if(educationData&& Object.keys(educationData).length>0){
