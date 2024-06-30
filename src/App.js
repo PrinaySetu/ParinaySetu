@@ -6,12 +6,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
+import FormSections from "./components/Common/FormSections"
+import Header from "./components/Common/Header"
+import BottomNavigation from "./components/Common/BottomNavigation"
 import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
 import FamilyForm from "./components/core/Forms/FamilyForm"
+import PropertyForm from "./components/core/Forms/PropertyForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
 import ContactForm from "./components/core/Forms/ContactForm"
+import WorkingForm from "./components/core/Forms/WorkingForm"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -121,6 +126,24 @@ function App() {
           }
         />
         <Route
+          path="/property"
+          element={
+
+            <PrivateRoute>
+              <PropertyForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/working"
+          element={
+
+            <PrivateRoute>
+              <WorkingForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/family-details"
           element={
 
@@ -134,7 +157,10 @@ function App() {
           element={
 
             <PrivateRoute>
+              {/* <Header /> */}
+              {/* <FormSections /> */}
               <ContactForm />
+              {/* <BottomNavigation /> */}
             </PrivateRoute>
           }
         />
