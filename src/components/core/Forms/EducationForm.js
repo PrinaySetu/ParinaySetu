@@ -249,19 +249,25 @@
 import React from 'react';
 import ProfileFormTemplate from './ProfileFormTemplate';
 import data from '../../../data/data.json'; // Import the entire data.json file
-import { createEducation, updateEducation,getUserEducation } from '../../../services/operations/education';
+import { createEducation, updateEducation, getUserEducation } from '../../../services/operations/education';
 import { useDispatch, useSelector } from "react-redux"
+import FormSections from '../../Common/FormSections';
+import NavigationButtons from '../../Common/BottomNavigation';
+import Header from '../../Common/Header';
 
 const EducationForm = () => {
 
   return (
     <div>
+      {/* <Header /> */}
+      {/* <FormSections /> */}
       <ProfileFormTemplate
         fields={data.education.fields} // Access the education fields directly from data.education
         createFunction={createEducation}
         updateFunction={updateEducation}
         getData={getUserEducation}
       />
+      {/* <NavigationButtons /> */}
     </div>
   );
 };
