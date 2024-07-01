@@ -25,6 +25,7 @@ import Error from "./pages/Error"
 import WorkForm from "./components/core/Forms/WorkForm"
 import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm"
 import FatherFamily from "./components/core/Forms/FatherFamily"
+import MotherFamily from "./components/core/Forms/MotherFamily"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -174,6 +175,15 @@ function App() {
 
               <PrivateRoute>
                 <FatherFamily/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/mother"
+            element={
+
+              <PrivateRoute>
+                <MotherFamily/>
               </PrivateRoute>
             }
           />

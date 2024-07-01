@@ -49,6 +49,12 @@ export const friendsEndpoints = {
     DELETE_FRIEND_API: BASE_URL + "/friends/deleteFriends",
     GET_USER_FRIENDS_API: BASE_URL + "/friends/getUserFriends",
 }
+export const motherFamilyEndpoints = {
+    ADD_MOTHER_FAMILY_API: BASE_URL + "/motherFamily/addMotherFamily",
+    UPDATE_MOTHER_FAMILY_API: BASE_URL + "/motherFamily/updateMotherFamily",
+    GET_USER_MOTHER_FAMILY_API: BASE_URL + "/motherFamily/getUserMotherFamily",
+
+}
 export const profileEndpoints = {
         ADD_PROFILE_API:BASE_URL+"/profile/createProfile",
         UPDATE_PROFILE_API:BASE_URL+"/profile/updateProfile",

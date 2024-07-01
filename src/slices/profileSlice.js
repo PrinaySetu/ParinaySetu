@@ -34,12 +34,19 @@ const profileSlice = createSlice({
 state.familyDetails = value.payload
 },
 setUserFatherFamily(state, value) {
-  state.familyDetails = value.payload
+  state.fatherFamily = value.payload
+},
+setUserMotherFamily(state, value) {
+  state.motherFamily = value.payload
+
 }
 
 }
 })
 
-export const { setUser, setLoading,setUserContacts , setUserEducation,setUserFamily,setUserRelative,setUserWorking,setUserFamilyDetails, setUserFatherFamily} = profileSlice.actions
+export const { setUser, setLoading,setUserContacts ,
+   setUserEducation,setUserFamily,
+   setUserRelative,setUserWorking,setUserFamilyDetails, setUserMotherFamily,
+   setUserFatherFamily} = profileSlice.actions
 
 export default profileSlice.reducer
