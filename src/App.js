@@ -29,6 +29,8 @@ import MotherFamily from "./components/core/Forms/MotherFamily"
 import FriendsForm from "./components/core/Forms/FriendsForm"
 import PropertyForm from "./components/core/Forms/PropertyForm"
 import RelativeForm from "./components/core/Forms/RelativeForm"
+import UserDashboard from "./components/core/Dashboard/UserDashboard"
+import MainUserDetails from "./components/core/Dashboard/UserDetails"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -217,6 +219,22 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+  path="/dashboard"
+  element={
+    <PrivateRoute>
+      <UserDashboard />
+    </PrivateRoute>
+  }
+/>
+<Route
+    path="/user/:id"
+    element={
+      <PrivateRoute>
+        <MainUserDetails />
+      </PrivateRoute>
+    }
+  />
         <Route
           path="*"
           element={

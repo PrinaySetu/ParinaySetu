@@ -48,8 +48,13 @@ setProperty(state, value) {
   },
   setSpecial(state,value){
     state.special = value.payload
-  }
-
+  },
+  setUserDashboard(state,value){
+    state.dashboard = value.payload
+  },
+  setMainUserDashboard(state,value){
+    state.mainUserDashboard = value.payload
+  },
 }
 })
 
@@ -57,7 +62,9 @@ export const { setUser, setLoading,setUserContacts ,
    setUserEducation,setUserFamily,
    setUserRelative,setUserWorking,setUserFamilyDetails, setUserMotherFamily,
    setUserFatherFamily,
+   setUserDashboard,
   setuserFriends,
+  setMainUserDashboard,
 setProperty,
 setSpecial} = profileSlice.actions
 

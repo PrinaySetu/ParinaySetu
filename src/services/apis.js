@@ -79,3 +79,8 @@ export const workingEndpoints = {
     UPDATE_WORKING_API: BASE_URL + "/working/updateWorking",
     GET_USER_WORKING_API: BASE_URL + "/working/getUserWorking",
 }
+
+export const dashboardEndpoints = {
+    GET_ALL_USERS_API: BASE_URL + "/dashboard/getAllUsers",
+    GET_MAIN_USER_API: BASE_URL + "/dashboard/getMainUser",
+}
