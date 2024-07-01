@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { friendsEndpoints } from "../apis";
 import { setLoading,setuserFriends } from "../../slices/profileSlice";
-const { ADD_FRIEND_API, UPDATE_FRIEND_API, DELETE_FRIEND_API, GET_USER_FRIENDS_API } = friendsEndpoints;
+const { ADD_FRIEND_API, UPDATE_FRIEND_API, GET_USER_FRIENDS_API } = friendsEndpoints;
 
 export const addFriend = async (data, token) => {
     const toastId = toast.loading("Adding friend...");
@@ -42,24 +42,6 @@ export const updateFriend = async (data, token) => {
     return result;
 };
 
-export const deleteFriend = async (data, token) => {
-    const toastId = toast.loading("Deleting friend...");
-    let result = null;
-    try {
-        const response = await apiConnector("DELETE", DELETE_FRIEND_API, data, {
-            Authorization: `Bearer ${token}`,
-        });
-        if (!response.data.success) {
-            throw new Error(response.data.message);
-        }
-        toast.success("Friend deleted successfully");
-        result = response.data;
-    } catch (error) {
-        toast.error(error.message);
-    }
-    toast.dismiss(toastId);
-    return result;
-};
 export const getUserFriends = (token) => {
     return async (dispatch) => {
         const toastId = toast.loading("Retrieving friends records...");
