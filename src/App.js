@@ -26,6 +26,9 @@ import WorkForm from "./components/core/Forms/WorkForm"
 import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm"
 import FatherFamily from "./components/core/Forms/FatherFamily"
 import MotherFamily from "./components/core/Forms/MotherFamily"
+import FriendsForm from "./components/core/Forms/FriendsForm"
+import PropertyForm from "./components/core/Forms/PropertyForm"
+import RelativeForm from "./components/core/Forms/RelativeForm"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -184,6 +187,33 @@ function App() {
 
               <PrivateRoute>
                 <MotherFamily/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/friends"
+            element={
+
+              <PrivateRoute>
+                <FriendsForm/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/property"
+            element={
+
+              <PrivateRoute>
+                <PropertyForm/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/relative"
+            element={
+
+              <PrivateRoute>
+                <RelativeForm/>
               </PrivateRoute>
             }
           />

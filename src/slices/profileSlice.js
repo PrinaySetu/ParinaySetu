@@ -39,7 +39,16 @@ setUserFatherFamily(state, value) {
 setUserMotherFamily(state, value) {
   state.motherFamily = value.payload
 
-}
+},
+setuserFriends(state, value) {
+  state.friends = value.payload
+},
+setProperty(state, value) {
+  state.property = value.payload
+  },
+  setSpecial(state,value){
+    state.special = value.payload
+  }
 
 }
 })
@@ -47,6 +56,9 @@ setUserMotherFamily(state, value) {
 export const { setUser, setLoading,setUserContacts ,
    setUserEducation,setUserFamily,
    setUserRelative,setUserWorking,setUserFamilyDetails, setUserMotherFamily,
-   setUserFatherFamily} = profileSlice.actions
+   setUserFatherFamily,
+  setuserFriends,
+setProperty,
+setSpecial} = profileSlice.actions
 
 export default profileSlice.reducer
