@@ -1,8 +1,8 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { specialEndpoints } from "../apis";
-import { setLoading, setUserspecial } from "../../slices/profileSlice"
-const { ADD_SPECIAL_API, UPDATE_SPECIAL_API, DELETE_SPECIAL_API, GET_USER_SPECIAL_API } = specialEndpoints;
+import { setLoading, setSpecial } from "../../slices/profileSlice";
+const { ADD_SPECIAL_API, UPDATE_SPECIAL_API, DELETE_SPECIAL_API,GET_USER_SPECIAL_API } = specialEndpoints;
 
 export const addSpecial = async (data, token) => {
     const toastId = toast.loading("Adding special relation...");
@@ -60,46 +60,45 @@ export const deleteSpecial = async (data, token) => {
     toast.dismiss(toastId);
     return result;
 };
-
-export const getspecial = (token) => {
+export const getUserSpecial = (token) => {
     return async (dispatch) => {
-        const toastId = toast.loading("Retrieving Special records...");
+        const toastId = toast.loading("Retrieving special records...");
         dispatch(setLoading(true));
         try {
             const response = await apiConnector("GET", GET_USER_SPECIAL_API, null, {
                 Authorization: `Bearer ${token}`,
             });
             console.log("GET_USER_SPECIAL_API RESPONSE............", response);
-            // if (!response.data.success) {
-            //     throw new Error(response.data.message);
+            // if(!response.data.success){
+            //     throw new Error(response.data.message)
             // }
             const specialData = response.data.data;
 
-            if (specialData && Object.keys(specialData).length > 0) {
-                dispatch(setUserspecial(specialData));
-                toast.success("Special records fetched successfully");
+            if(specialData&& Object.keys(specialData).length>0){
+                dispatch(setSpecial(specialData))
+                toast.success("specialData records fetched successfully")
             }
-            else {
-                console.log("No Special records found");
-                toast.info("No Special records found");
+            else{
+                toast.error("No specialData records found")
+                console.log("No specialData records found")
             }
-            dispatch(setLoading(false));
-            toast.dismiss(toastId);
+            dispatch(setLoading(false))
+            toast.dismiss(toastId)
             return specialData;
         } catch (error) {
             console.log("GET_USER_SPECIAL_API ERROR............", error);
             dispatch(setLoading(false));
-
+            
             if (error.response && error.response.status === 404) {
                 // Handle 404 error (resource not found)
-                toast.info("No special data available");
+                toast.info("No specialData data available");
             } else {
                 // Handle other errors
-                toast.error("Could Not Get User special");
+                toast.error("Could Not Get User specialData");
             }
 
             toast.dismiss(toastId);
             return null; // Return null to indicate no data was retrieved
         }
+        }
     }
-}

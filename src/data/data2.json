@@ -1,14 +1,81 @@
-{"documents": {
+{
+  "familyDetails": {
     "fields": [
-      { "name": "photos", "type": "String" },
-      { "name": "familyPhoto", "type": "String" },
-      { "name": "educationDocuments", "type": "String" },
-      { "name": "incomeProofs", "type": "String" },
-      { "name": "propertyproofs", "type": "String" },
-      { "name": "addressProofs", "type": "String" },
-      { "name": "idProofs", "type": "String" },
-      { "name": "otherDocuments", "type": "String" }
-    ],
-    "createApi":"uploadDocument",
-      "updateApi":"updateDocument"
-  }}
+      {"name": "fatherAge", "type": "Number"},
+      {"name": "fatherHealth", "type": "String"},
+      {"name": "fatherDeathAge", "type": "Number"},
+      {"name": "fatherDeathYear", "type": "Number"},
+      {"name": "motherAge", "type": "Number"},
+      {"name": "motherHealth", "type": "String"},
+      {"name": "motherDeathAge", "type": "Number"},
+      {"name": "motherDeathYear", "type": "Number"},
+      {
+        "name": "brother",
+        "type": "Array",
+        "fields": [
+          {"name": "age", "type": "Number"},
+          {"name": "health", "type": "String"},
+          {"name": "deathAge", "type": "Number"},
+          {"name": "deathYear", "type": "Number"},
+          {"name": "maritalStatus", "type": "String"},
+          {"name": "wifeName", "type": "String"},
+          {"name": "childrenDetails", "type": "String"},
+          {"name": "wifeFather", "type": "String"},
+          {"name": "marriedYear", "type": "Number"}
+        ]
+      },
+      {
+        "name": "sister",
+        "type": "Array",
+        "fields": [
+          {"name": "age", "type": "Number"},
+          {"name": "health", "type": "String"},
+          {"name": "deathAge", "type": "Number"},
+          {"name": "deathYear", "type": "Number"},
+          {"name": "maritalStatus", "type": "String"},
+          {"name": "husbandName", "type": "String"},
+          {"name": "childrenDetails", "type": "String"},
+          {"name": "husbandFather", "type": "String"},
+          {"name": "marriedYear", "type": "Number"}
+        ]
+      }
+    ]
+  },
+  "FatherFamily":{
+   "fields": [
+          {"name": "grandFather", "type": "String"},
+          {"name": "grandMother", "type": "String"},
+          {"name": "grandFatherAge", "type": "Number"},
+          {"name": "grandMotherAge", "type": "Number"},
+          {"name": "grandFatherStatus", "type": "Boolean", "default": false},
+          {"name": "grandMotherStatus", "type": "Boolean", "default": false},
+          {
+            "name": "tau",
+            "type": "Array",
+            "fields": [
+              {"name": "tauName", "type": "String"},
+              {"name": "tauAge", "type": "Number"},
+              {"name": "tauStatus", "type": "Boolean", "default": false}
+            ]
+          },
+          {
+            "name": "bua",
+            "type": "Array",
+            "fields": [
+              {"name": "buaName", "type": "String"},
+              {"name": "buaAge", "type": "Number"},
+              {"name": "buaStatus", "type": "Boolean", "default": false}
+            ]
+          },
+          {
+            "name": "chacha",
+            "type": "Array",
+            "fields": [
+              {"name": "chachaName", "type": "String"},
+              {"name": "chachaAge", "type": "Number"},
+              {"name": "chachaStatus", "type": "Boolean", "default": false}
+            ]
+          }
+        ]
+  }
+}

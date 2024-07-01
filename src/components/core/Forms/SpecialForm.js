@@ -170,7 +170,7 @@
 import React from 'react'
 import ProfileFormTemplate from './ProfileFormTemplate';
 import data from '../../../data/data.json'; // Import the entire data.json file
-import { addSpecial, updateSpecial, getspecial } from '../../../services/operations/special';
+import { addSpecial, updateSpecial,getUserSpecial } from '../../../services/operations/special';
 import { useDispatch, useSelector } from "react-redux"
 
 const SpecialForm = () => {
@@ -180,7 +180,7 @@ const SpecialForm = () => {
         fields={data.special.fields} // Access the education fields directly from data.education
         createFunction={addSpecial}
         updateFunction={updateSpecial}
-        getData={getspecial}
+        getData={getUserSpecial}
       />
     </div>
   )

@@ -6,17 +6,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
-import FormSections from "./components/Common/FormSections"
-import Header from "./components/Common/Header"
-import BottomNavigation from "./components/Common/BottomNavigation"
 import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
 import FamilyForm from "./components/core/Forms/FamilyForm"
-import PropertyForm from "./components/core/Forms/PropertyForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
 import ContactForm from "./components/core/Forms/ContactForm"
-import WorkingForm from "./components/core/Forms/WorkingForm"
+import DocumentUploader from "./components/core/Forms/DocumentForm"
 import VerifyEmail from "./pages/VerifyEmail"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -26,6 +22,13 @@ import AdminSignup from "./pages/AdminSignup"
 import AdminLogin from "./pages/AdminLogin"
 import Home from "./pages/Home"
 import Error from "./pages/Error"
+import WorkForm from "./components/core/Forms/WorkForm"
+import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm"
+import FatherFamily from "./components/core/Forms/FatherFamily"
+import MotherFamily from "./components/core/Forms/MotherFamily"
+import FriendsForm from "./components/core/Forms/FriendsForm"
+import PropertyForm from "./components/core/Forms/PropertyForm"
+import RelativeForm from "./components/core/Forms/RelativeForm"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -126,24 +129,6 @@ function App() {
           }
         />
         <Route
-          path="/property"
-          element={
-
-            <PrivateRoute>
-              <PropertyForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/working"
-          element={
-
-            <PrivateRoute>
-              <WorkingForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
           path="/family-details"
           element={
 
@@ -157,13 +142,81 @@ function App() {
           element={
 
             <PrivateRoute>
-              {/* <Header /> */}
-              {/* <FormSections /> */}
               <ContactForm />
-              {/* <BottomNavigation /> */}
             </PrivateRoute>
           }
         />
+        <Route
+          path="/docs"
+          element={
+
+            <PrivateRoute>
+              <DocumentUploader />
+            </PrivateRoute>
+          }/>
+          <Route
+            path="/work"
+            element={
+
+              <PrivateRoute>
+                <WorkForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/family"
+            element={
+
+              <PrivateRoute>
+                <FamileDetailsForm/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/father"
+            element={
+
+              <PrivateRoute>
+                <FatherFamily/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/mother"
+            element={
+
+              <PrivateRoute>
+                <MotherFamily/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/friends"
+            element={
+
+              <PrivateRoute>
+                <FriendsForm/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/property"
+            element={
+
+              <PrivateRoute>
+                <PropertyForm/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/relative"
+            element={
+
+              <PrivateRoute>
+                <RelativeForm/>
+              </PrivateRoute>
+            }
+          />
         <Route
           path="*"
           element={
