@@ -32,11 +32,14 @@ const profileSlice = createSlice({
   },
   setUserFamilyDetails(state, value) {
 state.familyDetails = value.payload
+},
+setUserFatherFamily(state, value) {
+  state.familyDetails = value.payload
 }
 
 }
 })
 
-export const { setUser, setLoading,setUserContacts , setUserEducation,setUserFamily,setUserRelative,setUserWorking,setUserFamilyDetails} = profileSlice.actions
+export const { setUser, setLoading,setUserContacts , setUserEducation,setUserFamily,setUserRelative,setUserWorking,setUserFamilyDetails, setUserFatherFamily} = profileSlice.actions
 
 export default profileSlice.reducer

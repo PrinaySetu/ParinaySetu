@@ -40,5 +40,42 @@
         ]
       }
     ]
+  },
+  "FatherFamily":{
+   "fields": [
+          {"name": "grandFather", "type": "String"},
+          {"name": "grandMother", "type": "String"},
+          {"name": "grandFatherAge", "type": "Number"},
+          {"name": "grandMotherAge", "type": "Number"},
+          {"name": "grandFatherStatus", "type": "Boolean", "default": false},
+          {"name": "grandMotherStatus", "type": "Boolean", "default": false},
+          {
+            "name": "tau",
+            "type": "Array",
+            "fields": [
+              {"name": "tauName", "type": "String"},
+              {"name": "tauAge", "type": "Number"},
+              {"name": "tauStatus", "type": "Boolean", "default": false}
+            ]
+          },
+          {
+            "name": "bua",
+            "type": "Array",
+            "fields": [
+              {"name": "buaName", "type": "String"},
+              {"name": "buaAge", "type": "Number"},
+              {"name": "buaStatus", "type": "Boolean", "default": false}
+            ]
+          },
+          {
+            "name": "chacha",
+            "type": "Array",
+            "fields": [
+              {"name": "chachaName", "type": "String"},
+              {"name": "chachaAge", "type": "Number"},
+              {"name": "chachaStatus", "type": "Boolean", "default": false}
+            ]
+          }
+        ]
   }
 }

@@ -1,12 +1,14 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { fatherFamilyEndpoints } from "../apis";
+import { setLoading,setUserFatherFamily } from "../../slices/profileSlice";
 
 const {
     ADD_FATHER_FAMILY_API,
     UPDATE_FATHER_FAMILY_API,
     UPDATE_TAU_API,
     UPDATE_BUA_API,
+    GET_USER_FATHER_FAMILY_API
 } = fatherFamilyEndpoints;
 
 export const addFatherFamily = async (data, token) => {
@@ -32,7 +34,7 @@ export const updateFatherFamily = async (data, token) => {
     const toastId = toast.loading("Updating father's family details...");
     let result = null;
     try {
-        const response = await apiConnector("POST", UPDATE_FATHER_FAMILY_API, data, {
+        const response = await apiConnector("PUT", UPDATE_FATHER_FAMILY_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -84,3 +86,32 @@ export const updateBua = async (data, token) => {
     toast.dismiss(toastId);
     return result;
 };
+
+export const getUserFatherFamily = (token) => {
+    const thunk = async (dispatch) => {
+      const toastId = toast.loading("Fetching father's family details...");
+      let result = null;
+      try {
+        const response = await apiConnector("GET", GET_USER_FATHER_FAMILY_API, null, {
+          Authorization: `Bearer ${token}`,
+        });
+        toast.success("Father's family details fetched successfully");
+        result = response.data.data;
+        console.log("Get User Father Family", result);
+        if (result && Object.keys(result).length > 0) {
+          dispatch(setUserFatherFamily(result));
+        } else {
+          toast.error("No father's family details found");
+        }
+        toast.dismiss(toastId);
+        return result;
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+  
+    // This allows the function to be used both as a thunk and directly
+    thunk.direct = () => thunk(() => {});
+  
+    return thunk;
+  };
