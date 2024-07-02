@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const styles = {
   formContainer: {
+    textAlign: 'start',
     width: '100%',
     maxWidth: '600px',
-    margin: '0 auto',
+    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
@@ -91,110 +92,110 @@ const styles = {
   },
 };
 const MotherFamilyForm = ({ createFunction, updateFunction, getData }) => {
-    const dispatch = useDispatch();
-    const { token } = useSelector((state) => state.auth);
-    const [isEdit, setIsEdit] = useState(false);
-    const [dataFetched, setDataFetched] = useState(false);
-  
-    const { register, control, handleSubmit, formState: { errors }, reset } = useForm();
-    const { fields: mamaFields, append: addMama, remove: removeMama } = useFieldArray({
-      control,
-      name: 'mama'
-    });
-    const { fields: mausiFields, append: addMausi, remove: removeMausi } = useFieldArray({
-      control,
-      name: 'mausi'
-    });
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const data = await getData(token).direct();
-          if (data && Object.keys(data).length > 0) {
-            setIsEdit(true);
-            reset(data);
-          }
-          setDataFetched(true);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setDataFetched(true);
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const [isEdit, setIsEdit] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
+
+  const { register, control, handleSubmit, formState: { errors }, reset } = useForm();
+  const { fields: mamaFields, append: addMama, remove: removeMama } = useFieldArray({
+    control,
+    name: 'mama'
+  });
+  const { fields: mausiFields, append: addMausi, remove: removeMausi } = useFieldArray({
+    control,
+    name: 'mausi'
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData(token).direct();
+        if (data && Object.keys(data).length > 0) {
+          setIsEdit(true);
+          reset(data);
         }
-      };
-  
-      fetchData();
-    }, [getData, token, reset]);
-  
-    const onSubmit = (data) => {
-      const apiFunction = isEdit ? updateFunction : createFunction;
-      console.log(`Calling ${isEdit ? 'update' : 'create'} function with data:`, data);
-      apiFunction(data, token, dispatch);
+        setDataFetched(true);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setDataFetched(true);
+      }
     };
-  
-    return (
-      <div style={styles.formContainer}>
-        <h2 style={styles.formTitle}>
-          <span>{isEdit ? 'Update' : 'Create'} </span>
-          <span style={styles.highlight}>Mother's Family Details</span>
-        </h2>
-        <div style={styles.formSubtitle}>Please fill in your mother's family details</div>
-        <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
-          <div style={styles.formField}>
-            <label style={styles.fieldLabel}>Grandmother's Name</label>
-            <input {...register('grandMother', { required: true })} style={styles.fieldInput} />
-            {errors.grandMother && <p style={styles.errorMessage}>Grandmother's name is required</p>}
-          </div>
-  
-          <div style={styles.formField}>
-            <label style={styles.fieldLabel}>Grandmother's Age</label>
-            <input type="number" {...register('grandMotherAge', { required: true })} style={styles.fieldInput} />
-            {errors.grandMotherAge && <p style={styles.errorMessage}>Grandmother's age is required</p>}
-          </div>
-  
-          <div style={styles.formField}>
-            <label style={styles.fieldLabel}>Grandmother's Status</label>
-            <input type="checkbox" {...register('grandMotherStatus')} />
-          </div>
-  
-          <div style={styles.subSection}>
-            <h3>Mama (Mother's Brothers)</h3>
-            {mamaFields.map((field, index) => (
-              <div key={field.id} style={styles.formField}>
-                <input {...register(`mama.${index}.mamaName`)} placeholder="Name" style={styles.fieldInput} />
-                <input type="number" {...register(`mama.${index}.mamaAge`)} placeholder="Age" style={styles.fieldInput} />
-                <label>
-                  <input type="checkbox" {...register(`mama.${index}.mamaStatus`)} />
-                  Status
-                </label>
-                <button type="button" onClick={() => removeMama(index)} style={styles.button}>Remove Mama</button>
-              </div>
-            ))}
-            <button type="button" onClick={() => addMama()} style={styles.button}>Add Mama</button>
-          </div>
-  
-          <div style={styles.subSection}>
-            <h3>Mausi (Mother's Sisters)</h3>
-            {mausiFields.map((field, index) => (
-              <div key={field.id} style={styles.formField}>
-                <input {...register(`mausi.${index}.mausiName`)} placeholder="Name" style={styles.fieldInput} />
-                <input type="number" {...register(`mausi.${index}.mausiAge`)} placeholder="Age" style={styles.fieldInput} />
-                <label>
-                  <input type="checkbox" {...register(`mausi.${index}.mausiStatus`)} />
-                  Status
-                </label>
-                <button type="button" onClick={() => removeMausi(index)} style={styles.button}>Remove Mausi</button>
-              </div>
-            ))}
-            <button type="button" onClick={() => addMausi()} style={styles.button}>Add Mausi</button>
-          </div>
-  
-          <div style={styles.buttonContainer}>
-            <button type="submit" style={{ ...styles.button, ...styles.submitButton }}>
-              {isEdit ? 'Update' : 'Create'}
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+
+    fetchData();
+  }, [getData, token, reset]);
+
+  const onSubmit = (data) => {
+    const apiFunction = isEdit ? updateFunction : createFunction;
+    console.log(`Calling ${isEdit ? 'update' : 'create'} function with data:`, data);
+    apiFunction(data, token, dispatch);
   };
-  
-  export default MotherFamilyForm;
+
+  return (
+    <div style={styles.formContainer}>
+      <h2 style={styles.formTitle}>
+        <span>{isEdit ? 'Update' : 'Create'} </span>
+        <span style={styles.highlight}>Mother's Family Details</span>
+      </h2>
+      <div style={styles.formSubtitle}>Please fill in your mother's family details</div>
+      <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
+        <div style={styles.formField}>
+          <label style={styles.fieldLabel}>Grandmother's Name</label>
+          <input {...register('grandMother', { required: true })} style={styles.fieldInput} />
+          {errors.grandMother && <p style={styles.errorMessage}>Grandmother's name is required</p>}
+        </div>
+
+        <div style={styles.formField}>
+          <label style={styles.fieldLabel}>Grandmother's Age</label>
+          <input type="number" {...register('grandMotherAge', { required: true })} style={styles.fieldInput} />
+          {errors.grandMotherAge && <p style={styles.errorMessage}>Grandmother's age is required</p>}
+        </div>
+
+        <div style={styles.formField}>
+          <label style={styles.fieldLabel}>Grandmother's Status</label>
+          <input type="checkbox" {...register('grandMotherStatus')} />
+        </div>
+
+        <div style={styles.subSection}>
+          <h3>Mama (Mother's Brothers)</h3>
+          {mamaFields.map((field, index) => (
+            <div key={field.id} style={styles.formField}>
+              <input {...register(`mama.${index}.mamaName`)} placeholder="Name" style={styles.fieldInput} />
+              <input type="number" {...register(`mama.${index}.mamaAge`)} placeholder="Age" style={styles.fieldInput} />
+              <label>
+                <input type="checkbox" {...register(`mama.${index}.mamaStatus`)} />
+                Status
+              </label>
+              <button type="button" onClick={() => removeMama(index)} style={styles.button}>Remove Mama</button>
+            </div>
+          ))}
+          <button type="button" onClick={() => addMama()} style={styles.button}>Add Mama</button>
+        </div>
+
+        <div style={styles.subSection}>
+          <h3>Mausi (Mother's Sisters)</h3>
+          {mausiFields.map((field, index) => (
+            <div key={field.id} style={styles.formField}>
+              <input {...register(`mausi.${index}.mausiName`)} placeholder="Name" style={styles.fieldInput} />
+              <input type="number" {...register(`mausi.${index}.mausiAge`)} placeholder="Age" style={styles.fieldInput} />
+              <label>
+                <input type="checkbox" {...register(`mausi.${index}.mausiStatus`)} />
+                Status
+              </label>
+              <button type="button" onClick={() => removeMausi(index)} style={styles.button}>Remove Mausi</button>
+            </div>
+          ))}
+          <button type="button" onClick={() => addMausi()} style={styles.button}>Add Mausi</button>
+        </div>
+
+        <div style={styles.buttonContainer}>
+          <button type="submit" style={{ ...styles.button, ...styles.submitButton }}>
+            {isEdit ? 'Update' : 'Create'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default MotherFamilyForm;

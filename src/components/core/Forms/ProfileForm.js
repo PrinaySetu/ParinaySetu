@@ -587,10 +587,14 @@ import ProfileFormTemplate from './ProfileFormTemplate';
 import data from '../../../data/data.json'; // Import the entire data.json file
 import { addProfile, updateProfile, getUserAdditionalDetails } from '../../../services/operations/profile';
 import { useDispatch, useSelector } from "react-redux";
+import FormSections from '../../Common/FormSections';
+import Header from '../../Common/Header';
 
 const ProfileForm = () => {
   return (
-    <div>
+    <div className="w-full relative bg-white text-center text-45xl text-black font-subheading">
+      <Header />
+      <FormSections />
       <ProfileFormTemplate
         fields={data.profile.fields} // Access the profile fields directly from data.profile
         createFunction={addProfile}

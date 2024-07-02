@@ -8,7 +8,6 @@ import { getUserDetails } from "./services/operations/profile"
 import Navbar from "./components/Common/Navbar"
 import EducationForm from "./components/core/Forms/EducationForm"
 import SpecialForm from "./components/core/Forms/SpecialForm"
-import FamilyForm from "./components/core/Forms/FamilyForm"
 import ProfileDetails from "./components/core/Profile/ProfileDetails"
 import ProfileForm from "./components/core/Forms/ProfileForm"
 import ContactForm from "./components/core/Forms/ContactForm"
@@ -131,15 +130,6 @@ function App() {
           }
         />
         <Route
-          path="/family-details"
-          element={
-
-            <PrivateRoute>
-              <FamilyForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
           path="/contact-details"
           element={
 
@@ -155,86 +145,86 @@ function App() {
             <PrivateRoute>
               <DocumentUploader />
             </PrivateRoute>
-          }/>
-          <Route
-            path="/work"
-            element={
+          } />
+        <Route
+          path="/work"
+          element={
 
-              <PrivateRoute>
-                <WorkForm />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/family"
-            element={
+            <PrivateRoute>
+              <WorkForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/family"
+          element={
 
-              <PrivateRoute>
-                <FamileDetailsForm/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/father"
-            element={
+            <PrivateRoute>
+              <FamileDetailsForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/father"
+          element={
 
-              <PrivateRoute>
-                <FatherFamily/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/mother"
-            element={
+            <PrivateRoute>
+              <FatherFamily />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mother"
+          element={
 
-              <PrivateRoute>
-                <MotherFamily/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/friends"
-            element={
+            <PrivateRoute>
+              <MotherFamily />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
 
-              <PrivateRoute>
-                <FriendsForm/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/property"
-            element={
+            <PrivateRoute>
+              <FriendsForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/property"
+          element={
 
-              <PrivateRoute>
-                <PropertyForm/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/relative"
-            element={
+            <PrivateRoute>
+              <PropertyForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/relative"
+          element={
 
-              <PrivateRoute>
-                <RelativeForm/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-  path="/dashboard"
-  element={
-    <PrivateRoute>
-      <UserDashboard />
-    </PrivateRoute>
-  }
-/>
-<Route
-    path="/user/:id"
-    element={
-      <PrivateRoute>
-        <MainUserDetails />
-      </PrivateRoute>
-    }
-  />
+            <PrivateRoute>
+              <RelativeForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <UserDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/:id"
+          element={
+            <PrivateRoute>
+              <MainUserDetails />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="*"
           element={

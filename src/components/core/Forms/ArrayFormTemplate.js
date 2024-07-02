@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const styles = {
   formContainer: {
+    textAlign: 'start',
     width: '100%',
     maxWidth: '600px',
-    margin: '0 auto',
+    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
