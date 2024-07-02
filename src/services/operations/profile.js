@@ -12,7 +12,8 @@ const {
     ADD_RECOMMENDED_PROFILE_API,
     REMOVE_RECOMMENDED_PROFILE_API,
     GET_USER_DETAILS_API,
-    GET_USER_ADDITIONAL_DETAILS_API
+    GET_USER_ADDITIONAL_DETAILS_API,
+    UPDATE_RECOMMENDED_PROFILES_API
 } = profileEndpoints;
 
 export const addProfile = async (data, token) => {
@@ -94,7 +95,7 @@ export const addRecommendedProfile = async (data, token) => {
     const toastId = toast.loading("Adding recommended profile...");
     let result = null;
     try {
-        const response = await apiConnector("PUT", ADD_RECOMMENDED_PROFILE_API, data, {
+        const response = await apiConnector("POST", ADD_RECOMMENDED_PROFILE_API, data, {
             Authorization: `Bearer ${token}`,
         });
         if (!response.data.success) {
@@ -108,6 +109,25 @@ export const addRecommendedProfile = async (data, token) => {
     toast.dismiss(toastId);
     return result;
 };
+export const updateRecommendedProfiles = async (data, token) => {
+    const toastId = toast.loading("Updating recommended profiles...");
+    let result = null;
+    try {
+        const response = await apiConnector("POST", UPDATE_RECOMMENDED_PROFILES_API, data, {
+            Authorization: `Bearer ${token}`,
+        });
+        if (!response.data.success) {
+            throw new Error(response.data.message);
+        }
+        toast.success("Recommended profiles updated successfully");
+        result = response.data;
+    } catch (error) {
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
+
+}
 
 export const removeRecommendedProfile = async (data, token) => {
     const toastId = toast.loading("Removing recommended profile...");

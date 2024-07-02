@@ -1,9 +1,9 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { dashboardEndpoints } from "../apis";
-import { setLoading, setUserDashboard,setMainUserDashboard } from "../../slices/profileSlice"
+import { setLoading, setUserDashboard,setMainUserDashboard,setUsers,setError } from "../../slices/profileSlice"
 import { logout } from "./authAPi"
-const { GET_ALL_USERS_API,GET_MAIN_USER_API } = dashboardEndpoints;
+const { GET_ALL_USERS_API,GET_MAIN_USER_API ,GET_ALL_OTHER_USERS_API} = dashboardEndpoints;
 
 export const getAllUsers = (token) => {
     return async (dispatch) => {
@@ -60,3 +60,22 @@ export const getMainUser = (token, id) => {
         dispatch(setLoading(false));
     };
 };
+export const getAllOtherUsers = (token, data) => {
+    return async (dispatch) => {
+      dispatch(setLoading(true));
+      try {
+        const response = await apiConnector("GET", GET_ALL_OTHER_USERS_API, data, {
+          Authorization: `Bearer ${token}`,
+        });
+        if (!response.data.success) {
+          throw new Error(response.data.message);
+        }
+        dispatch(setUsers(response.data.users));
+      } catch (error) {
+        console.error("Error fetching other users", error);
+        dispatch(setError(error.message));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+  };

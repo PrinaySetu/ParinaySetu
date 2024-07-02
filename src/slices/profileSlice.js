@@ -55,6 +55,11 @@ setProperty(state, value) {
   setMainUserDashboard(state,value){
     state.mainUserDashboard = value.payload
   },
+  setUsers(state,value){
+    state.users = value.payload
+  },
+  setError(state,value){
+    state.error = value.payload}
 }
 })
 
@@ -66,6 +71,8 @@ export const { setUser, setLoading,setUserContacts ,
   setuserFriends,
   setMainUserDashboard,
 setProperty,
+setUsers,
+setError,
 setSpecial} = profileSlice.actions
 
 export default profileSlice.reducer

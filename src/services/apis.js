@@ -54,10 +54,11 @@ export const profileEndpoints = {
         UPDATE_PROFILE_API:BASE_URL+"/profile/updateProfile",
         DELETE_PROFILE_API:BASE_URL+"profile/deleteProfile",
         GET_PROFILE_BY_ID_API:BASE_URL+"profile/getProfileById",
-        ADD_RECOMMENDED_PROFILE_API:BASE_URL+"profile/addRecommendedProfile",
+        ADD_RECOMMENDED_PROFILE_API:BASE_URL+"/profile/addRecommendedProfile",
         REMOVE_RECOMMENDED_PROFILE_API:BASE_URL+"profile/removeRecommendation",
         GET_USER_DETAILS_API: BASE_URL + "/profile/getUserDetails",
         GET_USER_ADDITIONAL_DETAILS_API: BASE_URL + "/profile/getUserAdditionalDetails",
+        UPDATE_RECOMMENDED_PROFILES_API: BASE_URL + "/profile/updateRecommendedProfiles",
 }
 export const propertyEndpoints = {
     ADD_PROPERTY_API: BASE_URL + "/property/addProperty",
@@ -83,4 +84,5 @@ export const workingEndpoints = {
 export const dashboardEndpoints = {
     GET_ALL_USERS_API: BASE_URL + "/dashboard/getAllUsers",
     GET_MAIN_USER_API: BASE_URL + "/dashboard/getMainUser",
+    GET_ALL_OTHER_USERS_API: BASE_URL + "/dashboard/users",
 }
