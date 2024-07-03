@@ -31,6 +31,8 @@ import PropertyForm from "./components/core/Forms/PropertyForm"
 import RelativeForm from "./components/core/Forms/RelativeForm"
 import UserDashboard from "./components/core/Dashboard/UserDashboard"
 import MainUserDetails from "./components/core/Dashboard/UserDetails"
+import RecommendedProfiles from "./components/core/Profile/RecommendedProfiles"
+import SingleRecommendedProfile from "./components/core/Profile/SingleRecommendedProfile"
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -46,6 +48,7 @@ function App() {
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       {/* <Navbar /> */}
       <Routes>
+      {/* signup */}
         <Route
           path="signup"
           element={
@@ -55,6 +58,7 @@ function App() {
             </OpenRoute>
           }
         />
+        {/* Login page */}
         <Route
           path="login"
           element={
@@ -64,6 +68,7 @@ function App() {
             </OpenRoute>
           }
         />
+        {/* admin login page */}
         <Route
           path="adminlogin"
           element={
@@ -72,6 +77,7 @@ function App() {
             </OpenRoute>
           }
         />
+        {/* admin signup page */}
         <Route
           path="adminsignup"
           element={
@@ -80,12 +86,14 @@ function App() {
             </OpenRoute>
           }
         />
+        {/* Home page */}
         <Route
           path="/"
           element={
             <Home />
           }
         />
+        {/* OTP page */}
         <Route
           path="verify-email"
           element={
@@ -94,6 +102,7 @@ function App() {
             </OpenRoute>
           }
         />
+        {/* User profile page */}
         <Route
           path="/user"
           element={
@@ -103,6 +112,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* Education form */}
         <Route
           path="/education"
           element={
@@ -112,6 +122,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* Special Form */}
         <Route
           path="/special"
           element={
@@ -121,6 +132,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* Profile Form  */}
         <Route
           path="/profile"
           element={
@@ -130,6 +142,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* family details form  */}
         <Route
           path="/family-details"
           element={
@@ -139,6 +152,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* contact details form */}
         <Route
           path="/contact-details"
           element={
@@ -148,6 +162,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* document form  */}
         <Route
           path="/docs"
           element={
@@ -156,6 +171,7 @@ function App() {
               <DocumentUploader />
             </PrivateRoute>
           }/>
+          {/* work form  */}
           <Route
             path="/work"
             element={
@@ -165,6 +181,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* family form */}
           <Route
             path="/family"
             element={
@@ -174,6 +191,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* father form  */}
           <Route
             path="/father"
             element={
@@ -183,6 +201,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* mother form  */}
           <Route
             path="/mother"
             element={
@@ -192,6 +211,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* friends form */}
           <Route
             path="/friends"
             element={
@@ -201,6 +221,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* property form */}
           <Route
             path="/property"
             element={
@@ -210,6 +231,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* relatives form */}
           <Route
             path="/relative"
             element={
@@ -219,6 +241,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          {/* dashboard where we see all users */}
           <Route
   path="/dashboard"
   element={
@@ -227,6 +250,7 @@ function App() {
     </PrivateRoute>
   }
 />
+{/* single user from dashboard */}
 <Route
     path="/user/:id"
     element={
@@ -235,6 +259,25 @@ function App() {
       </PrivateRoute>
     }
   />
+  {/* All recommended Profiles */}
+  <Route
+    path="/rec"
+    element={
+      <PrivateRoute>
+        <RecommendedProfiles/>
+      </PrivateRoute>
+    }
+  />
+  {/* Single recommended profile */}
+   <Route
+          path="/profile/:id"
+          element={
+            <PrivateRoute>
+              <SingleRecommendedProfile />
+            </PrivateRoute>
+          }
+        />
+        {/* All other pages */}
         <Route
           path="*"
           element={
