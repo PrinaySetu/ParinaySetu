@@ -46,6 +46,9 @@ const SingleRecommendedProfile = () => {
           <p>{profile.firstName} {profile.lastName}</p>
           <p>{profile.email}</p>
           <p>{profile.additionalDetails.gender}</p>
+          <img 
+            className='w-20 h-20 rounded-full object-cover'
+            src={profile.image} alt="profile" />
           {/* Render additional details */}
         </div>
       ) : (

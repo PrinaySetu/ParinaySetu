@@ -51,6 +51,10 @@ const RecommendedProfiles = () => {
             <p>{profile.firstName} {profile.lastName}</p>
             <p>{profile.email}</p>
             <p>{profile.additionalDetails.gender}</p>
+            {/* <p>{profile.additionalDetails.color}</p> */}
+            <img 
+            className='w-20 h-20 rounded-full object-cover'
+            src={profile.image} alt="profile" />
             <button onClick={() => handleViewDetails(profile._id)}>View Details</button>
           </div>
         ))
