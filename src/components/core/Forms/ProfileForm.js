@@ -4,6 +4,8 @@ import data from '../../../data/data.json';
 import { addProfile, updateProfile, getUserAdditionalDetails, uploadProfilePicture } from '../../../services/operations/profile';
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import FormSections from '../../Common/FormSections';
+import Header from '../../Common/Header';
 
 const ProfileForm = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -42,10 +44,11 @@ const ProfileForm = () => {
   };
 
   return (
-    <div>
+    <div className="w-full relative bg-white text-center text-45xl text-black font-subheading">
+      <Header />
+      <FormSections />
       <input type="file" onChange={handleProfilePictureChange} accept="image/*" />
       <button onClick={handleProfilePictureUpload}>Upload Profile Picture</button>
-
       <ProfileFormTemplate
         fields={data.profile.fields}
         createFunction={addProfile}

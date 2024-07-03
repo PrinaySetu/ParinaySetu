@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 
 const sections = [
     { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/profile" },
-    { title: ["EDUCATION/WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/education" },
+    { title: ["EDUCATION", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/education" },
     { title: ["CONTACT", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/contact-details" },
-    { title: ["FAMILY", "DETAILS"], bgColor: "bg-primary-main", link: "" },
-    { title: ["BACKGROUND", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/background-details" },
-    { title: ["OTHER", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/special" },
-    { title: ["GUARDIAN", "DETAILS"], bgColor: "bg-creamy-ivory", link: "" },
-    { title: ["DECLARATION &", "ACKNOWLEDGEMENT"], bgColor: "bg-creamy-ivory", link: "/declaration-acknowledgement" },
-    { title: ["TERMS &", "CONDITIONS"], bgColor: "bg-creamy-ivory", link: "/terms-conditions" },
-    { title: ["UPLOAD", "DOCUMENTS"], bgColor: "bg-creamy-ivory", link: "/upload-documents" },
+    { title: ["FAMILY", "DETAILS"], bgColor: "bg-primary-main", link: "/family" },
+    { title: ["FATHER FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/father" },
+    { title: ["MOTHER FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/mother" },
+    { title: ["WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/work" },
+    { title: ["SPECIAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/special" },
+    { title: ["FRIENDS", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/friends" },
+    { title: ["PROPERTY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/property" },
+    { title: ["RELATIVES", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/relative" },
+    { title: ["UPLOAD", "DOCUMENTS"], bgColor: "bg-creamy-ivory", link: "/docs" },
 ];
 
 const Section = ({ title, bgColor, link }) => (
@@ -37,7 +39,7 @@ const Section = ({ title, bgColor, link }) => (
 
 const SectionList = () => {
     return (
-        <div className="absolute top-[481px] left-[calc(50%_-_435px)] w-[870px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
+        <div className="absolute top-[481px] left-[calc(50%_-_535px)] w-[1050px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
             {sections.map((section, index) => (
                 <Section key={index} {...section} />
             ))}
