@@ -240,3 +240,21 @@ export const getSingleRecommendedProfile = async (token,data) => {
     toast.dismiss(toastId);
     return result;
 }
+export const uploadProfilePicture = async (data, token) => {
+    const toastId = toast.loading("Uploading profile picture...");
+    let result = null;
+    try {
+        const response = await apiConnector("POST", profileEndpoints.UPLOAD_PROFILE_PICTURE_API, data, {
+            Authorization: `Bearer ${token}`,
+        });
+        if (!response.data.success) {
+            throw new Error(response.data.message);
+        }
+        toast.success("Profile picture uploaded successfully");
+        result = response.data;
+    } catch (error) {
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
+};
