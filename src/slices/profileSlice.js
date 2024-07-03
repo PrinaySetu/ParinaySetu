@@ -60,6 +60,10 @@ setProperty(state, value) {
   },
   setError(state,value){
     state.error = value.payload}
+},
+setRecommendedProfiles(state, value) {
+  state.recommendedProfiles = value.payload
+
 }
 })
 
@@ -73,6 +77,7 @@ export const { setUser, setLoading,setUserContacts ,
 setProperty,
 setUsers,
 setError,
+setRecommendedProfiles,
 setSpecial} = profileSlice.actions
 
 export default profileSlice.reducer

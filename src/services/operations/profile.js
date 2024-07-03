@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { profileEndpoints } from "../apis";
 
-import { setLoading, setUser } from "../../slices/profileSlice"
+import { setLoading, setUser,setRecommendedProfiles } from "../../slices/profileSlice"
 import { logout } from "./authAPi"
 const {
     ADD_PROFILE_API,
@@ -13,7 +13,9 @@ const {
     REMOVE_RECOMMENDED_PROFILE_API,
     GET_USER_DETAILS_API,
     GET_USER_ADDITIONAL_DETAILS_API,
-    UPDATE_RECOMMENDED_PROFILES_API
+    UPDATE_RECOMMENDED_PROFILES_API,
+    SHOW_ALL_RECOMMENDED_PROFILES_API,
+    GET_SINGLE_RECOMMENDED_PROFILE_API
 } = profileEndpoints;
 
 export const addProfile = async (data, token) => {
@@ -200,4 +202,59 @@ export const getUserDetails = (token) => {
         dispatch(setLoading(false));
         toast.dismiss(toastId);
     };
+};
+
+export const showAllRecommendedProfiles = async (token) => {
+    const toastId = toast.loading("Fetching recommended profiles...");
+    let result = null;
+    try {
+        const response = await apiConnector("GET", SHOW_ALL_RECOMMENDED_PROFILES_API, null, {
+            Authorization: `Bearer ${token}`,
+        });
+        // if (!response.data.success) {
+        //     throw new Error(response.data.message);
+        // }
+        result = response.data.data;
+    } catch (error) {
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
+}
+
+export const getSingleRecommendedProfile = async (token,data) => {
+    const toastId = toast.loading("Fetching recommended profile...");
+    console.log("DATA",data)
+    let result = null;
+    try {
+        const response = await apiConnector("POST", GET_SINGLE_RECOMMENDED_PROFILE_API, data, {
+            Authorization: `Bearer ${token}`,
+        });
+        // if (!response.data.success) {
+        //     throw new Error(response.data.message);
+        // }
+        result = response.data.data;
+    } catch (error) {
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
+}
+export const uploadProfilePicture = async (data, token) => {
+    const toastId = toast.loading("Uploading profile picture...");
+    let result = null;
+    try {
+        const response = await apiConnector("POST", profileEndpoints.UPLOAD_PROFILE_PICTURE_API, data, {
+            Authorization: `Bearer ${token}`,
+        });
+        if (!response.data.success) {
+            throw new Error(response.data.message);
+        }
+        toast.success("Profile picture uploaded successfully");
+        result = response.data;
+    } catch (error) {
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
 };
