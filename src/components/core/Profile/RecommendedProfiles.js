@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showAllRecommendedProfiles } from '../../../services/operations/profile';
 
-
 const RecommendedProfiles = () => {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,18 +43,26 @@ const RecommendedProfiles = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div style={styles.container}>
       {profiles.length > 0 ? (
         profiles.map((profile) => (
-          <div key={profile._id}>
-            <p>{profile.firstName} {profile.lastName}</p>
-            <p>{profile.email}</p>
-            <p>{profile.additionalDetails.gender}</p>
-            {/* <p>{profile.additionalDetails.color}</p> */}
-            <img 
-            className='w-20 h-20 rounded-full object-cover'
-            src={profile.image} alt="profile" />
-            <button onClick={() => handleViewDetails(profile._id)}>View Details</button>
+          <div key={profile._id} style={styles.card}>
+            <img
+              style={styles.profileImage}
+              src={profile.image}
+              alt={`${profile.firstName} ${profile.lastName}`}
+            />
+            <div style={styles.profileDetails}>
+              <p style={styles.profileName}>{profile.firstName} {profile.lastName}</p>
+              <p style={styles.profileGender}>{profile.additionalDetails.gender}</p>
+              <p style={styles.profileAge}>{profile.additionalDetails.age} years old</p>
+              <button
+                style={styles.viewButton}
+                onClick={() => handleViewDetails(profile._id)}
+              >
+                View Details
+              </button>
+            </div>
           </div>
         ))
       ) : (
@@ -63,6 +70,66 @@ const RecommendedProfiles = () => {
       )}
     </div>
   );
+};
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '20px',
+    justifyContent: 'center',
+    padding: '20px',
+    backgroundColor: '#F5F5F5'
+  },
+  card: {
+    backgroundColor: '#FFF',
+    borderRadius: '12px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    overflow: 'hidden',
+    width: '300px',
+    textAlign: 'center',
+    padding: '20px',
+  },
+  profileImage: {
+    width: '100px',
+    height: '100px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    marginBottom: '15px',
+  },
+  profileDetails: {
+    textAlign: 'center',
+  },
+  profileName: {
+    fontSize: '1.2rem',
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: '10px',
+  },
+  profileGender: {
+    fontSize: '1rem',
+    color: '#666',
+    marginBottom: '5px',
+  },
+  profileAge: {
+    fontSize: '1rem',
+    color: '#666',
+    marginBottom: '20px',
+  },
+  viewButton: {
+    padding: '10px 20px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#FFF',
+    backgroundColor: '#4169E1',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  },
+  viewButtonHover: {
+    backgroundColor: '#3154b1',
+  }
 };
 
 export default RecommendedProfiles;

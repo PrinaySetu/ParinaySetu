@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getMainUser, getAllOtherUsers } from '../../../services/operations/dashboard';
 import { addRecommendedProfile, updateRecommendedProfiles } from '../../../services/operations/profile';
 import { toast } from 'react-hot-toast';
 
 const MainUserDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { mainUserDashboard, users, loading } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
@@ -44,11 +45,11 @@ const MainUserDetails = () => {
       recommendedProfileIds: selectedProfiles,
     };
     console.log("Request Data:", data);
-    
+
     try {
       const result = await addRecommendedProfile(data, token);
       console.log("API Result:", result);
-      
+
       if (result) {
         setSelectedProfiles([]);
         dispatch(getMainUser(token, id));
@@ -80,39 +81,48 @@ const MainUserDetails = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div style={styles.loading}>Loading...</div>;
   }
 
   if (!mainUserDashboard || typeof mainUserDashboard !== 'object') {
-    return <div>User not found</div>;
+    return <div style={styles.error}>User not found</div>;
   }
 
   return (
-    <div>
-      <h1>User Details</h1>
-      <p>First Name: {mainUserDashboard.firstName}</p>
-      <p>Last Name: {mainUserDashboard.lastName}</p>
-      <p>Email: {mainUserDashboard.email}</p>
-      <p>Father's Name: {mainUserDashboard.additionalDetails?.fatherName}</p>
-      <p>Mother's Name: {mainUserDashboard.additionalDetails?.motherName}</p>
-      <p>Guardian Name: {mainUserDashboard.additionalDetails?.guardianName}</p>
-      <p>Guardian Relation: {mainUserDashboard.additionalDetails?.guardianRelation}</p>
-      <p>User Type: {mainUserDashboard.userType}</p>
-      <p>User id : {mainUserDashboard._id}</p>
-      <p>Account Created: {new Date(mainUserDashboard.date).toLocaleString()}</p>
+    <div style={styles.container}>
+      <button style={styles.backButton} onClick={handleBack}>
+        Go Back
+      </button>
+      <h1 style={styles.heading}>User Details</h1>
+      <div style={styles.userDetails}>
+        <p style={styles.detail}><strong>First Name:</strong> {mainUserDashboard.firstName}</p>
+        <p style={styles.detail}><strong>Last Name:</strong> {mainUserDashboard.lastName}</p>
+        <p style={styles.detail}><strong>Email:</strong> {mainUserDashboard.email}</p>
+        <p style={styles.detail}><strong>Father's Name:</strong> {mainUserDashboard.additionalDetails?.fatherName}</p>
+        <p style={styles.detail}><strong>Mother's Name:</strong> {mainUserDashboard.additionalDetails?.motherName}</p>
+        <p style={styles.detail}><strong>Guardian Name:</strong> {mainUserDashboard.additionalDetails?.guardianName}</p>
+        <p style={styles.detail}><strong>Guardian Relation:</strong> {mainUserDashboard.additionalDetails?.guardianRelation}</p>
+        <p style={styles.detail}><strong>User Type:</strong> {mainUserDashboard.userType}</p>
+        <p style={styles.detail}><strong>User ID:</strong> {mainUserDashboard._id}</p>
+        <p style={styles.detail}><strong>Account Created:</strong> {new Date(mainUserDashboard.date).toLocaleString()}</p>
+      </div>
 
-      <h2>Other Users</h2>
+      <h2 style={styles.subHeading}>Other Users</h2>
       {users && users.length > 0 ? (
-        <ul>
+        <ul style={styles.userList}>
           {users.map((user) => (
-            <li key={user._id}>
-              <p>First Name: {user.firstName}</p>
-              <p>Last Name: {user.lastName}</p>
-              <p>Email: {user.email}</p>
-              <p>User Type: {user.userType}</p>
-              <p>User id: {user._id}</p>
-              <p>Account Created: {new Date(user.date).toLocaleString()}</p>
+            <li key={user._id} style={styles.userCard}>
+              <p style={styles.detail}><strong>First Name:</strong> {user.firstName}</p>
+              <p style={styles.detail}><strong>Last Name:</strong> {user.lastName}</p>
+              <p style={styles.detail}><strong>Email:</strong> {user.email}</p>
+              <p style={styles.detail}><strong>User Type:</strong> {user.userType}</p>
+              <p style={styles.detail}><strong>User ID:</strong> {user._id}</p>
+              <p style={styles.detail}><strong>Account Created:</strong> {new Date(user.date).toLocaleString()}</p>
               <input
                 type="checkbox"
                 checked={selectedProfiles.includes(user._id)}
@@ -122,19 +132,98 @@ const MainUserDetails = () => {
           ))}
         </ul>
       ) : (
-        <p>No other users found</p>
+        <p style={styles.noUsers}>No other users found</p>
       )}
       {selectedProfiles.length === 0 ? (
-        <button onClick={handleAddRecommendedProfiles} disabled={selectedProfiles.length === 0}>
+        <button style={styles.button} onClick={handleAddRecommendedProfiles} disabled={selectedProfiles.length === 0}>
           Add Recommended Profiles
         </button>
       ) : (
-        <button onClick={handleUpdateRecommendedProfiles} disabled={selectedProfiles.length === 0}>
+        <button style={styles.button} onClick={handleUpdateRecommendedProfiles} disabled={selectedProfiles.length === 0}>
           Update Recommended Profiles
         </button>
       )}
     </div>
   );
+};
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#FFEB99',
+    padding: '20px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  backButton: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#FF0000',
+    color: '#FFF',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    marginBottom: '20px',
+  },
+  heading: {
+    fontSize: '2rem',
+    color: '#FF0000',
+    marginBottom: '20px',
+  },
+  subHeading: {
+    fontSize: '1.5rem',
+    color: '#333',
+    marginTop: '30px',
+    marginBottom: '20px',
+  },
+  userDetails: {
+    width: '100%',
+    maxWidth: '600px',
+    textAlign: 'left',
+    marginBottom: '30px',
+  },
+  detail: {
+    fontSize: '1rem',
+    color: '#333',
+    marginBottom: '10px',
+  },
+  userList: {
+    listStyleType: 'none',
+    padding: 0,
+    width: '100%',
+    maxWidth: '600px',
+  },
+  userCard: {
+    backgroundColor: '#FFF',
+    borderRadius: '12px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    padding: '20px',
+    marginBottom: '20px',
+  },
+  noUsers: {
+    fontSize: '1rem',
+    color: '#333',
+    marginTop: '20px',
+  },
+  button: {
+    backgroundColor: '#FF0000',
+    color: '#FFF',
+    border: 'none',
+    borderRadius: '12px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    marginTop: '20px',
+  },
+  loading: {
+    fontSize: '1.5rem',
+    color: '#333',
+  },
+  error: {
+    fontSize: '1.5rem',
+    color: '#FF0000',
+  },
 };
 
 export default MainUserDetails;
