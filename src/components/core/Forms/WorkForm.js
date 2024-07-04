@@ -4,6 +4,7 @@ import data from '../../../data/data.json'; // Import the entire data.json file
 import { addWorking, updateWorking, getUserWorking } from '../../../services/operations/working';
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const WorkForm = () => {
   return (
@@ -16,6 +17,7 @@ const WorkForm = () => {
         updateFunction={updateWorking}
         getData={getUserWorking}
       />
+      <Footer />
     </div>
   )
 }

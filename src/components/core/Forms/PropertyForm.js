@@ -4,6 +4,7 @@ import data from '../../../data/data.json'; // Import the entire data.json file
 import { addProperty, updateProperty, getUserProperty } from '../../../services/operations/property'
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const PropertyForm = () => {
   return (
@@ -16,6 +17,7 @@ const PropertyForm = () => {
         updateFunction={updateProperty}
         getData={getUserProperty}
       />
+      <Footer />
     </div>
   )
 }

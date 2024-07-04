@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const ProfileForm = () => {
   const [profilePicture, setProfilePicture] = useState(null);
@@ -47,14 +48,16 @@ const ProfileForm = () => {
     <div className="w-full relative bg-white text-center text-45xl text-black font-subheading">
       <Header />
       <FormSections />
-      <input type="file" onChange={handleProfilePictureChange} accept="image/*" />
-      <button onClick={handleProfilePictureUpload}>Upload Profile Picture</button>
       <ProfileFormTemplate
         fields={data.profile.fields}
         createFunction={addProfile}
         updateFunction={updateProfile}
         getData={getUserAdditionalDetails}
+        profilePicture={profilePicture}
+        handleProfilePictureChange={handleProfilePictureChange}
+        handleProfilePictureUpload={handleProfilePictureUpload}
       />
+      <Footer />
     </div>
   );
 };

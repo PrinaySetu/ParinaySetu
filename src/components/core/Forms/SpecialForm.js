@@ -174,6 +174,7 @@ import { addSpecial, updateSpecial, getUserSpecial } from '../../../services/ope
 import { useDispatch, useSelector } from "react-redux"
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const SpecialForm = () => {
   return (
@@ -186,6 +187,7 @@ const SpecialForm = () => {
         updateFunction={updateSpecial}
         getData={getUserSpecial}
       />
+      <Footer />
     </div>
   )
 }

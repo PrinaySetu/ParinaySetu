@@ -4,6 +4,7 @@ import { schema, addFatherFamily, updateFatherFamily, getUserFatherFamily } from
 import data from '../../../data/data2.json'
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const FatherFamily = () => {
   return (
@@ -13,6 +14,7 @@ const FatherFamily = () => {
       <FatherFamilyForm
         createFunction={addFatherFamily} updateFunction={updateFatherFamily}
         getData={getUserFatherFamily} />
+      <Footer />
     </div>
   )
 }

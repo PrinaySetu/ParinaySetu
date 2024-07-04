@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const sections = [
-    { title: ["PERSONAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/profile" },
-    { title: ["EDUCATION", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/education" },
-    { title: ["CONTACT", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/contact-details" },
-    { title: ["FAMILY", "DETAILS"], bgColor: "bg-primary-main", link: "/family" },
-    { title: ["FATHER FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/father" },
-    { title: ["MOTHER FAMILY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/mother" },
-    { title: ["WORK", "HISTORY"], bgColor: "bg-creamy-ivory", link: "/work" },
-    { title: ["SPECIAL", "INFORMATION"], bgColor: "bg-creamy-ivory", link: "/special" },
-    { title: ["FRIENDS", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/friends" },
-    { title: ["PROPERTY", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/property" },
-    { title: ["RELATIVES", "DETAILS"], bgColor: "bg-creamy-ivory", link: "/relative" },
-    { title: ["UPLOAD", "DOCUMENTS"], bgColor: "bg-creamy-ivory", link: "/docs" },
+    { title: ["PERSONAL", "INFORMATION"], link: "/profile" },
+    { title: ["EDUCATION", "DETAILS"], link: "/education" },
+    { title: ["CONTACT", "DETAILS"], link: "/contact-details" },
+    { title: ["FAMILY", "DETAILS"], link: "/family" },
+    { title: ["FATHER FAMILY", "DETAILS"], link: "/father" },
+    { title: ["MOTHER FAMILY", "DETAILS"], link: "/mother" },
+    { title: ["WORK", "HISTORY"], link: "/work" },
+    { title: ["SPECIAL", "INFORMATION"], link: "/special" },
+    { title: ["FRIENDS", "DETAILS"], link: "/friends" },
+    { title: ["PROPERTY", "DETAILS"], link: "/property" },
+    { title: ["RELATIVES", "DETAILS"], link: "/relative" },
+    { title: ["UPLOAD", "DOCUMENTS"], link: "/docs" },
 ];
 
 const Section = ({ title, bgColor, link }) => (
@@ -38,11 +38,14 @@ const Section = ({ title, bgColor, link }) => (
 );
 
 const SectionList = () => {
+    const location = useLocation();
+
     return (
         <div className="absolute top-[481px] left-[calc(50%_-_535px)] w-[1050px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
-            {sections.map((section, index) => (
-                <Section key={index} {...section} />
-            ))}
+            {sections.map((section, index) => {
+                const bgColor = location.pathname === section.link ? "bg-primary-main" : "bg-creamy-ivory";
+                return <Section key={index} {...section} bgColor={bgColor} />;
+            })}
         </div>
     );
 };

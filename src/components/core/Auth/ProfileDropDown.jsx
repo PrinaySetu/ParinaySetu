@@ -47,7 +47,7 @@ export default function ProfileDropdown() {
             <VscSignOut className="text-lg" />
             Logout
           </div>
-          <Link to="/dashboard/my-profile" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setOpen(false)}>
+          <Link to="/dashboard" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setOpen(false)}>
             <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-cornsilk">
               <VscDashboard className="text-lg" />
               Dashboard

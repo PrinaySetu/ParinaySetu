@@ -252,6 +252,7 @@ import data from '../../../data/data.json'; // Import the entire data.json file
 import { createContact, updateContact, getUserContacts } from '../../../services/operations/contacts'
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 
 const ContactForm = () => {
@@ -266,6 +267,7 @@ const ContactForm = () => {
                 updateFunction={updateContact}
                 getData={getUserContacts}
             />
+            <Footer />
         </div>
     );
 }

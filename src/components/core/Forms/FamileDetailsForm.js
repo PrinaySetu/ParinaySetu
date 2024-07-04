@@ -3,6 +3,7 @@ import ArrayFormTemplate from './ArrayFormTemplate'
 import data from '../../../data/data2.json'
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 import { addFamilyDetails, updateFamilyDetails, getUserFamilyDetails } from '../../../services/operations/familyDetails'
 const FamileDetailsForm = () => {
   return (
@@ -15,6 +16,7 @@ const FamileDetailsForm = () => {
         updateFunction={updateFamilyDetails}
         getData={getUserFamilyDetails}
       />
+      <Footer />
     </div>
   )
 }

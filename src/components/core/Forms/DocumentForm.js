@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import FormSections from '../../Common/FormSections';
 import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
 
 const DocumentUploader = () => {
   const [files, setFiles] = useState({});
@@ -70,6 +71,7 @@ const DocumentUploader = () => {
         </div>
         <button type="submit">Upload Documents</button>
       </form>
+      {/* <Footer/> */}
     </div>
   );
 };
