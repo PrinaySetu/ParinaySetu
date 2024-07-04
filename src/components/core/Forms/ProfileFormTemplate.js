@@ -1,4 +1,3 @@
-// ProfileFormTemplate.js
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -87,7 +86,7 @@ const styles = {
   },
 };
 
-const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData }) => {
+const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, profilePicture, handleProfilePictureChange, handleProfilePictureUpload }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
@@ -127,6 +126,20 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData }
       </h2>
       <div style={styles.formSubtitle}>Please fill in your details</div>
       <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
+        <div style={styles.formField}>
+          <label style={styles.fieldLabel}>Profile Picture</label>
+          <div style={styles.inputContainer}>
+            <input
+              type="file"
+              onChange={handleProfilePictureChange}
+              accept="image/*"
+              style={styles.fieldInput}
+            />
+          </div>
+          <button onClick={handleProfilePictureUpload} type="button" style={{ ...styles.button, ...styles.submitButton, marginTop: '10px' }}>
+            Upload Profile Picture
+          </button>
+        </div>
         {fields.map((field) => (
           <div key={field.name} style={styles.formField}>
             <label style={styles.fieldLabel}>{field.name}</label>

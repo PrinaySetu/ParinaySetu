@@ -13,6 +13,7 @@ module.exports = {
         "gainsboro": "#e6e6e6",
         "darkslategray": "#454545",
         "khaki": {
+          "50": "rgba(255, 226, 122, 0.96)",
           "100": "#ffe27a",
           "200": "#fede79"
         },

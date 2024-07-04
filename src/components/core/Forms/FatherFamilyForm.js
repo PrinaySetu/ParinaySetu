@@ -7,12 +7,12 @@ const styles = {
     textAlign: 'start',
     width: '100%',
     maxWidth: '600px',
-    margin: '700px auto',
+    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Inter, sans-serif',
   },
   formTitle: {
     fontSize: '2.5rem',
@@ -89,6 +89,7 @@ const styles = {
     padding: '15px',
     backgroundColor: '#F0F8FF',
     borderRadius: '8px',
+    fontSize: '16px'
   },
 };
 const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {

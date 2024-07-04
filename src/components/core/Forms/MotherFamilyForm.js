@@ -89,6 +89,7 @@ const styles = {
     padding: '15px',
     backgroundColor: '#F0F8FF',
     borderRadius: '8px',
+    fontSize: '16px'
   },
 };
 const MotherFamilyForm = ({ createFunction, updateFunction, getData }) => {
