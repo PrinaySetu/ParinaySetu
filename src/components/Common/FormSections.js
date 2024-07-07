@@ -17,22 +17,23 @@ const sections = [
 ];
 
 const Section = ({ title, bgColor, link }) => (
-    <div className="w-[170px] relative h-[70px]">
-        <div className={`absolute top-[0px] left-[0px] rounded-3xs ${bgColor} w-[170px] h-[70px]`} />
-        <div className="absolute top-[0px] left-[0px] leading-[130%] font-semibold flex items-center w-[170px] h-[71px]">
-            {link ? (
-                <Link to={link} style={{ color: 'inherit', textDecoration: 'none' }} className="[line-break:anywhere] w-full">
-                    {title.map((line, index) => (
-                        <p key={index} className="m-0">{line}</p>
-                    ))}
-                </Link>
-            ) : (
-                <span className="[line-break:anywhere] w-full">
-                    {title.map((line, index) => (
-                        <p key={index} className="m-0">{line}</p>
-                    ))}
-                </span>
-            )}
+    <div className="w-[170px] h-[70px]">
+        <div className={`left-[0px] rounded-3xs ${bgColor} w-[170px] h-[70px]`}>
+            <div className="left-[0px] leading-[130%] font-semibold flex items-center w-[170px] h-[71px]">
+                {link ? (
+                    <Link to={link} style={{ color: 'inherit', textDecoration: 'none' }} className="[line-break:anywhere] w-full">
+                        {title.map((line, index) => (
+                            <p key={index} className="m-0">{line}</p>
+                        ))}
+                    </Link>
+                ) : (
+                    <span className="[line-break:anywhere] w-full">
+                        {title.map((line, index) => (
+                            <p key={index} className="m-0">{line}</p>
+                        ))}
+                    </span>
+                )}
+            </div>
         </div>
     </div>
 );
@@ -41,7 +42,7 @@ const SectionList = () => {
     const location = useLocation();
 
     return (
-        <div className="absolute top-[481px] left-[calc(50%_-_535px)] w-[1050px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
+        <div className="left-[calc(50%_-_535px)] w-[1050px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
             {sections.map((section, index) => {
                 const bgColor = location.pathname === section.link ? "bg-primary-main" : "bg-creamy-ivory";
                 return <Section key={index} {...section} bgColor={bgColor} />;
