@@ -157,18 +157,18 @@ export const getUserDetails = (token) => {
             const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
                 Authorization: `Bearer ${token}`,
             });
-            // console.log("GET_USER_DETAILS API RESPONSE............", response);
+            console.log("GET_USER_DETAILS API RESPONSE............", response);
 
             if (!response.data.success) {
                 throw new Error(response.data.message);
             }
 
-            const userData = response.data;
+            const userData = response.data.data;
 
             dispatch(setUser(userData));
         } catch (error) {
             console.log("GET_USER_DETAILS API ERROR............", error);
-            // dispatch(logout());
+            dispatch(logout());
             toast.error("Could Not Get User Details");
         }
         dispatch(setLoading(false));
@@ -181,25 +181,16 @@ export const getUserAdditionalDetails = (token) => {
         const toastId = toast.loading("Loading...");
         dispatch(setLoading(true));
         try {
-            // const response = await apiConnector("GET", GET_USER_ADDITIONAL_DETAILS_API, null, {
-            //     Authorization: `Bearer ${token}`,
-            // });
-            const fetchuserdata = await fetch(GET_USER_ADDITIONAL_DETAILS_API, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            const response = await fetchuserdata.json();
-            // console.log("GET_USER_ADDITIONAL_DETAILS API RESPONSE............", response);
-            // console.log("GET_USER_ADDITIONAL_DETAILS API RESPONSE............", response);
+            const response = await apiConnector("GET", GET_USER_ADDITIONAL_DETAILS_API, null, {
+                Authorization: `Bearer ${token}`,
+            });
+            console.log("GET_USER_ADDITIONAL_DETAILS API RESPONSE............", response);
 
-            // if (!response.success) {
-            //     throw new Error(response.message);
-            // }
-            console.log('res', response.data)
-            const userData = response.data;
+            if (!response.data.success) {
+                throw new Error(response.data.message);
+            }
+
+            const userData = response.data.data;
 
             dispatch(setUser(userData));
             dispatch(setLoading(false));
@@ -207,12 +198,9 @@ export const getUserAdditionalDetails = (token) => {
             return userData; // Return the user data for further use
         } catch (error) {
             console.log("GET_USER_ADDITIONAL_DETAILS API ERROR............", error);
-            // dispatch(logout());
+            dispatch(logout());
             toast.error("Could Not Get User Additional Details");
-            dispatch(setLoading(false));
-            toast.dismiss(toastId);
         }
-
     };
 };
 
