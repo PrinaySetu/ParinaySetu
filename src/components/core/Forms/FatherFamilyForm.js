@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const styles = {
   formContainer: {
     textAlign: 'start',
-    width: '100%',
     maxWidth: '600px',
-    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
@@ -39,6 +37,9 @@ const styles = {
     flexDirection: 'column',
   },
   fieldLabel: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
     fontSize: '1rem',
     fontWeight: '600',
     marginBottom: '8px',
@@ -48,7 +49,6 @@ const styles = {
     position: 'relative',
   },
   fieldInput: {
-    width: '100%',
     padding: '12px 15px',
     fontSize: '1rem',
     border: '2px solid #D3D3D3',
@@ -145,37 +145,43 @@ const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {
       <div style={styles.formSubtitle}>Please fill in your father's family details</div>
       <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Name</label>
-          <input {...register('grandFather', { required: true })} style={styles.fieldInput} />
+          <label style={styles.fieldLabel}>Grandfather's Name
+            <input {...register('grandFather', { required: true })} style={styles.fieldInput} />
+          </label>
           {errors.grandFather && <p style={styles.errorMessage}>Grandfather's name is required</p>}
         </div>
 
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Name</label>
-          <input {...register('grandMother', { required: true })} style={styles.fieldInput} />
+          <label style={styles.fieldLabel}>Grandmother's Name
+            <input {...register('grandMother', { required: true })} style={styles.fieldInput} />
+          </label>
           {errors.grandMother && <p style={styles.errorMessage}>Grandmother's name is required</p>}
         </div>
 
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Age</label>
-          <input type="number" {...register('grandFatherAge', { required: true })} style={styles.fieldInput} />
+          <label style={styles.fieldLabel}>Grandfather's Age
+            <input type="number" {...register('grandFatherAge', { required: true })} style={styles.fieldInput} />
+          </label>
           {errors.grandFatherAge && <p style={styles.errorMessage}>Grandfather's age is required</p>}
         </div>
 
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Age</label>
-          <input type="number" {...register('grandMotherAge', { required: true })} style={styles.fieldInput} />
+          <label style={styles.fieldLabel}>Grandmother's Age
+            <input type="number" {...register('grandMotherAge', { required: true })} style={styles.fieldInput} />
+          </label>
           {errors.grandMotherAge && <p style={styles.errorMessage}>Grandmother's age is required</p>}
         </div>
 
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Status</label>
-          <input type="checkbox" {...register('grandFatherStatus')} />
+          <label style={styles.fieldLabel}>Grandfather's Status
+            <input type="checkbox" {...register('grandFatherStatus')} />
+          </label>
         </div>
 
         <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Status</label>
-          <input type="checkbox" {...register('grandMotherStatus')} />
+          <label style={styles.fieldLabel}>Grandmother's Status
+            <input type="checkbox" {...register('grandMotherStatus')} />
+          </label>
         </div>
 
         <div style={styles.subSection}>

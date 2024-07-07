@@ -12,7 +12,6 @@ const styles = {
         textAlign: 'start',
         width: '100%',
         maxWidth: '600px',
-        margin: '700px auto 0',
         padding: '30px',
         backgroundColor: '#FFFAF0',
         borderRadius: '12px',
@@ -44,6 +43,9 @@ const styles = {
         flexDirection: 'column',
     },
     fieldLabel: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
         fontSize: '1rem',
         fontWeight: '600',
         marginBottom: '8px',
@@ -53,7 +55,6 @@ const styles = {
         position: 'relative',
     },
     fieldInput: {
-        width: '100%',
         padding: '12px 15px',
         fontSize: '1rem',
         border: '2px solid #D3D3D3',
@@ -150,43 +151,51 @@ const DocumentForm = () => {
             <div style={styles.formSubtitle}>Please upload your documents</div>
             <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Photos</label>
-                    <input type="file" name="photos" multiple {...register('photos')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Photos
+                        <input type="file" name="photos" multiple {...register('photos')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Family Photos</label>
-                    <input type="file" name="familyPhoto" multiple {...register('familyPhoto')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Family Photos
+                        <input type="file" name="familyPhoto" multiple {...register('familyPhoto')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Education Documents</label>
-                    <input type="file" name="educationDocuments" multiple {...register('educationDocuments')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Education Documents
+                        <input type="file" name="educationDocuments" multiple {...register('educationDocuments')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Income Proofs</label>
-                    <input type="file" name="incomeProofs" multiple {...register('incomeProofs')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Income Proofs
+                        <input type="file" name="incomeProofs" multiple {...register('incomeProofs')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Property Proofs</label>
-                    <input type="file" name="propertyProofs" multiple {...register('propertyProofs')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Property Proofs
+                        <input type="file" name="propertyProofs" multiple {...register('propertyProofs')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Address Proofs</label>
-                    <input type="file" name="addressProofs" multiple {...register('addressProofs')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Address Proofs
+                        <input type="file" name="addressProofs" multiple {...register('addressProofs')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>ID Proofs</label>
-                    <input type="file" name="idProofs" multiple {...register('idProofs')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>ID Proofs
+                        <input type="file" name="idProofs" multiple {...register('idProofs')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Other Documents</label>
-                    <input type="file" name="otherDocuments" multiple {...register('otherDocuments')} style={styles.fieldInput} />
+                    <label style={styles.fieldLabel}>Other Documents
+                        <input type="file" name="otherDocuments" multiple {...register('otherDocuments')} style={styles.fieldInput} />
+                    </label>
                 </div>
 
                 <div style={styles.buttonContainer}>

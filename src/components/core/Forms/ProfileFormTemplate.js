@@ -7,7 +7,6 @@ const styles = {
     textAlign: 'start',
     width: '100%',
     maxWidth: '600px',
-    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
@@ -39,16 +38,19 @@ const styles = {
     flexDirection: 'column',
   },
   fieldLabel: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
     fontSize: '1rem',
     fontWeight: '600',
-    marginBottom: '8px',
+    // marginBottom: '8px',
     color: '#444',
   },
   inputContainer: {
     position: 'relative',
   },
   fieldInput: {
-    width: '100%',
+    // width: '100%',
     padding: '12px 15px',
     fontSize: '1rem',
     border: '2px solid #D3D3D3',
@@ -86,7 +88,7 @@ const styles = {
   },
 };
 
-const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, profilePicture, handleProfilePictureChange, handleProfilePictureUpload }) => {
+const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, profilePicture, handleProfilePictureChange, handleProfilePictureUpload, showProfilePictureUpload }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
@@ -94,23 +96,27 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getData(token)(dispatch);
-        if (data && Object.keys(data).length > 0) {
-          setIsEdit(true);
-          reset(data); // Populate form with fetched data
-        }
-        setDataFetched(true);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setDataFetched(true);
+  const fetchData = async () => {
+    try {
+      const data = await getData(token)(dispatch);
+      console.log('dasdasda', data)
+      // console.log('dasdasda', Object.keys(data))
+      if (data) {
+        setIsEdit(true);
+        reset(data); // Populate form with fetched data
       }
-    };
+      // setDataFetched(true);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // setDataFetched(true);
+    }
+  };
+
+  useEffect(() => {
 
     fetchData();
   }, [getData, token, dispatch, reset]);
+  // console.log('token', token)
 
   const onSubmit = (data) => {
     const apiFunction = isEdit ? updateFunction : createFunction;
@@ -126,24 +132,26 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
       </h2>
       <div style={styles.formSubtitle}>Please fill in your details</div>
       <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Profile Picture</label>
-          <div style={styles.inputContainer}>
-            <input
-              type="file"
-              onChange={handleProfilePictureChange}
-              accept="image/*"
-              style={styles.fieldInput}
-            />
+        {showProfilePictureUpload && (
+          <div style={styles.formField}>
+            <label style={styles.fieldLabel}>Profile Picture
+              {/* <div style={styles.inputContainer}> */}
+              <input
+                type="file"
+                onChange={handleProfilePictureChange}
+                accept="image/*"
+                style={styles.fieldInput}
+              />
+              {/* </div> */}
+            </label>
+            <button onClick={handleProfilePictureUpload} type="button" style={{ ...styles.button, ...styles.submitButton, marginTop: '10px' }}>
+              Upload Profile Picture
+            </button>
           </div>
-          <button onClick={handleProfilePictureUpload} type="button" style={{ ...styles.button, ...styles.submitButton, marginTop: '10px' }}>
-            Upload Profile Picture
-          </button>
-        </div>
+        )}
         {fields.map((field) => (
           <div key={field.name} style={styles.formField}>
-            <label style={styles.fieldLabel}>{field.name}</label>
-            <div style={styles.inputContainer}>
+            <label style={styles.fieldLabel}>{field.label}
               <input
                 type={field.type.toLowerCase()}
                 {...register(field.name, { required: field.required })}
@@ -153,7 +161,7 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
                 }}
                 placeholder={`Enter your ${field.name.toLowerCase()}`}
               />
-            </div>
+            </label>
             {errors[field.name] && <p style={styles.errorMessage}>{field.name} is required</p>}
           </div>
         ))}

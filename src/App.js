@@ -47,7 +47,7 @@ function App() {
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       {/* <Navbar /> */}
       <Routes>
-      {/* signup */}
+        {/* signup */}
         <Route
           path="signup"
           element={
@@ -177,106 +177,106 @@ function App() {
             <PrivateRoute>
               <FamileDetailsForm />
             </PrivateRoute>
-          }/>
-          {/* work form  */}
-          <Route
-            path="/work"
-            element={
+          } />
+        {/* work form  */}
+        <Route
+          path="/work"
+          element={
 
-              <PrivateRoute>
-                <WorkForm />
-              </PrivateRoute>
-            }
-          />
-          {/* family form */}
-          <Route
-            path="/family"
-            element={
+            <PrivateRoute>
+              <WorkForm />
+            </PrivateRoute>
+          }
+        />
+        {/* family form */}
+        <Route
+          path="/family"
+          element={
 
-              <PrivateRoute>
-                <FamileDetailsForm/>
-              </PrivateRoute>
-            }
-          />
-          {/* father form  */}
-          <Route
-            path="/father"
-            element={
+            <PrivateRoute>
+              <FamileDetailsForm />
+            </PrivateRoute>
+          }
+        />
+        {/* father form  */}
+        <Route
+          path="/father"
+          element={
 
-              <PrivateRoute>
-                <FatherFamily/>
-              </PrivateRoute>
-            }
-          />
-          {/* mother form  */}
-          <Route
-            path="/mother"
-            element={
+            <PrivateRoute>
+              <FatherFamily />
+            </PrivateRoute>
+          }
+        />
+        {/* mother form  */}
+        <Route
+          path="/mother"
+          element={
 
-              <PrivateRoute>
-                <MotherFamily/>
-              </PrivateRoute>
-            }
-          />
-          {/* friends form */}
-          <Route
-            path="/friends"
-            element={
+            <PrivateRoute>
+              <MotherFamily />
+            </PrivateRoute>
+          }
+        />
+        {/* friends form */}
+        <Route
+          path="/friends"
+          element={
 
-              <PrivateRoute>
-                <FriendsForm/>
-              </PrivateRoute>
-            }
-          />
-          {/* property form */}
-          <Route
-            path="/property"
-            element={
+            <PrivateRoute>
+              <FriendsForm />
+            </PrivateRoute>
+          }
+        />
+        {/* property form */}
+        <Route
+          path="/property"
+          element={
 
-              <PrivateRoute>
-                <PropertyForm/>
-              </PrivateRoute>
-            }
-          />
-          {/* relatives form */}
-          <Route
-            path="/relative"
-            element={
+            <PrivateRoute>
+              <PropertyForm />
+            </PrivateRoute>
+          }
+        />
+        {/* relatives form */}
+        <Route
+          path="/relative"
+          element={
 
-              <PrivateRoute>
-                <RelativeForm/>
-              </PrivateRoute>
-            }
-          />
-          {/* dashboard where we see all users */}
-          <Route
-  path="/dashboard"
-  element={
-    <PrivateRoute>
-      <UserDashboard />
-    </PrivateRoute>
-  }
-/>
-{/* single user from dashboard */}
-<Route
-    path="/user/:id"
-    element={
-      <PrivateRoute>
-        <MainUserDetails />
-      </PrivateRoute>
-    }
-  />
-  {/* All recommended Profiles */}
-  <Route
-    path="/rec"
-    element={
-      <PrivateRoute>
-        <RecommendedProfiles/>
-      </PrivateRoute>
-    }
-  />
-  {/* Single recommended profile */}
-   <Route
+            <PrivateRoute>
+              <RelativeForm />
+            </PrivateRoute>
+          }
+        />
+        {/* dashboard where we see all users */}
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <UserDashboard />
+            </PrivateRoute>
+          }
+        />
+        {/* single user from dashboard */}
+        <Route
+          path="/user/:id"
+          element={
+            <PrivateRoute>
+              <MainUserDetails />
+            </PrivateRoute>
+          }
+        />
+        {/* All recommended Profiles */}
+        <Route
+          path="/rec"
+          element={
+            <PrivateRoute>
+              <RecommendedProfiles />
+            </PrivateRoute>
+          }
+        />
+        {/* Single recommended profile */}
+        <Route
           path="/profile/:id"
           element={
             <PrivateRoute>
