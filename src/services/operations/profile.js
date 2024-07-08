@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 import { profileEndpoints } from "../apis";
 
-import { setLoading, setUser,setRecommendedProfiles } from "../../slices/profileSlice"
+import { setLoading, setUser, setRecommendedProfiles } from "../../slices/profileSlice"
 import { logout } from "./authAPi"
 const {
     ADD_PROFILE_API,
@@ -151,32 +151,32 @@ export const removeRecommendedProfile = async (data, token) => {
 };
 export const getUserDetails = (token) => {
     return async (dispatch) => {
-      const toastId = toast.loading("Loading...");
-      dispatch(setLoading(true));
-      try {
-        const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
-          Authorization: `Bearer ${token}`,
-        });
-        console.log("GET_USER_DETAILS API RESPONSE............", response);
-  
-        if (!response.data.success) {
-          throw new Error(response.data.message);
+        const toastId = toast.loading("Loading...");
+        dispatch(setLoading(true));
+        try {
+            const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
+                Authorization: `Bearer ${token}`,
+            });
+            console.log("GET_USER_DETAILS API RESPONSE............", response);
+
+            if (!response.data.success) {
+                throw new Error(response.data.message);
+            }
+
+            const userData = response.data.data;
+
+            dispatch(setUser(userData));
+        } catch (error) {
+            console.log("GET_USER_DETAILS API ERROR............", error);
+            dispatch(logout());
+            toast.error("Could Not Get User Details");
         }
-  
-        const userData = response.data.data;
-  
-        dispatch(setUser(userData));
-      } catch (error) {
-        console.log("GET_USER_DETAILS API ERROR............", error);
-        dispatch(logout());
-        toast.error("Could Not Get User Details");
-      }
-      dispatch(setLoading(false));
-      toast.dismiss(toastId);
+        dispatch(setLoading(false));
+        toast.dismiss(toastId);
     };
-  };
-  
-  export const getUserAdditionalDetails = (token) => {
+};
+
+export const getUserAdditionalDetails = (token) => {
     return async (dispatch) => {
         const toastId = toast.loading("Loading...");
         dispatch(setLoading(true));
@@ -191,16 +191,16 @@ export const getUserDetails = (token) => {
             }
 
             const userData = response.data.data;
-                
+
             dispatch(setUser(userData));
+            dispatch(setLoading(false));
+            toast.dismiss(toastId);
             return userData; // Return the user data for further use
         } catch (error) {
             console.log("GET_USER_ADDITIONAL_DETAILS API ERROR............", error);
             dispatch(logout());
             toast.error("Could Not Get User Additional Details");
         }
-        dispatch(setLoading(false));
-        toast.dismiss(toastId);
     };
 };
 
@@ -222,9 +222,9 @@ export const showAllRecommendedProfiles = async (token) => {
     return result;
 }
 
-export const getSingleRecommendedProfile = async (token,data) => {
+export const getSingleRecommendedProfile = async (token, data) => {
     const toastId = toast.loading("Fetching recommended profile...");
-    console.log("DATA",data)
+    console.log("DATA", data)
     let result = null;
     try {
         const response = await apiConnector("POST", GET_SINGLE_RECOMMENDED_PROFILE_API, data, {

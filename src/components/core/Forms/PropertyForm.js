@@ -8,7 +8,7 @@ import Footer from '../../Common/Footer';
 
 const PropertyForm = () => {
   return (
-    <div className="w-full relative bg-white text-center text-45xl text-black font-subheading">
+    <div className="w-full gap-[3rem] bg-white items-center flex flex-col text-center text-45xl text-black font-subheading">
       <Header />
       <FormSections />
       <ProfileFormTemplate

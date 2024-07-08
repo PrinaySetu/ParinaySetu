@@ -7,7 +7,6 @@ const styles = {
     textAlign: 'start',
     width: '100%',
     maxWidth: '600px',
-    margin: '700px auto 0',
     padding: '30px',
     backgroundColor: '#FFFAF0',
     borderRadius: '12px',
@@ -39,6 +38,9 @@ const styles = {
     flexDirection: 'column',
   },
   fieldLabel: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
     fontSize: '1rem',
     fontWeight: '600',
     marginBottom: '8px',
@@ -48,7 +50,6 @@ const styles = {
     position: 'relative',
   },
   fieldInput: {
-    width: '100%',
     padding: '12px 15px',
     fontSize: '1rem',
     border: '2px solid #D3D3D3',
@@ -145,8 +146,7 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
         {fields.map((field) => (
           field.type !== 'Array' ? (
             <div key={field.name} style={styles.formField}>
-              <label style={styles.fieldLabel}>{field.name}</label>
-              <div style={styles.inputContainer}>
+              <label style={styles.fieldLabel}>{field.name}
                 <input
                   type={field.type.toLowerCase()}
                   {...register(field.name, { required: field.required })}
@@ -156,7 +156,7 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
                   }}
                   placeholder={`Enter ${field.name.toLowerCase()}`}
                 />
-              </div>
+              </label>
               {errors[field.name] && <p style={styles.errorMessage}>{field.name} is required</p>}
             </div>
           ) : null
@@ -168,13 +168,14 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
             <div key={brother.id} style={styles.formField}>
               {fields.find(f => f.name === 'brother').fields.map((bField) => (
                 <div key={bField.name}>
-                  <label style={styles.fieldLabel}>{bField.name}</label>
-                  <input
-                    type={bField.type.toLowerCase()}
-                    {...register(`brother[${index}].${bField.name}`)} // Use "brothers"
-                    style={styles.fieldInput}
-                    placeholder={`Enter ${bField.name.toLowerCase()}`}
-                  />
+                  <label style={styles.fieldLabel}>{bField.name}
+                    <input
+                      type={bField.type.toLowerCase()}
+                      {...register(`brother[${index}].${bField.name}`)} // Use "brothers"
+                      style={styles.fieldInput}
+                      placeholder={`Enter ${bField.name.toLowerCase()}`}
+                    />
+                  </label>
                 </div>
               ))}
               <button type="button" onClick={() => removeBrother(index)} style={styles.button}>Remove Brother</button>
@@ -189,13 +190,14 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
             <div key={sister.id} style={styles.formField}>
               {fields.find(f => f.name === 'sister').fields.map((sField) => (
                 <div key={sField.name}>
-                  <label style={styles.fieldLabel}>{sField.name}</label>
-                  <input
-                    type={sField.type.toLowerCase()}
-                    {...register(`sister[${index}].${sField.name}`)} // Use "sisters"
-                    style={styles.fieldInput}
-                    placeholder={`Enter ${sField.name.toLowerCase()}`}
-                  />
+                  <label style={styles.fieldLabel}>{sField.name}
+                    <input
+                      type={sField.type.toLowerCase()}
+                      {...register(`sister[${index}].${sField.name}`)} // Use "sisters"
+                      style={styles.fieldInput}
+                      placeholder={`Enter ${sField.name.toLowerCase()}`}
+                    />
+                  </label>
                 </div>
               ))}
               <button type="button" onClick={() => removeSister(index)} style={styles.button}>Remove Sister</button>
