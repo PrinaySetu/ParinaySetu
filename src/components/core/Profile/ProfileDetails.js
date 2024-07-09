@@ -1,18 +1,74 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { getUserDetails } from '../../../services/operations/profile'; // Adjust the import path as necessary
 
-const ProfileDetails = () => {
+const ProfileContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+background-color: #f9f9f9;
+color: #333;
+`;
 
+const ProfileHeader = styled.h1`
+font-size: 2rem;
+margin-bottom: 20px;
+`;
+
+const ProfileImage = styled.img`
+width: 150px;
+height: 150px;
+border-radius: 50%;
+margin-bottom: 20px;
+`;
+
+const ProfileInfo = styled.div`
+width: 100%;
+max-width: 800px;
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const SectionTitle = styled.h2`
+font-size: 1.5rem;
+margin-top: 20px;
+cursor: pointer;
+user-select: none;
+`;
+
+const Field = styled.p`
+font-size: 1rem;
+margin: 10px 0;
+`;
+
+const RecommendedButton = styled.button`
+text-white;
+background-color: #1a202c;
+width: 35%;
+height: 4vh;
+border-radius: 10px;
+margin-top: 20px;
+color: #fff;
+border: none;
+cursor: pointer;
+&:hover {
+  background-color: #2d3748;
+}
+`;
+
+const ProfileDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.profile.user);
   const loading = useSelector((state) => state.profile.loading);
   const [visibleSections, setVisibleSections] = useState({});
-  console.log(user)
+
   useEffect(() => {
     if (token) {
       dispatch(getUserDetails(token));
@@ -28,50 +84,53 @@ const ProfileDetails = () => {
   if (!user) {
     return <div>No user data available.</div>;
   }
+
   const toggleSection = (title) => {
-    setVisibleSections(prev => ({
+    setVisibleSections((prev) => ({
       ...prev,
-      [title]: !prev[title]
+      [title]: !prev[title],
     }));
   };
+
   const renderField = (label, value) => {
     if (value) {
       return (
-        <p key={label}>
+        <Field key={label}>
           <strong>{label}:</strong> {value}
-        </p>
+        </Field>
       );
     }
     return null;
   };
+
   const renderArrayFields = (array, fieldName) => {
     return array.map((item, index) => ({
       label: `${fieldName} ${index + 1}`,
       value: Object.entries(item)
         .filter(([key]) => key !== '_id')
         .map(([key, value]) => `${key}: ${value}`)
-        .join(', ')
+        .join(', '),
     }));
   };
 
   const renderSection = (title, fields) => {
-    const renderedFields = fields.filter(field => field.value).map(field => renderField(field.label, field.value));
+    const renderedFields = fields
+      .filter((field) => field.value)
+      .map((field) => renderField(field.label, field.value));
 
     if (renderedFields.length > 0) {
       return (
         <div key={title}>
-          <h2
-            onClick={() => toggleSection(title)}
-            style={{ cursor: 'pointer', userSelect: 'none' }}
-          >
+          <SectionTitle onClick={() => toggleSection(title)}>
             {visibleSections[title] ? '▼' : '▶'} {title}
-          </h2>
+          </SectionTitle>
           {visibleSections[title] && renderedFields}
         </div>
       );
     }
     return null;
   };
+
 
   const sections = [
     {
@@ -151,19 +210,6 @@ const ProfileDetails = () => {
         { label: "Mother's Health", value: user.additionalDetails?.familyDetails?.motherHealth },
         { label: "Mother's Death Age", value: user.additionalDetails?.familyDetails?.motherDeathAge },
         { label: "Mother's Death Year", value: user.additionalDetails?.familyDetails?.motherDeathYear },
-      ]
-    },
-    {
-      title: "Occupation",
-      fields: [
-        { label: "Income Source", value: user.additionalDetails?.occupation?.incomeSource },
-        { label: "Employer Name", value: user.additionalDetails?.occupation?.employerName },
-        { label: "Nature of Work", value: user.additionalDetails?.occupation?.natureWork },
-        { label: "Completed Period", value: user.additionalDetails?.occupation?.completedPeriod },
-        { label: "Annual Income", value: user.additionalDetails?.occupation?.annualIncome },
-        { label: "Other Sources", value: user.additionalDetails?.occupation?.otherSources },
-        { label: "Financial Responsibility", value: user.additionalDetails?.occupation?.financialResponsibility },
-        { label: "Member Responsibility", value: user.additionalDetails?.occupation?.memberResponsibility },
       ]
     },
     {
@@ -273,24 +319,16 @@ const ProfileDetails = () => {
   ];
 
   return (
-    <div>
-      <h1>User Details</h1>
-      {user.image && <img src={user.image} className='w-40' alt={`${user.firstName || ''} ${user.lastName || ''}`.trim()} />}
-      <p>
-
-        <strong>Name:</strong> {user.firstName} {user.lastName}
-        <br />
-        <strong>Email:</strong> {user.email}
-      </p>
-      <div className=''>
-
-        {sections.map(section => renderSection(section.title, section.fields))}
-      </div>
-
-      <div>
-        <button className='text-white bg-slate-900 w-[35%] h-[4vh] rounded-xl' onClick={() => navigate('/rec')}>Show all recommended Profiles</button>
-      </div>
-    </div>
+    <ProfileContainer>
+      <ProfileHeader>Profile Details</ProfileHeader>
+      <ProfileImage src={user.image} alt="Profile" />
+      <ProfileInfo>
+        {sections.map((section) => renderSection(section.title, section.fields))}
+      </ProfileInfo>
+      <RecommendedButton onClick={() => navigate('/rec')}>
+        Show All Recommended Profiles
+      </RecommendedButton>
+    </ProfileContainer>
   );
 };
 
