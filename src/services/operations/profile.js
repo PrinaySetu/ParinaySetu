@@ -168,7 +168,7 @@ export const getUserDetails = (token) => {
             dispatch(setUser(userData));
         } catch (error) {
             console.log("GET_USER_DETAILS API ERROR............", error);
-            dispatch(logout());
+            // dispatch(logout());
             toast.error("Could Not Get User Details");
         }
         dispatch(setLoading(false));
@@ -198,7 +198,7 @@ export const getUserAdditionalDetails = (token) => {
             return userData; // Return the user data for further use
         } catch (error) {
             console.log("GET_USER_ADDITIONAL_DETAILS API ERROR............", error);
-            dispatch(logout());
+            // dispatch(logout());
             toast.error("Could Not Get User Additional Details");
         }
     };
