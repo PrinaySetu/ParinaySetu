@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSingleRecommendedProfile } from '../../../services/operations/profile';
 
@@ -10,6 +10,7 @@ const SingleRecommendedProfile = () => {
 
   const { id } = useParams(); // Get profile ID from URL parameters
   const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate(); // Use useNavigate hook
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -34,6 +35,10 @@ const SingleRecommendedProfile = () => {
     fetchProfile();
   }, [token, id]);
 
+  const handleBack = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -53,6 +58,7 @@ const SingleRecommendedProfile = () => {
             <p style={styles.detailItem}><strong>Age:</strong> {profile.additionalDetails.age}</p>
             {/* Add more fields as needed */}
           </div>
+          <button style={styles.backButton} onClick={handleBack}>Back</button>
         </div>
       ) : (
         <p>No profile found.</p>
@@ -98,6 +104,16 @@ const styles = {
     fontSize: '1rem',
     color: '#666',
     marginBottom: '10px',
+  },
+  backButton: {
+    marginTop: '20px',
+    padding: '10px 20px',
+    fontSize: '1rem',
+    color: '#FFF',
+    backgroundColor: '#007BFF',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
   },
 };
 

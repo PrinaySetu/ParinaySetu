@@ -23,40 +23,43 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative z-[999]">
-      <div className={`absolute w-[calc(100%_-_114px)] top-[35px] right-[60px] left-[54px] rounded-[30px] bg-khaki-100 h-[125px] text-xl ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`}>
-        <div className="absolute top-[calc(50%_-_27.5px)] right-[129px] flex flex-row items-center justify-end gap-[48px]">
+    // <section className="flex flex-col flex-wrap">
+    <div className="flex flex-col min-[769px]:flex-row justify-center items-center bg-khaki-100 pr-4 pl-4 min-[769px]:pr-20 min-[769px]:pl-6 rounded-b-[30px] sm:rounded-[30px] mx-auto sm:my-4 w-full sm:w-[calc(100%_-_214px)] p-4">
+      <div className="flex flex-col min-[769px]:flex-row justify-between items-center w-full">
+        <div className="flex flex-col items-center min-[769px]:items-start">
+          <p className="text-3xl sm:text-45xl font-niconne m-0">Parinay</p>
+          <p className="text-2xl sm:text-37xl text-red font-niconne m-0 mt-[-10px] sm:mt-[-20px] sm:ml-[150px]">Setu</p>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-16 text-lg sm:text-xl mt-4 sm:mt-0">
           <div className={getNavItemClass("/")}>
-            <div className="relative leading-[150%] font-medium"><Link to='/' style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link></div>
+            <Link to='/' style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
           </div>
-          <div className="relative leading-[150%] font-medium cursor-pointer">Pricing</div>
-          <div className="relative leading-[150%] font-medium cursor-pointer" onClick={onContactUsTextClick}>Contact Us</div>
+          <div className="flex leading-[150%] text-lg sm:text-xl font-medium cursor-pointer">Pricing</div>
+          <div className="flex leading-[150%] text-lg sm:text-xl font-medium cursor-pointer" onClick={onContactUsTextClick}>Contact Us</div>
           {token === null && (
             <>
               <div className={getNavItemClass("/login")}>
-                <div className="relative leading-[150%] font-medium">
-                  <Link to='/login' style={{ color: 'inherit', textDecoration: 'none' }}>Log In</Link>
-                </div>
+                <Link to='/login' style={{ color: 'inherit', textDecoration: 'none' }}>Log In</Link>
               </div>
               <div className={getNavItemClass("/signup")}>
-                <div className="relative leading-[150%] font-medium">
-                  <Link to='/signup' style={{ color: 'inherit', textDecoration: 'none' }}>Sign Up</Link>
-                </div>
+                <Link to='/signup' style={{ color: 'inherit', textDecoration: 'none' }}>Sign Up</Link>
               </div>
             </>
           )}
           {token !== null && <ProfileDropdown />}
         </div>
-        <div className="absolute top-[calc(50%_-_70.5px)] left-[32px] w-[241.6px] h-[133.3px] text-45xl font-niconne">
-          <div className="absolute top-[calc(50%_-_66.65px)] left-[0px] inline-block w-[240.4px] h-[86.7px]">Parinay</div>
-          <div className="absolute top-[calc(50%_-_8.88px)] left-[123.98px] text-37xl text-red inline-block w-[117.7px] h-[75.5px]">Setu</div>
-        </div>
       </div>
     </div>
+    // </section>
   );
 };
 
 export default Navbar;
+
+
+
+
+
 
 
 // import React from 'react'

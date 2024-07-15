@@ -88,8 +88,10 @@ function App() {
         {/* Home page */}
         <Route
           path="/"
-          element={
+          element={<>
+            <Navbar />
             <Home />
+          </>
           }
         />
         {/* OTP page */}
