@@ -125,14 +125,28 @@ const DocumentForm = () => {
         try {
             const formData = new FormData();
             Object.entries(data).forEach(([key, value]) => {
-                if (Array.isArray(value)) {
-                    value.forEach((file) => formData.append(key, file));
-                } else {
+                if (value instanceof FileList) {
+                    // Handle FileList (multiple files)
+                    Array.from(value).forEach((file, index) => {
+                        formData.append(`${key}[${index}]`, file);
+                    });
+                } else if (value instanceof File) {
+                    // Handle single File
+                    formData.append(key, value);
+                } else if (Array.isArray(value) && value.length > 0 && value[0] instanceof File) {
+                    // Handle array of Files
+                    value.forEach((file, index) => {
+                        formData.append(`${key}[${index}]`, file);
+                    });
+                } else if (value !== null && value !== undefined) {
+                    // Handle other form data
                     formData.append(key, value);
                 }
             });
-
-            const response = await uploadDocument(formData, token);
+    
+            console.log("FormData entries:", Array.from(formData.entries()));
+    
+            const response = await (isEdit ? updateDocument : uploadDocument)(formData, token);
             if (response) {
                 toast.success('Documents uploaded successfully');
             }
@@ -141,7 +155,7 @@ const DocumentForm = () => {
             toast.error('Failed to upload documents');
         }
     };
-
+    
     return (
         <div style={styles.formContainer}>
             <h2 style={styles.formTitle}>
