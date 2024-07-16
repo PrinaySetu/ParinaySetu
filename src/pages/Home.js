@@ -1,3 +1,4 @@
+
 import rectangle from '../assets/img/rectangle-5.svg'
 import Heartfirst from '../assets/img/Heart-1.png'
 import Heartsecond from '../assets/img/Heart-2.png'
@@ -14,7 +15,12 @@ import facebook from '../assets/Buttons/Icon.png'
 
 import { Link, matchPath } from 'react-router-dom';
 
+
 const Home = () => {
+	const onButtonContainerClick = useCallback(() => {
+		// Add your code here
+	}, []);
+
 
   return (<>
     <div className="w-full flex flex-col bg-white h-auto overflow-hidden text-left text-5xl text-black font-body-text">
@@ -162,6 +168,7 @@ const Home = () => {
       <img className="w-[555px] h-[565px] object-contain" alt="" src={Heartsecond} />
     </div> */}
   </>);
+
 };
 
 export default Home;

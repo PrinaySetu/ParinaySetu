@@ -1,38 +1,39 @@
-import { useEffect } from "react"
-import "./App.css"
+import { useEffect } from "react";
+import "./App.css";
 // Redux
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 // React Router
-import { Route, Routes, useNavigate } from "react-router-dom"
-import { getUserDetails } from "./services/operations/profile"
-import Navbar from "./components/Common/Navbar"
-import EducationForm from "./components/core/Forms/EducationForm"
-import SpecialForm from "./components/core/Forms/SpecialForm"
-import ProfileDetails from "./components/core/Profile/ProfileDetails"
-import ProfileForm from "./components/core/Forms/ProfileForm"
-import ContactForm from "./components/core/Forms/ContactForm"
-import DocumentUploader from "./components/core/Forms/DocumentForm"
-import VerifyEmail from "./pages/VerifyEmail"
-import OpenRoute from "./components/core/Auth/OpenRoute"
-import PrivateRoute from "./components/core/Auth/PrivateRoute"
-import Signup from "./pages/Signup"
-import Login from "./pages/Login"
-import AdminSignup from "./pages/AdminSignup"
-import AdminLogin from "./pages/AdminLogin"
-import Home from "./pages/Home"
-import Error from "./pages/Error"
-import WorkForm from "./components/core/Forms/WorkForm"
-import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm"
-import FatherFamily from "./components/core/Forms/FatherFamily"
-import MotherFamily from "./components/core/Forms/MotherFamily"
-import FriendsForm from "./components/core/Forms/FriendsForm"
-import PropertyForm from "./components/core/Forms/PropertyForm"
-import RelativeForm from "./components/core/Forms/RelativeForm"
-import UserDashboard from "./components/core/Dashboard/UserDashboard"
-import MainUserDetails from "./components/core/Dashboard/UserDetails"
-import RecommendedProfiles from "./components/core/Profile/RecommendedProfiles"
-import SingleRecommendedProfile from "./components/core/Profile/SingleRecommendedProfile"
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { getUserDetails } from "./services/operations/profile";
+import Navbar from "./components/Common/Navbar";
+import EducationForm from "./components/core/Forms/EducationForm";
+import SpecialForm from "./components/core/Forms/SpecialForm";
+import ProfileDetails from "./components/core/Profile/ProfileDetails";
+import ProfileForm from "./components/core/Forms/ProfileForm";
+import ContactForm from "./components/core/Forms/ContactForm";
+import DocumentUploader from "./components/core/Forms/DocumentForm";
+import VerifyEmail from "./pages/VerifyEmail";
+import OpenRoute from "./components/core/Auth/OpenRoute";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import AdminSignup from "./pages/AdminSignup";
+import AdminLogin from "./pages/AdminLogin";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import WorkForm from "./components/core/Forms/WorkForm";
+import FamileDetailsForm from "./components/core/Forms/FamileDetailsForm";
+import FatherFamily from "./components/core/Forms/FatherFamily";
+import MotherFamily from "./components/core/Forms/MotherFamily";
+import FriendsForm from "./components/core/Forms/FriendsForm";
+import PropertyForm from "./components/core/Forms/PropertyForm";
+import RelativeForm from "./components/core/Forms/RelativeForm";
+import UserDashboard from "./components/core/Dashboard/UserDashboard";
+import MainUserDetails from "./components/core/Dashboard/UserDetails";
+import RecommendedProfiles from "./components/core/Profile/RecommendedProfiles";
+import SingleRecommendedProfile from "./components/core/Profile/SingleRecommendedProfile";
 function App() {
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
