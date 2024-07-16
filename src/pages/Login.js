@@ -1,9 +1,11 @@
 import React from 'react'
 import Template from '../components/core/Auth/Template'
+import Navbar from '../components/Common/Navbar'
 
 const Login = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      {/* <Navbar /> */}
       <Template
         formtype='login'
       />
