@@ -53,7 +53,7 @@ function App() {
           path="signup"
           element={
             <OpenRoute>
-              <Navbar />
+              {/* <Navbar /> */}
               <Signup />
             </OpenRoute>
           }
@@ -63,7 +63,7 @@ function App() {
           path="login"
           element={
             <OpenRoute>
-              <Navbar />
+              {/* <Navbar /> */}
               <Login />
             </OpenRoute>
           }

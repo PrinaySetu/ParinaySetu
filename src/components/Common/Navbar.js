@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const getNavItemClass = (path) => {
     return matchRoute(path)
-      ? "shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white py-3.5 px-6 text-red"
+      ? "shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white py-3.5 px-6 text-red justify-center"
       : "text-gray-600 hover:text-red";
   };
 
