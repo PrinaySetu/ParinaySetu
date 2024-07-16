@@ -17,9 +17,7 @@ import { Link, matchPath } from 'react-router-dom';
 
 
 const Home = () => {
-	const onButtonContainerClick = useCallback(() => {
-		// Add your code here
-	}, []);
+
 
 
   return (<>
