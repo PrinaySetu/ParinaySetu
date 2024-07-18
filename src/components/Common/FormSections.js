@@ -17,9 +17,9 @@ const sections = [
 ];
 
 const Section = ({ title, bgColor, link }) => (
-    <div className="w-[170px] h-[70px]">
-        <div className={`left-[0px] rounded-3xs ${bgColor} w-[170px] h-[70px]`}>
-            <div className="left-[0px] leading-[130%] font-semibold flex items-center w-[170px] h-[71px]">
+    <div className="flex w-full sm:w-[170px] sm:h-[70px]">
+        <div className={`flex w-full h-auto rounded-3xs ${bgColor} sm:w-[170px] sm:h-[70px]`}>
+            <div className="leading-[130%] font-semibold flex items-center w-full h-auto p-3 sm:p-0 sm:w-[170px] sm:h-[70px]">
                 {link ? (
                     <Link to={link} style={{ color: 'inherit', textDecoration: 'none' }} className="[line-break:anywhere] w-full">
                         {title.map((line, index) => (
@@ -42,7 +42,7 @@ const SectionList = () => {
     const location = useLocation();
 
     return (
-        <div className="left-[calc(50%_-_535px)] w-[1050px] flex flex-row flex-wrap items-start justify-start gap-[5px] text-center text-sm">
+        <div className="w-3/4 flex flex-row flex-wrap items-center justify-center gap-[5px] text-center text-sm">
             {sections.map((section, index) => {
                 const bgColor = location.pathname === section.link ? "bg-primary-main" : "bg-creamy-ivory";
                 return <Section key={index} {...section} bgColor={bgColor} />;
