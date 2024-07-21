@@ -2,7 +2,7 @@ import logo from '../../assets/img/Logo-parinay-setu.png';
 
 const Group = () => {
     return (
-        <div className='flex flex-col justify-center items-center px-4 py-2 bg-khaki-50 w-full'>
+        <div className='flex flex-col justify-center items-center py-2 bg-khaki-50 w-full'>
             <div className="flex justify-center items-center gap-4">
                 <img src={logo} alt="Logo" className="w-12 h-12" />
                 <div className="flex flex-col justify-center items-center font-niconne">

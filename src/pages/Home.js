@@ -66,13 +66,13 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center shadow-[-4px_8px_20px_rgba(0,_0,_0,_0.1)] rounded-xl bg-white p-4 sm:p-6 md:p-8 border-[1px] border-solid border-whitesmoke w-full max-w-[300px] sm:max-w-[375px] min-[769px]:max-w-[359px] text-red xl:max-w-[409px]">
+        <div className="flex flex-col items-center shadow-[-4px_8px_20px_rgba(0,_0,_0,_0.1)] rounded-xl bg-white p-4 sm:p-6 md:p-8 border-[1px] border-solid border-whitesmoke w-full max-w-[300px] sm:max-w-[375px] min-[769px]:max-w-[359px] xl:max-w-[409px]">
           <div className="flex items-center gap-[8px] sm:gap-[12px] md:gap-[16px]">
             <img className="w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] md:w-[45px] md:h-[45px]" alt="" src={iconcheck} />
             <div className="flex flex-col items-start">
               <div className="leading-[150%] font-medium text-sm sm:text-base md:text-lg">
                 <span>Verified</span>
-                <span className="text-black"> Profiles</span>
+                <span className="text-red"> Profiles</span>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Home = () => {
             <div className="flex flex-col items-start">
               <div className="leading-[150%] font-medium text-sm sm:text-base md:text-lg">
                 <span>Transparent</span>
-                <span className="text-black"> Communication</span>
+                <span className="text-red"> Communication</span>
               </div>
             </div>
           </div>

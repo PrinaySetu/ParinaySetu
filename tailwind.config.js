@@ -9,6 +9,7 @@ module.exports = {
         "white": "#fff",
         "black": "#000",
         "red": "#fe0505",
+        "red-600": "rgb(220 38 38)",
         "cornsilk": "#fff8e1",
         "gainsboro": "#e6e6e6",
         "darkslategray": "#454545",
@@ -51,7 +52,9 @@ module.exports = {
         "primary-enable": "#01a2f9",
         "blue-blue-500": "#2196f3",
         "gainsboro": "rgba(217, 217, 217, 0)",
-        "background-enable": "#f5f7fa"
+        "background-enable": "#f5f7fa",
+        "floral-white": "#FFFAF0",
+        "blue-600": "#4169E1"
       },
       "spacing": {
         "spacing-xs": "8px",
@@ -87,6 +90,7 @@ module.exports = {
       "7xl": "72px",
       "base": "16px",
       "xl": "20px",
+      "lg": "18px",
       "sm": "14px",
       "xs": "12px",
       "3xs": "10px",

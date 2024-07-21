@@ -3,101 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadDocument, updateDocument } from '../../../services/operations/document';
 import { toast } from 'react-hot-toast';
-import FormSections from '../../Common/FormSections';
-import Header from '../../Common/Header';
-import Footer from '../../Common/Footer';
-
-const styles = {
-    formContainer: {
-        textAlign: 'start',
-        width: '100%',
-        maxWidth: '600px',
-        padding: '30px',
-        backgroundColor: '#FFFAF0',
-        borderRadius: '12px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        fontFamily: 'Arial, sans-serif',
-    },
-    formTitle: {
-        fontSize: '2.5rem',
-        textAlign: 'center',
-        marginBottom: '20px',
-        color: '#333',
-    },
-    highlight: {
-        color: '#4169E1',
-    },
-    formSubtitle: {
-        fontSize: '1.2rem',
-        textAlign: 'center',
-        color: '#666',
-        marginBottom: '30px',
-    },
-    profileForm: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '25px',
-    },
-    formField: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    fieldLabel: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        fontSize: '1rem',
-        fontWeight: '600',
-        marginBottom: '8px',
-        color: '#444',
-    },
-    inputContainer: {
-        position: 'relative',
-    },
-    fieldInput: {
-        padding: '12px 15px',
-        fontSize: '1rem',
-        border: '2px solid #D3D3D3',
-        borderRadius: '6px',
-        backgroundColor: '#FFFFFF',
-        outline: 'none',
-        transition: 'border-color 0.3s ease',
-    },
-    errorMessage: {
-        color: '#FF4136',
-        fontSize: '0.9rem',
-        marginTop: '5px',
-    },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '30px',
-    },
-    button: {
-        padding: '12px 25px',
-        fontSize: '1.1rem',
-        fontWeight: '600',
-        color: '#FFFFFF',
-        border: 'none',
-        borderRadius: '6px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease, transform 0.1s ease',
-    },
-    submitButton: {
-        backgroundColor: '#4169E1',
-        '&:hover': {
-            backgroundColor: '#3154b1',
-            transform: 'translateY(-2px)',
-        },
-    },
-    subSection: {
-        marginTop: '20px',
-        padding: '15px',
-        backgroundColor: '#F0F8FF',
-        borderRadius: '8px',
-        fontSize: '16px'
-    },
-};
 
 const DocumentForm = () => {
     const dispatch = useDispatch();
@@ -143,9 +48,9 @@ const DocumentForm = () => {
                     formData.append(key, value);
                 }
             });
-    
+
             console.log("FormData entries:", Array.from(formData.entries()));
-    
+
             const response = await (isEdit ? updateDocument : uploadDocument)(formData, token);
             if (response) {
                 toast.success('Documents uploaded successfully');
@@ -155,65 +60,73 @@ const DocumentForm = () => {
             toast.error('Failed to upload documents');
         }
     };
-    
+
     return (
-        <div style={styles.formContainer}>
-            <h2 style={styles.formTitle}>
+        <div className="flex flex-col text-start w-full max-[320px]:max-w-60 max-w-xs md:max-w-screen-sm p-4 md:p-8 bg-floral-white rounded-xl shadow-md">
+            <h2 className="text-2xl md:text-4xl text-center mb-3 md:mb-5 text-gray-800">
                 <span>{isEdit ? 'Update' : 'Create'} </span>
-                <span style={styles.highlight}>Document Upload</span>
+                <span className="text-blue-600">Document Upload</span>
             </h2>
-            <div style={styles.formSubtitle}>Please upload your documents</div>
-            <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Photos
-                        <input type="file" name="photos" multiple {...register('photos')} style={styles.fieldInput} />
+            <div className="text-lg md:text-xl text-center text-gray-500 mb-6 md:mb-8">Please upload your documents</div>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Photos
+                        <input type="file" name="photos" multiple {...register('photos')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Family Photos
-                        <input type="file" name="familyPhoto" multiple {...register('familyPhoto')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Family Photos
+                        <input type="file" name="familyPhoto" multiple {...register('familyPhoto')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Education Documents
-                        <input type="file" name="educationDocuments" multiple {...register('educationDocuments')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Education Documents
+                        <input type="file" name="educationDocuments" multiple {...register('educationDocuments')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Income Proofs
-                        <input type="file" name="incomeProofs" multiple {...register('incomeProofs')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Income Proofs
+                        <input type="file" name="incomeProofs" multiple {...register('incomeProofs')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Property Proofs
-                        <input type="file" name="propertyProofs" multiple {...register('propertyProofs')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Property Proofs
+                        <input type="file" name="propertyProofs" multiple {...register('propertyProofs')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Address Proofs
-                        <input type="file" name="addressProofs" multiple {...register('addressProofs')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Address Proofs
+                        <input type="file" name="addressProofs" multiple {...register('addressProofs')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>ID Proofs
-                        <input type="file" name="idProofs" multiple {...register('idProofs')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        ID Proofs
+                        <input type="file" name="idProofs" multiple {...register('idProofs')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.formField}>
-                    <label style={styles.fieldLabel}>Other Documents
-                        <input type="file" name="otherDocuments" multiple {...register('otherDocuments')} style={styles.fieldInput} />
+                <div className="flex flex-col">
+                    <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">
+                        Other Documents
+                        <input type="file" name="otherDocuments" multiple {...register('otherDocuments')} className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out" />
                     </label>
                 </div>
 
-                <div style={styles.buttonContainer}>
-                    <button type="submit" style={{ ...styles.button, ...styles.submitButton }}>
+                <div className="flex justify-center mt-8">
+                    <button type="submit" className="mt-2 py-2 md:py-3 px-4 md: px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1">
                         {isEdit ? 'Update' : 'Upload Documents'}
                     </button>
                 </div>
