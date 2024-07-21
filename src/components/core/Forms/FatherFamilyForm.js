@@ -2,96 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-const styles = {
-  formContainer: {
-    textAlign: 'start',
-    maxWidth: '600px',
-    padding: '30px',
-    backgroundColor: '#FFFAF0',
-    borderRadius: '12px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    fontFamily: 'Inter, sans-serif',
-  },
-  formTitle: {
-    fontSize: '2.5rem',
-    textAlign: 'center',
-    marginBottom: '20px',
-    color: '#333',
-  },
-  highlight: {
-    color: '#4169E1',
-  },
-  formSubtitle: {
-    fontSize: '1.2rem',
-    textAlign: 'center',
-    color: '#666',
-    marginBottom: '30px',
-  },
-  profileForm: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '25px',
-  },
-  formField: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  fieldLabel: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.5rem',
-    fontSize: '1rem',
-    fontWeight: '600',
-    marginBottom: '8px',
-    color: '#444',
-  },
-  inputContainer: {
-    position: 'relative',
-  },
-  fieldInput: {
-    padding: '12px 15px',
-    fontSize: '1rem',
-    border: '2px solid #D3D3D3',
-    borderRadius: '6px',
-    backgroundColor: '#FFFFFF',
-    outline: 'none',
-    transition: 'border-color 0.3s ease',
-  },
-  errorMessage: {
-    color: '#FF4136',
-    fontSize: '0.9rem',
-    marginTop: '5px',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '30px',
-  },
-  button: {
-    padding: '12px 25px',
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    color: '#FFFFFF',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease, transform 0.1s ease',
-  },
-  submitButton: {
-    backgroundColor: '#4169E1',
-    '&:hover': {
-      backgroundColor: '#3154b1',
-      transform: 'translateY(-2px)',
-    },
-  },
-  subSection: {
-    marginTop: '20px',
-    padding: '15px',
-    backgroundColor: '#F0F8FF',
-    borderRadius: '8px',
-    fontSize: '16px'
-  },
-};
 const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
@@ -137,103 +47,109 @@ const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {
   };
 
   return (
-    <div style={styles.formContainer}>
-      <h2 style={styles.formTitle}>
+    <div className="flex flex-col text-start w-full max-[320px]:max-w-60 max-w-xs md:max-w-screen-sm p-4 md:p-8 bg-floral-white rounded-xl shadow-md">
+      <h2 className="text-2xl md:text-4xl text-center mb-3 md:mb-5 text-gray-800">
         <span>{isEdit ? 'Update' : 'Create'} </span>
-        <span style={styles.highlight}>Father's Family Details</span>
+        <span className="text-blue-600">Father's Family Details</span>
       </h2>
-      <div style={styles.formSubtitle}>Please fill in your father's family details</div>
-      <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Name
-            <input {...register('grandFather', { required: true })} style={styles.fieldInput} />
+      <div className="text-lg md:text-xl text-center text-gray-500 mb-6 md:mb-8">Please fill in your father's family details</div>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandfather's Name
+            <input {...register('grandFather', { required: true })} className="p-3 text-lg border-2 border-[#D3D3D3] rounded-md bg-white outline-none transition-colors duration-300" />
           </label>
-          {errors.grandFather && <p style={styles.errorMessage}>Grandfather's name is required</p>}
+          {errors.grandFather && <p className="text-[#FF4136] text-sm mt-1">Grandfather's name is required</p>}
         </div>
 
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Name
-            <input {...register('grandMother', { required: true })} style={styles.fieldInput} />
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandmother's Name
+            <input {...register('grandMother', { required: true })} className="p-3 text-lg border-2 border-[#D3D3D3] rounded-md bg-white outline-none transition-colors duration-300" />
           </label>
-          {errors.grandMother && <p style={styles.errorMessage}>Grandmother's name is required</p>}
+          {errors.grandMother && <p className="text-[#FF4136] text-sm mt-1">Grandmother's name is required</p>}
         </div>
 
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Age
-            <input type="number" {...register('grandFatherAge', { required: true })} style={styles.fieldInput} />
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandfather's Age
+            <input type="number" {...register('grandFatherAge', { required: true })} className="p-3 text-lg border-2 border-[#D3D3D3] rounded-md bg-white outline-none transition-colors duration-300" />
           </label>
-          {errors.grandFatherAge && <p style={styles.errorMessage}>Grandfather's age is required</p>}
+          {errors.grandFatherAge && <p className="text-[#FF4136] text-sm mt-1">Grandfather's age is required</p>}
         </div>
 
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Age
-            <input type="number" {...register('grandMotherAge', { required: true })} style={styles.fieldInput} />
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandmother's Age
+            <input type="number" {...register('grandMotherAge', { required: true })} className="p-3 text-lg border-2 border-[#D3D3D3] rounded-md bg-white outline-none transition-colors duration-300" />
           </label>
-          {errors.grandMotherAge && <p style={styles.errorMessage}>Grandmother's age is required</p>}
+          {errors.grandMotherAge && <p className="text-[#FF4136] text-sm mt-1">Grandmother's age is required</p>}
         </div>
 
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandfather's Status
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandfather's Status
             <input type="checkbox" {...register('grandFatherStatus')} />
           </label>
         </div>
 
-        <div style={styles.formField}>
-          <label style={styles.fieldLabel}>Grandmother's Status
+        <div className="flex flex-col">
+          <label className="flex flex-col gap-2 text-lg font-semibold mb-2 text-[#444]">
+            Grandmother's Status
             <input type="checkbox" {...register('grandMotherStatus')} />
           </label>
         </div>
 
-        <div style={styles.subSection}>
-          <h3>Tau (Father's Brothers)</h3>
+        <div className="mt-5 p-4 bg-floral-white rounded-md text-lg">
+          <h3 className="font-semibold mb-3">Tau (Father's Brothers)</h3>
           {tauFields.map((field, index) => (
-            <div key={field.id} style={styles.formField}>
-              <input {...register(`tau.${index}.tauName`)} placeholder="Name" style={styles.fieldInput} />
-              <input type="number" {...register(`tau.${index}.tauAge`)} placeholder="Age" style={styles.fieldInput} />
+            <div key={field.id} className="flex flex-col mb-3">
+              <input {...register(`tau.${index}.tauName`)} placeholder="Name" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
+              <input type="number" {...register(`tau.${index}.tauAge`)} placeholder="Age" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
               <label>
                 <input type="checkbox" {...register(`tau.${index}.tauStatus`)} />
                 Status
               </label>
-              <button type="button" onClick={() => removeTau(index)} style={styles.button}>Remove Tau</button>
+              <button type="button" onClick={() => removeTau(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out">Remove Tau</button>
             </div>
           ))}
-          <button type="button" onClick={() => addTau()} style={styles.button}>Add Tau</button>
+          <button type="button" onClick={() => addTau()} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Tau</button>
         </div>
 
-        <div style={styles.subSection}>
-          <h3>Bua (Father's Sisters)</h3>
+        <div className="mt-5 p-4 bg-floral-white rounded-md text-lg">
+          <h3 className="font-semibold mb-3">Bua (Father's Sisters)</h3>
           {buaFields.map((field, index) => (
-            <div key={field.id} style={styles.formField}>
-              <input {...register(`bua.${index}.buaName`)} placeholder="Name" style={styles.fieldInput} />
-              <input type="number" {...register(`bua.${index}.buaAge`)} placeholder="Age" style={styles.fieldInput} />
+            <div key={field.id} className="flex flex-col mb-3">
+              <input {...register(`bua.${index}.buaName`)} placeholder="Name" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
+              <input type="number" {...register(`bua.${index}.buaAge`)} placeholder="Age" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
               <label>
                 <input type="checkbox" {...register(`bua.${index}.buaStatus`)} />
                 Status
               </label>
-              <button type="button" onClick={() => removeBua(index)} style={styles.button}>Remove Bua</button>
+              <button type="button" onClick={() => removeBua(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out">Remove Bua</button>
             </div>
           ))}
-          <button type="button" onClick={() => addBua()} style={styles.button}>Add Bua</button>
+          <button type="button" onClick={() => addBua()} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Bua</button>
         </div>
 
-        <div style={styles.subSection}>
-          <h3>Chacha (Father's Brothers)</h3>
+        <div className="mt-5 p-4 bg-floral-white rounded-md text-lg">
+          <h3 className="font-semibold mb-3">Chacha (Father's Brothers)</h3>
           {chachaFields.map((field, index) => (
-            <div key={field.id} style={styles.formField}>
-              <input {...register(`chacha.${index}.chachaName`)} placeholder="Name" style={styles.fieldInput} />
-              <input type="number" {...register(`chacha.${index}.chachaAge`)} placeholder="Age" style={styles.fieldInput} />
+            <div key={field.id} className="flex flex-col mb-3">
+              <input {...register(`chacha.${index}.chachaName`)} placeholder="Name" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
+              <input type="number" {...register(`chacha.${index}.chachaAge`)} placeholder="Age" className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 rounded-md bg-white outline-none transition duration-300 ease-in-out" />
               <label>
                 <input type="checkbox" {...register(`chacha.${index}.chachaStatus`)} />
                 Status
               </label>
-              <button type="button" onClick={() => removeChacha(index)} style={styles.button}>Remove Chacha</button>
+              <button type="button" onClick={() => removeChacha(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out">Remove Chacha</button>
             </div>
           ))}
-          <button type="button" onClick={() => addChacha()} style={styles.button}>Add Chacha</button>
+          <button type="button" onClick={() => addChacha()} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Chacha</button>
         </div>
 
-        <div style={styles.buttonContainer}>
-          <button type="submit" style={{ ...styles.button, ...styles.submitButton }}>
+        <div className="flex justify-center mt-8">
+          <button type="submit" className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1">
             {isEdit ? 'Update' : 'Create'}
           </button>
         </div>

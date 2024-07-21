@@ -2,91 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-const styles = {
-  formContainer: {
-    textAlign: 'start',
-    width: '100%',
-    maxWidth: '600px',
-    padding: '30px',
-    backgroundColor: '#FFFAF0',
-    borderRadius: '12px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    fontFamily: 'Arial, sans-serif',
-  },
-  formTitle: {
-    fontSize: '2.5rem',
-    textAlign: 'center',
-    marginBottom: '20px',
-    color: '#333',
-  },
-  highlight: {
-    color: '#4169E1',
-  },
-  formSubtitle: {
-    fontSize: '1.2rem',
-    textAlign: 'center',
-    color: '#666',
-    marginBottom: '30px',
-  },
-  profileForm: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '25px',
-  },
-  formField: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  fieldLabel: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.5rem',
-    fontSize: '1rem',
-    fontWeight: '600',
-    // marginBottom: '8px',
-    color: '#444',
-  },
-  inputContainer: {
-    position: 'relative',
-  },
-  fieldInput: {
-    // width: '100%',
-    padding: '12px 15px',
-    fontSize: '1rem',
-    border: '2px solid #D3D3D3',
-    borderRadius: '6px',
-    backgroundColor: '#FFFFFF',
-    outline: 'none',
-    transition: 'border-color 0.3s ease',
-  },
-  errorMessage: {
-    color: '#FF4136',
-    fontSize: '0.9rem',
-    marginTop: '5px',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '30px',
-  },
-  button: {
-    padding: '12px 25px',
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    color: '#FFFFFF',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease, transform 0.1s ease',
-  },
-  submitButton: {
-    backgroundColor: '#4169E1',
-    '&:hover': {
-      backgroundColor: '#3154b1',
-      transform: 'translateY(-2px)',
-    },
-  },
-};
 
 const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, profilePicture, handleProfilePictureChange, handleProfilePictureUpload, showProfilePictureUpload }) => {
   const dispatch = useDispatch();
@@ -125,56 +40,52 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
   };
 
   return (
-    <div style={styles.formContainer}>
-      <h2 style={styles.formTitle}>
+    <div className='flex flex-col text-start w-full max-[320px]:max-w-60 max-w-xs md:max-w-screen-sm p-4 md:p-8 bg-floral-white rounded-xl shadow-md'>
+      <h2 className="text-2xl md:text-4xl text-center mb-3 md:mb-5 text-gray-800">
         <span>{isEdit ? 'Update' : 'Create'} </span>
-        <span style={styles.highlight}>Profile</span>
+        <span className='text-blue-600'>Profile</span>
       </h2>
-      <div style={styles.formSubtitle}>Please fill in your details</div>
-      <form onSubmit={handleSubmit(onSubmit)} style={styles.profileForm}>
+      <p className="text-lg md:text-xl text-center text-gray-500 mb-6 md:mb-8">Please fill in your details</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 md:gap-6">
         {showProfilePictureUpload && (
-          <div style={styles.formField}>
-            <label style={styles.fieldLabel}>Profile Picture
-              {/* <div style={styles.inputContainer}> */}
+          <div className="flex flex-col">
+            <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">Profile Picture
               <input
                 type="file"
                 onChange={handleProfilePictureChange}
                 accept="image/*"
-                style={styles.fieldInput}
+                className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out"
               />
-              {/* </div> */}
             </label>
-            <button onClick={handleProfilePictureUpload} type="button" style={{ ...styles.button, ...styles.submitButton, marginTop: '10px' }}>
+            <button onClick={handleProfilePictureUpload} type="button" className="mt-2 py-2 md:py-3 px-4 md: px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1">
               Upload Profile Picture
             </button>
           </div>
         )}
         {fields.map((field) => (
-          <div key={field.name} style={styles.formField}>
-            <label style={styles.fieldLabel}>{field.label}
+          <div key={field.name} className="flex flex-col">
+            <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">{field.label}
               <input
                 type={field.type.toLowerCase()}
                 {...register(field.name, { required: field.required })}
-                style={{
-                  ...styles.fieldInput,
-                  borderColor: errors[field.name] ? '#FF4136' : '#D3D3D3',
-                }}
+                className={`py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] rounded-md bg-white outline-none transition-colors duration-300 ease-in-out ${errors[field.name] ? 'border-red-500' : 'border-gray-300'}`}
                 placeholder={`Enter your ${field.name.toLowerCase()}`}
               />
             </label>
-            {errors[field.name] && <p style={styles.errorMessage}>{field.name} is required</p>}
+            {errors[field.name] && <p className="text-red-500 text-xs md:text-sm mt-1">{field.name} is required</p>}
           </div>
         ))}
-        <div style={styles.buttonContainer}>
+        <div className="flex justify-center mt-6 md:mt-8">
           <button
             type="submit"
-            style={{ ...styles.button, ...styles.submitButton }}
+            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1"
           >
             {isEdit ? 'Update' : 'Create'}
           </button>
         </div>
       </form>
     </div>
+
   );
 };
 
