@@ -35,6 +35,7 @@ import SingleRecommendedProfile from "./components/core/Profile/SingleRecommende
 import ContactPage from "./components/Common/ContactPage";
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import ChangePassword from "./components/core/Auth/UpdatePassword";
 function App() {
 
   const dispatch = useDispatch()
@@ -315,6 +316,16 @@ function App() {
             </OpenRoute>
           }
         />  
+
+        {/* Change password page */}
+        <Route
+          path="change-password"
+          element={
+            <PrivateRoute>
+              <ChangePassword/>
+            </PrivateRoute>
+          }
+        />
 
 
         {/* All other pages */}

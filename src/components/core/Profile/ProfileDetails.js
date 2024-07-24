@@ -328,6 +328,9 @@ const ProfileDetails = () => {
       <RecommendedButton onClick={() => navigate('/rec')}>
         Show All Recommended Profiles
       </RecommendedButton>
+      <RecommendedButton onClick={() => navigate('/change-password')}>
+        Change password
+      </RecommendedButton>
     </ProfileContainer>
   );
 };
