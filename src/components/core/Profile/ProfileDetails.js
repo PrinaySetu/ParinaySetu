@@ -49,11 +49,12 @@ margin: 10px 0;
 const RecommendedButton = styled.button`
 text-white;
 background-color: #1a202c;
-width: 35%;
-height: 4vh;
-border-radius: 10px;
+// width: 35%;
+// height: 4vh;
+border-radius: 30px;
 margin-top: 20px;
 color: #fff;
+padding: 10px;
 border: none;
 cursor: pointer;
 &:hover {

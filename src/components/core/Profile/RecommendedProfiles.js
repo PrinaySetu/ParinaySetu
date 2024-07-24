@@ -43,21 +43,21 @@ const RecommendedProfiles = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div style={styles.container}>
+    <div className="flex flex-wrap justify-center gap-5 m-5">
       {profiles.length > 0 ? (
         profiles.map((profile) => (
-          <div key={profile._id} style={styles.card}>
+          <div key={profile._id} className="bg-white rounded-lg shadow-lg overflow-hidden w-72 text-center p-5">
             <img
-              style={styles.profileImage}
+              className="w-24 h-24 rounded-full object-cover mb-4 mx-auto"
               src={profile.image}
               alt={`${profile.firstName} ${profile.lastName}`}
             />
-            <div style={styles.profileDetails}>
-              <p style={styles.profileName}>{profile.firstName} {profile.lastName}</p>
-              <p style={styles.profileGender}>{profile.additionalDetails.gender}</p>
-              <p style={styles.profileAge}>{profile.additionalDetails.age} years old</p>
+            <div className="text-center">
+              <p className="text-xl font-semibold text-gray-800 mb-2">{profile.firstName} {profile.lastName}</p>
+              <p className="text-gray-600 mb-1">{profile.additionalDetails.gender}</p>
+              <p className="text-gray-600 mb-5">{profile.additionalDetails.age} years old</p>
               <button
-                style={styles.viewButton}
+                className="py-2 px-4 text-white font-semibold bg-blue-600 rounded-md transition-colors duration-300 hover:bg-blue-700"
                 onClick={() => handleViewDetails(profile._id)}
               >
                 View Details
@@ -70,66 +70,6 @@ const RecommendedProfiles = () => {
       )}
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '20px',
-    justifyContent: 'center',
-    padding: '20px',
-    backgroundColor: '#F5F5F5'
-  },
-  card: {
-    backgroundColor: '#FFF',
-    borderRadius: '12px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    overflow: 'hidden',
-    width: '300px',
-    textAlign: 'center',
-    padding: '20px',
-  },
-  profileImage: {
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    marginBottom: '15px',
-  },
-  profileDetails: {
-    textAlign: 'center',
-  },
-  profileName: {
-    fontSize: '1.2rem',
-    fontWeight: '600',
-    color: '#333',
-    marginBottom: '10px',
-  },
-  profileGender: {
-    fontSize: '1rem',
-    color: '#666',
-    marginBottom: '5px',
-  },
-  profileAge: {
-    fontSize: '1rem',
-    color: '#666',
-    marginBottom: '20px',
-  },
-  viewButton: {
-    padding: '10px 20px',
-    fontSize: '1rem',
-    fontWeight: '600',
-    color: '#FFF',
-    backgroundColor: '#4169E1',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-  },
-  viewButtonHover: {
-    backgroundColor: '#3154b1',
-  }
 };
 
 export default RecommendedProfiles;

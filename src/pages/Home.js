@@ -119,6 +119,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div id='contact-form'>
+        <ContactUsForm />
+      </div>
       <div className="flex flex-col items-center justify-center mt-20 bg-gradient-to-b from-yellow-200 to-white text-base text-darkslategray px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-52 justify-between w-full max-w-6xl">
           <div className="flex flex-col items-center gap-2 mb-12 lg:mb-0">
@@ -159,9 +162,6 @@ const Home = () => {
 
 
 
-    </div>
-    <div id='contact-form'>
-      <ContactUsForm />
     </div>
     {/* <div className="absolute justify-between items-center mt-[60px]">
       <img className="left-[100px] w-[500px] h-[548px] object-contain" alt="" src={Heartfirst} />
