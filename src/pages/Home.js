@@ -12,7 +12,7 @@ import instagram from '../assets/Buttons/Icon-3.png'
 import youtube from '../assets/Buttons/Icon-2.png'
 import linkedin from '../assets/Buttons/Icon-1.png'
 import facebook from '../assets/Buttons/Icon.png'
-
+import ContactUsForm from '../components/Common/ContactUsForm'
 import { Link, matchPath } from 'react-router-dom';
 
 
@@ -160,7 +160,9 @@ const Home = () => {
 
 
     </div>
-
+    <div id='contact-form'>
+      <ContactUsForm />
+    </div>
     {/* <div className="absolute justify-between items-center mt-[60px]">
       <img className="left-[100px] w-[500px] h-[548px] object-contain" alt="" src={Heartfirst} />
       <img className="w-[555px] h-[565px] object-contain" alt="" src={Heartsecond} />

@@ -32,6 +32,9 @@ import UserDashboard from "./components/core/Dashboard/UserDashboard";
 import MainUserDetails from "./components/core/Dashboard/UserDetails";
 import RecommendedProfiles from "./components/core/Profile/RecommendedProfiles";
 import SingleRecommendedProfile from "./components/core/Profile/SingleRecommendedProfile";
+import ContactPage from "./components/Common/ContactPage";
+import ForgetPassword from "./pages/ForgetPassword";
+import UpdatePassword from "./pages/UpdatePassword";
 function App() {
 
   const dispatch = useDispatch()
@@ -287,6 +290,33 @@ function App() {
             </PrivateRoute>
           }
         />
+
+
+        {/* Contact page */}
+        <Route
+          path="/contact"
+          element={
+            <ContactPage />
+          }
+        />
+        {/* Forget password page */}
+        <Route
+          path="/forgetpassword"
+          element={
+            <ForgetPassword />
+          }
+        />
+        {/* Update password page */}
+        <Route
+          path="update-password/:id"
+          element={
+            <OpenRoute>
+              <UpdatePassword />
+            </OpenRoute>
+          }
+        />  
+
+
         {/* All other pages */}
         <Route
           path="*"
