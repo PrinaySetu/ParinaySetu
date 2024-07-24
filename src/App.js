@@ -36,18 +36,38 @@ import ContactPage from "./components/Common/ContactPage";
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import ChangePassword from "./components/core/Auth/UpdatePassword";
+
+
+
+
 function App() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = JSON.parse(localStorage.getItem("token"))
-      dispatch(getUserDetails(token, navigate))
+    const checkToken = () => {
+      const token = localStorage.getItem("token")
+      if (token) {
+        // Parse the token (it's a JWT)
+        const tokenPayload = JSON.parse(atob(token.split('.')[1]))
+        const expirationTime = tokenPayload.exp * 1000 // Convert to milliseconds
+        
+        if (Date.now() >= expirationTime) {
+          // Token has expired
+          localStorage.removeItem("token")
+          localStorage.removeItem("user")
+          navigate("/login")
+        } else {
+          // Token is still valid
+          dispatch(getUserDetails(JSON.parse(token), navigate))
+        }
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+
+    checkToken()
+  }, [dispatch, navigate])
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       {/* <Navbar /> */}
