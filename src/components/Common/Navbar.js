@@ -14,13 +14,13 @@ const Navbar = () => {
 
   const onContactUsTextClick = () => {
     // Implement the functionality for contact us click
-    
+
   };
 
   const getNavItemClass = (path) => {
     return matchRoute(path)
       ? "shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white py-3.5 px-6 text-red justify-center"
-      : "text-gray-600 hover:text-red";
+      : "hover:text-red";
   };
 
   return (
@@ -36,15 +36,10 @@ const Navbar = () => {
             <Link to='/' style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
           </div>
           <div className="flex leading-[150%] text-lg sm:text-xl font-medium cursor-pointer">Pricing</div>
-          <div className="flex leading-[150%] text-lg sm:text-xl font-medium cursor-pointer" 
-          
-          // onClick={onContactUsTextClick}
-          
-          >
-        
-          <Link to='/contact' style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>
-      
-         </div>
+          <div className={getNavItemClass("/contact")}>
+
+            <Link to='/contact' style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>
+          </div>
           {token === null && (
             <>
               <div className={getNavItemClass("/login")}>
