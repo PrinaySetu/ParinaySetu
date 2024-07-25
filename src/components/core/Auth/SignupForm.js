@@ -113,7 +113,7 @@ const SignupForm = () => {
               required
             />
           </label>
-          <label className="w-full relative">
+          <label className="w-full flex flex-col">
             <p className="text-[0.875rem] text-gray-900 mb-1 leading-[1.375rem]">
               Password<sup className="text-pink-200">*</sup>
             </p>
