@@ -90,3 +90,10 @@ export const dashboardEndpoints = {
     GET_MAIN_USER_API: BASE_URL + "/dashboard/getMainUser",
     GET_ALL_OTHER_USERS_API: BASE_URL + "/dashboard/users",
 }
+
+export const subscriptionEndpoints = {
+    GET_PLANS_API: BASE_URL + "/subscription/plans",
+    CREATE_SUBSCRIPTION_API: BASE_URL + "/subscription/create",
+    HANDLE_CALLBACK_API: BASE_URL + "/subscription/callback",
+    GET_CURRENT_SUBSCRIPTION_API: BASE_URL + "/subscription/current",
+}

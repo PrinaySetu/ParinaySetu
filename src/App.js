@@ -36,7 +36,7 @@ import ContactPage from "./components/Common/ContactPage";
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import ChangePassword from "./components/core/Auth/UpdatePassword";
-
+import SubscriptionComponent from "./components/core/susbscription";
 
 
 
@@ -73,6 +73,10 @@ function App() {
       {/* <Navbar /> */}
       <Routes>
         {/* signup */}
+        <Route
+          path="sub"
+          element={<SubscriptionComponent />}
+        />
         <Route
           path="signup"
           element={
