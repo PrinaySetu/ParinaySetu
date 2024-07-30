@@ -15,15 +15,15 @@ const SubscriptionComponent = () => {
 
     const fetchPlans = async () => {
         try {
-            console.log("Fetching plans...");
+            // console.log("Fetching plans...");
             const response = await getSubscriptionPlans();
-            console.log("Raw API response:", response);
+            // console.log("Raw API response:", response);
             
             if (response && response.data && Array.isArray(response.data)) {
-                console.log("Setting plans from response data:", response.data);
+                // console.log("Setting plans from response data:", response.data);
                 setPlans(response.data);
             } else {
-                console.error("Unexpected response format:", response);
+                // console.error("Unexpected response format:", response);
                 toast.error('Unexpected data format received');
                 setPlans([]);
             }
@@ -98,7 +98,7 @@ const SubscriptionComponent = () => {
             <h1>Subscription Plans</h1>
             <div>
                 <h2>Available Plans</h2>
-                {console.log("Rendering plans:", plans)}
+                {/* {console.log("Rendering plans:", plans)} */}
                 {Array.isArray(plans) && plans.length > 0 ? (
                     plans.map(plan => (
                         <div key={plan.id} className="plan">

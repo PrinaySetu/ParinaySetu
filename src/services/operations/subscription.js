@@ -28,7 +28,7 @@ export const createSubscription = async (planId, token) => {
             Authorization: `Bearer ${token}`
         });
 
-        console.log("Raw API response:", response);
+        // console.log("Raw API response:", response);
 
         if (!response || !response.data) {
             throw new Error('Invalid response from server');
@@ -56,7 +56,7 @@ export const handlePaymentCallback = async (token, paymentData) => {
         const response = await apiConnector('POST', HANDLE_CALLBACK_API, paymentData, {
             Authorization: `Bearer ${token}`,
         });
-        console.log('Callback response:', response);
+        // console.log('Callback response:', response);
         if (!response || response.error) {
             throw new Error(response.error || 'Payment verification failed.');
         }
@@ -73,20 +73,25 @@ export const handlePaymentCallback = async (token, paymentData) => {
 
 // Function to get current user's subscription
 export const getCurrentSubscription = async (token) => {
+    console.log('Fetching current subscription...');
     const toastId = toast.loading("Fetching current subscription...");
     let result = null;
     try {
-        const response = await apiConnector('GET', GET_CURRENT_SUBSCRIPTION_API, null, {
+        const response = await apiConnector('PUT', GET_CURRENT_SUBSCRIPTION_API, null, {
             Authorization: `Bearer ${token}`
         });
-        if (!response) {
-            throw new Error('Failed to fetch current subscription.');
+
+        if (response.status !== 200) {
+            throw new Error(response.data.error || 'Failed to fetch current subscription.');
         }
+
         toast.success("Current subscription fetched successfully");
-        result = response;
+        result = response.data;
     } catch (error) {
-        toast.error(error.message || 'An error occurred while fetching current subscription');
+        toast.error(error.message || 'An error occurred while fetching the current subscription');
+    } finally {
+        toast.dismiss(toastId);
     }
-    toast.dismiss(toastId);
+
     return result;
 };
