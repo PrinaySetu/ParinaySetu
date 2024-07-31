@@ -52,7 +52,7 @@ function App() {
         // Parse the token (it's a JWT)
         const tokenPayload = JSON.parse(atob(token.split('.')[1]))
         const expirationTime = tokenPayload.exp * 1000 // Convert to milliseconds
-        
+
         if (Date.now() >= expirationTime) {
           // Token has expired
           localStorage.removeItem("token")
@@ -339,14 +339,14 @@ function App() {
               <UpdatePassword />
             </OpenRoute>
           }
-        />  
+        />
 
         {/* Change password page */}
         <Route
           path="change-password"
           element={
             <PrivateRoute>
-              <ChangePassword/>
+              <ChangePassword />
             </PrivateRoute>
           }
         />
