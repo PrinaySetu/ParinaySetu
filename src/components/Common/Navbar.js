@@ -35,7 +35,9 @@ const Navbar = () => {
           <div className={getNavItemClass("/")}>
             <Link to='/' style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
           </div>
-          <div className="flex leading-[150%] text-lg sm:text-xl font-medium cursor-pointer">Pricing</div>
+          <div className={getNavItemClass("/sub")}>
+            <Link to='/sub' style={{ color: 'inherit', textDecoration: 'none' }}>Pricing</Link>
+          </div>
           <div className={getNavItemClass("/contact")}>
 
             <Link to='/contact' style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showAllRecommendedProfiles } from '../../../services/operations/profile';
+import Navbar from '../../Common/Navbar';
 
 const RecommendedProfiles = () => {
   const [profiles, setProfiles] = useState([]);
@@ -42,8 +43,9 @@ const RecommendedProfiles = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  return (
-    <div className="flex flex-wrap justify-center gap-5 m-5">
+  return (<>
+    <Navbar />
+    <div className="flex  py-24 sm:py-32 flex-wrap justify-center gap-5 m-5">
       {profiles.length > 0 ? (
         profiles.map((profile) => (
           <div key={profile._id} className="bg-white rounded-lg shadow-lg overflow-hidden w-72 text-center p-5">
@@ -69,7 +71,7 @@ const RecommendedProfiles = () => {
         <p>No recommended profiles found.</p>
       )}
     </div>
-  );
+  </>);
 };
 
 export default RecommendedProfiles;
