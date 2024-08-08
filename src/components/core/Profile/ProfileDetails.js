@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getUserDetails } from '../../../services/operations/profile'; // Adjust the import path as necessary
+import Navbar from '../../Common/Navbar';
+import Footer from '../../Common/Footer';
 
 const ProfileContainer = styled.div`
 display: flex;
@@ -321,6 +323,7 @@ const ProfileDetails = () => {
 
   return (
     <ProfileContainer>
+      <Navbar />
       <ProfileHeader>Profile Details</ProfileHeader>
       <ProfileImage src={user.image} alt="Profile" />
       <ProfileInfo>
@@ -332,6 +335,7 @@ const ProfileDetails = () => {
       <RecommendedButton onClick={() => navigate('/change-password')}>
         Change password
       </RecommendedButton>
+      <Footer />
     </ProfileContainer>
   );
 };

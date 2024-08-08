@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSingleRecommendedProfile } from '../../../services/operations/profile';
+import Navbar from '../../Common/Navbar';
+import Footer from '../../Common/Footer';
 
 const SingleRecommendedProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -44,6 +46,7 @@ const SingleRecommendedProfile = () => {
 
   return (
     <div style={styles.container}>
+      <Navbar />
       {profile ? (
         <div style={styles.profileCard}>
           <h2 style={styles.profileName}>{profile.firstName} {profile.lastName}</h2>
@@ -70,6 +73,7 @@ const SingleRecommendedProfile = () => {
 const styles = {
   container: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     padding: '20px',
@@ -79,6 +83,7 @@ const styles = {
     backgroundColor: '#FFF',
     borderRadius: '12px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    margin: '40px 0',
     padding: '20px',
     width: '100%',
     maxWidth: '600px',

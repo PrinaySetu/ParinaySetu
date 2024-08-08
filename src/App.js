@@ -75,7 +75,8 @@ function App() {
         {/* signup */}
         <Route
           path="sub"
-          element={<SubscriptionComponent />}
+          element={
+            <SubscriptionComponent />}
         />
         <Route
           path="signup"
