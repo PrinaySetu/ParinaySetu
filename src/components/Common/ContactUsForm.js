@@ -106,7 +106,7 @@ const ContactUsForm = ({ bgcolor }) => {
             />
           </label>
 
-          <button type="submit" className="w-full bg-khaki-100 rounded-lg text-white py-2 mt-4 cursor-pointer">Send</button>
+          <button type="submit" className="w-full bg-khaki-100 rounded-lg text-white py-2 mt-4 cursor-pointer hover:bg-white hover:text-khaki-100 hover:border-solid hover:border-khaki-100 hover:border-[1px]">Send</button>
         </form>
       </div>
     </div>
