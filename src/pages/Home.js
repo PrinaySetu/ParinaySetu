@@ -138,22 +138,22 @@ const Home = () => {
           </div>
           <div className='hidden md:flex md:gap-8 md:justify-around lg:gap-16 justify-between w-full max-w-6xl lg:px-10'>
             <div className="flex flex-col items-start lg:items-center gap-4">
-              <div className="leading-[150%] font-medium text-black">Topic</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
+              <div className="leading-[150%] font-medium text-xl text-black">General</div>
+              <Link to="/signup" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Signup</Link>
+              <Link to="/sub" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Pricing</Link>
+              {/* <div className="leading-[150%] font-medium">Page</div> */}
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">
-              <div className="leading-[150%] font-medium text-black">Topic</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
+              <div className="leading-[150%] font-medium text-xl text-black">Need Help?</div>
+              <Link to="/contact" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Contact Us</Link>
+              {/* <Link to="/sub" style={{ color: 'inherit', textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:underline">Pricing</Link> */}
+              {/* <div className="leading-[150%] font-medium">Page</div> */}
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">
-              <div className="leading-[150%] font-medium text-black">Topic</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
-              <div className="leading-[150%] font-medium">Page</div>
+              <div className="leading-[150%] font-medium text-xl text-black">Others</div>
+              <Link to="/adminlogin" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Admin Login</Link>
+              <Link to="/my-dashboard" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Your Profile</Link>
+              {/* <div className="leading-[150%] font-medium">Page</div> */}
             </div>
           </div>
         </div>

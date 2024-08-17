@@ -7,61 +7,82 @@ import Navbar from '../../Common/Navbar';
 import Footer from '../../Common/Footer';
 
 const ProfileContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px;
-background-color: #f9f9f9;
-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
 `;
 
 const ProfileHeader = styled.h1`
-font-size: 2rem;
-margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 `;
 
 const ProfileImage = styled.img`
-width: 150px;
-height: 150px;
-border-radius: 50%;
-margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 `;
 
 const ProfileInfo = styled.div`
-width: 100%;
-max-width: 800px;
-background: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const SectionTitle = styled.h2`
-font-size: 1.5rem;
-margin-top: 20px;
-cursor: pointer;
-user-select: none;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e2e2e2;
+  }
+`;
+
+const SectionContent = styled.div`
+  margin-top: 10px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  max-height: ${({ isVisible }) => (isVisible ? '100%' : '0')};
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 `;
 
 const Field = styled.p`
-font-size: 1rem;
-margin: 10px 0;
+  font-size: 1rem;
+  margin: 10px 0;
 `;
 
 const RecommendedButton = styled.button`
-text-white;
-background-color: #1a202c;
-// width: 35%;
-// height: 4vh;
-border-radius: 30px;
-margin-top: 20px;
-color: #fff;
-padding: 10px;
-border: none;
-cursor: pointer;
-&:hover {
-  background-color: #2d3748;
-}
+  text-white;
+  background-color: #1a202c;
+  border-radius: 30px;
+  margin-top: 20px;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #2d3748;
+  }
 `;
 
 const ProfileDetails = () => {
@@ -331,6 +352,9 @@ const ProfileDetails = () => {
       </ProfileInfo>
       <RecommendedButton onClick={() => navigate('/rec')}>
         Show All Recommended Profiles
+      </RecommendedButton>
+      <RecommendedButton onClick={() => navigate('/profile')}>
+        Edit Details
       </RecommendedButton>
       <RecommendedButton onClick={() => navigate('/change-password')}>
         Change password
