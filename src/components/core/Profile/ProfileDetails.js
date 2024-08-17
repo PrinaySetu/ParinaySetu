@@ -92,7 +92,25 @@ const ProfileDetails = () => {
   const user = useSelector((state) => state.profile.user);
   const loading = useSelector((state) => state.profile.loading);
   const [visibleSections, setVisibleSections] = useState({});
-
+  const [showDocumentsDropdown, setShowDocumentsDropdown] = useState(false);
+  const [showSubDropdown, setShowSubDropdown] = useState({
+    addressProofs: false,
+    educationDocuments: false,
+    familyPhoto: false,
+    idProofs: false,
+    incomeProofs: false,
+    otherDocuments: false,
+    photos: false,
+    propertyproofs: false,
+  });
+  
+  const toggleSubDropdown = (key) => {
+    setShowSubDropdown(prevState => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+  };
+  
   useEffect(() => {
     if (token) {
       dispatch(getUserDetails(token));
@@ -160,6 +178,7 @@ const ProfileDetails = () => {
     {
       title: "Personal Information",
       fields: [
+        {label:"Age", value:user.additionalDetails?.Age},
         { label: "Father's Name", value: user.additionalDetails?.fatherName },
         { label: "Mother's Name", value: user.additionalDetails?.motherName },
         { label: "Guardian's Name", value: user.additionalDetails?.guardianName },
@@ -350,6 +369,7 @@ const ProfileDetails = () => {
       <ProfileInfo>
         {sections.map((section) => renderSection(section.title, section.fields))}
       </ProfileInfo>
+      
       <RecommendedButton onClick={() => navigate('/rec')}>
         Show All Recommended Profiles
       </RecommendedButton>

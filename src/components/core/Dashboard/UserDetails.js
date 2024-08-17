@@ -103,6 +103,7 @@ const MainUserDetails = () => {
         <p style={styles.detail}><strong>First Name:</strong> {mainUserDashboard.firstName}</p>
         <p style={styles.detail}><strong>Last Name:</strong> {mainUserDashboard.lastName}</p>
         <p style={styles.detail}><strong>Email:</strong> {mainUserDashboard.email}</p>
+        <p style={styles.detail}><strong>Age:</strong> {mainUserDashboard.additionalDetails?.Age}</p>
         <p style={styles.detail}><strong>Father's Name:</strong> {mainUserDashboard.additionalDetails?.fatherName}</p>
         <p style={styles.detail}><strong>Mother's Name:</strong> {mainUserDashboard.additionalDetails?.motherName}</p>
         <p style={styles.detail}><strong>Guardian Name:</strong> {mainUserDashboard.additionalDetails?.guardianName}</p>
@@ -110,6 +111,7 @@ const MainUserDetails = () => {
         <p style={styles.detail}><strong>User Type:</strong> {mainUserDashboard.userType}</p>
         <p style={styles.detail}><strong>User ID:</strong> {mainUserDashboard._id}</p>
         <p style={styles.detail}><strong>Account Created:</strong> {new Date(mainUserDashboard.date).toLocaleString()}</p>
+        <img src={mainUserDashboard.image} alt={mainUserDashboard.firstName} className='w-24 h-24 rounded-full object-cover mr-4' />
       </div>
 
       <h2 style={styles.subHeading}>Other Users</h2>
@@ -123,6 +125,7 @@ const MainUserDetails = () => {
               <p style={styles.detail}><strong>User Type:</strong> {user.userType}</p>
               <p style={styles.detail}><strong>User ID:</strong> {user._id}</p>
               <p style={styles.detail}><strong>Account Created:</strong> {new Date(user.date).toLocaleString()}</p>
+              <img src={user.image} alt={user.firstName} className='w-24 h-24 rounded-full object-cover mr-4' />
               <input
                 type="checkbox"
                 checked={selectedProfiles.includes(user._id)}

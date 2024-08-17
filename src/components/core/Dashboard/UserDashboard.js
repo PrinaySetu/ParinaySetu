@@ -30,10 +30,13 @@ const UserDashboard = () => {
       </button>
       <h1 className='text-4xl text-red mb-500'>All Users</h1>
       {dashboard && Array.isArray(dashboard) && dashboard.map((user) => (
-        <div key={user._id} className='bg-white rounded-lg shadow-lg p-5 mb-5 w-full max-w-xs max-[350px]:max-w-[250px] sm:max-w-xl'>
-          <p className='text-base text-[#333] mb-2'><strong>Name:</strong> {user.name}</p>
-          <p className='text-base text-[#333] mb-2'><strong>Email:</strong> {user.email}</p>
-          <Link to={`/user/${user._id}`} className='text-base text-red font-bold no-underline'>View Details</Link>
+        <div key={user._id} className='bg-white rounded-lg shadow-lg p-5 mb-5 w-full max-w-xs max-[350px]:max-w-[250px] sm:max-w-xl flex items-center '>
+          <img src={user.image} alt={user.firstName} className='w-24 h-24 rounded-full object-cover mr-4' />
+          <div className='flex flex-col'>
+            <p className='text-base text-[#333] mb-2'><strong>Name:</strong> {user.firstName} {user.lastName}</p>
+            <p className='text-base text-[#333] mb-2'><strong>Email:</strong> {user.email}</p>
+            <Link to={`/user/${user._id}`} className='text-base text-red font-bold no-underline'>View Details</Link>
+          </div>
         </div>
       ))}
     </div>

@@ -34,20 +34,25 @@ const SignupForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
+  
+    if (password.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+      return;
+    }
+  
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-
+  
     const signupData = { ...formData };
-
+  
     // Setting signup data to state
     // To be used after otp verification
     dispatch(setSignupData(signupData));
     // Send OTP to user for verification
     dispatch(sendOtp(formData.email, navigate));
-
+  
     // Reset form fields
     setFormData({
       firstName: '',
@@ -58,6 +63,7 @@ const SignupForm = () => {
       userType: 'user',
     });
   };
+  
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-cornsilk px-4 my-20">

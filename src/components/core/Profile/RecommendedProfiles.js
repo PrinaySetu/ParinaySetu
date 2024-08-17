@@ -57,7 +57,7 @@ const RecommendedProfiles = () => {
             <div className="text-center">
               <p className="text-xl font-semibold text-gray-800 mb-2">{profile.firstName} {profile.lastName}</p>
               <p className="text-gray-600 mb-1">{profile.additionalDetails.gender}</p>
-              <p className="text-gray-600 mb-5">{profile.additionalDetails.age} years old</p>
+              <p className="text-gray-600 mb-5">{profile.additionalDetails.Age} years old</p>
               <button
                 className="py-2 px-4 text-white font-semibold bg-blue-600 rounded-md transition-colors duration-300 hover:bg-blue-700"
                 onClick={() => handleViewDetails(profile._id)}

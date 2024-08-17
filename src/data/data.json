@@ -1,6 +1,7 @@
 {
   "profile": {
     "fields": [
+      {"name":"Age", "label":"Age", "type":"Number"},
       { "name": "fatherName", "label": "Father's Name", "type": "String" },
       { "name": "motherName", "label": "Mother's Name", "type": "String" },
       { "name": "guardianName", "label": "Guardian's Name", "type": "String" },

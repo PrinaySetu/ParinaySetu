@@ -159,9 +159,9 @@ export const getUserDetails = (token) => {
             });
             console.log("GET_USER_DETAILS API RESPONSE............", response);
 
-            if (!response.data.success) {
-                throw new Error(response.data.message);
-            }
+            // if (!response.data.success) {
+            //     throw new Error(response.data.message);
+            // }
 
             const userData = response.data.data;
 
