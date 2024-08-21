@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { getUserDetails } from '../../../services/operations/profile'; // Adjust the import path as necessary
 import Navbar from '../../Common/Navbar';
 import Footer from '../../Common/Footer';
-
+import Photos from './photos';
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,25 +92,8 @@ const ProfileDetails = () => {
   const user = useSelector((state) => state.profile.user);
   const loading = useSelector((state) => state.profile.loading);
   const [visibleSections, setVisibleSections] = useState({});
-  const [showDocumentsDropdown, setShowDocumentsDropdown] = useState(false);
-  const [showSubDropdown, setShowSubDropdown] = useState({
-    addressProofs: false,
-    educationDocuments: false,
-    familyPhoto: false,
-    idProofs: false,
-    incomeProofs: false,
-    otherDocuments: false,
-    photos: false,
-    propertyproofs: false,
-  });
-  
-  const toggleSubDropdown = (key) => {
-    setShowSubDropdown(prevState => ({
-      ...prevState,
-      [key]: !prevState[key],
-    }));
-  };
-  
+ 
+ 
   useEffect(() => {
     if (token) {
       dispatch(getUserDetails(token));
@@ -366,6 +349,7 @@ const ProfileDetails = () => {
       <Navbar />
       <ProfileHeader>Profile Details</ProfileHeader>
       <ProfileImage src={user.image} alt="Profile" />
+       
       <ProfileInfo>
         {sections.map((section) => renderSection(section.title, section.fields))}
       </ProfileInfo>
@@ -379,6 +363,7 @@ const ProfileDetails = () => {
       <RecommendedButton onClick={() => navigate('/change-password')}>
         Change password
       </RecommendedButton>
+    {/* <Photos /> */}
     </ProfileContainer>
   );
 };

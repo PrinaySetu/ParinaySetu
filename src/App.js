@@ -37,6 +37,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import ChangePassword from "./components/core/Auth/UpdatePassword";
 import SubscriptionComponent from "./components/core/susbscription";
+import Photos from "./components/core/Profile/photos";
 
 
 
@@ -359,6 +360,15 @@ function App() {
           element={
             <Error />
           } />
+
+          {
+            <Route
+              path="p"
+              element={
+                <Photos/>
+              } />
+              
+          }
       </Routes>
     </div>
   );
