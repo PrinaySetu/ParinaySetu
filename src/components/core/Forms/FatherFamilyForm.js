@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
   const [dataFetched, setDataFetched] = useState(false);
+  const navigate = useNavigate();
 
   const { register, control, handleSubmit, formState: { errors }, reset } = useForm();
   const { fields: tauFields, append: addTau, remove: removeTau } = useFieldArray({
@@ -148,11 +150,23 @@ const FatherFamilyForm = ({ createFunction, updateFunction, getData }) => {
           <button type="button" onClick={() => addChacha()} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Chacha</button>
         </div>
 
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6 md:mt-8">
           <button type="submit" className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1">
             {isEdit ? 'Update' : 'Create'}
           </button>
         </div>
+        {/* Go to Home Button (conditionally rendered) */}
+        {isEdit && (
+          <div className="flex justify-center mt-6 md:mt-8">
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
+            >
+              Go to Home
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

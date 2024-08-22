@@ -1,37 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for navigation
 
 const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, profilePicture, handleProfilePictureChange, handleProfilePictureUpload, showProfilePictureUpload }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
   const [dataFetched, setDataFetched] = useState(false);
+  const navigate = useNavigate();  // Initialize useNavigate for navigation
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const fetchData = async () => {
     try {
       const data = await getData(token)(dispatch);
-      console.log('dasdasda', data)
-      // console.log('dasdasda', Object.keys(data))
+      console.log('Data fetched:', data);
       if (data) {
         setIsEdit(true);
         reset(data); // Populate form with fetched data
       }
-      // setDataFetched(true);
     } catch (error) {
       console.error("Error fetching data:", error);
-      // setDataFetched(true);
     }
   };
 
   useEffect(() => {
-
     fetchData();
   }, [getData, token, dispatch, reset]);
-  // console.log('token', token)
 
   const onSubmit = (data) => {
     const apiFunction = isEdit ? updateFunction : createFunction;
@@ -46,6 +42,8 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
         <span className='text-blue-600'>Profile</span>
       </h2>
       <p className="text-lg md:text-xl text-center text-gray-500 mb-6 md:mb-8">Please fill in your details</p>
+
+      {/* Profile Picture Upload Section */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 md:gap-6">
         {showProfilePictureUpload && (
           <div className="flex flex-col">
@@ -57,11 +55,13 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
                 className="py-2 md:py-3 px-3 md:px-4 text-sm md:text-base border-2 border-[#D3D3D3] border-gray-300 rounded-md bg-white outline-none transition-colors duration-300 ease-in-out"
               />
             </label>
-            <button onClick={handleProfilePictureUpload} type="button" className="mt-2 py-2 md:py-3 px-4 md: px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1">
+            <button onClick={handleProfilePictureUpload} type="button" className="mt-2 py-2 md:py-3 px-4 md: px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer">
               Upload Profile Picture
             </button>
           </div>
         )}
+
+        {/* Dynamic Fields */}
         {fields.map((field) => (
           <div key={field.name} className="flex flex-col">
             <label className="flex flex-col gap-2 text-sm md:text-base font-semibold text-gray-700">{field.label}
@@ -75,17 +75,31 @@ const ProfileFormTemplate = ({ fields, createFunction, updateFunction, getData, 
             {errors[field.name] && <p className="text-red-500 text-xs md:text-sm mt-1">{field.name} is required</p>}
           </div>
         ))}
+
+        {/* Submit Button */}
         <div className="flex justify-center mt-6 md:mt-8">
           <button
             type="submit"
-            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1"
+            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
           >
             {isEdit ? 'Update' : 'Create'}
           </button>
         </div>
+
+        {/* Go to Home Button (conditionally rendered) */}
+        {isEdit && (
+          <div className="flex justify-center mt-6 md:mt-8">
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
+            >
+              Go to Home
+            </button>
+          </div>
+        )}
       </form>
     </div>
-
   );
 };
 

@@ -110,18 +110,18 @@ const SubscriptionComponent = () => {
                                 >
                                     {plan.features.map((feature, index) => (
                                         <li key={index} className="flex gap-x-3">
-                                            <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-red-500" />
+                                            <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-red" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                             <div className="mt-8 lg:mt-0 lg:ml-8">
-                                <div className="rounded-5xl bg-yellow-50 py-10 text-center ring-1 ring-inset ring-yellow-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                                <div className="rounded-5xl bg-yellow-50 py-10 text-center ring-1 ring-inset ring-yellow-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 lg:w-[300px]"> {/* Added min-h-[300px] for consistent height */}
                                     <div className="mx-auto max-w-xs px-8">
                                         <p className="text-base font-semibold text-richblack-500">Pay once, own it forever</p>
                                         <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                                            <span className="text-2xl font-bold tracking-tight text-richblack-900">₹{plan.price}</span>
+                                            <span className="text-4xl font-bold tracking-tight text-richblack-900">₹{plan.price}</span>
                                             <span className="text-sm font-semibold leading-6 tracking-wide text-richblack-500">INR</span>
                                         </p>
                                         <button
@@ -136,6 +136,7 @@ const SubscriptionComponent = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     ))}
                 </div>
