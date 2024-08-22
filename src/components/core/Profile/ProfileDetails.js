@@ -92,8 +92,8 @@ const ProfileDetails = () => {
   const user = useSelector((state) => state.profile.user);
   const loading = useSelector((state) => state.profile.loading);
   const [visibleSections, setVisibleSections] = useState({});
- 
- 
+
+
   useEffect(() => {
     if (token) {
       dispatch(getUserDetails(token));
@@ -161,7 +161,7 @@ const ProfileDetails = () => {
     {
       title: "Personal Information",
       fields: [
-        {label:"Age", value:user.additionalDetails?.Age},
+        { label: "Age", value: user.additionalDetails?.Age },
         { label: "Father's Name", value: user.additionalDetails?.fatherName },
         { label: "Mother's Name", value: user.additionalDetails?.motherName },
         { label: "Guardian's Name", value: user.additionalDetails?.guardianName },
@@ -349,11 +349,14 @@ const ProfileDetails = () => {
       <Navbar />
       <ProfileHeader>Profile Details</ProfileHeader>
       <ProfileImage src={user.image} alt="Profile" />
-       
+
       <ProfileInfo>
         {sections.map((section) => renderSection(section.title, section.fields))}
       </ProfileInfo>
-      
+
+      <RecommendedButton onClick={() => navigate('/Documents')}>
+        View Documents
+      </RecommendedButton>
       <RecommendedButton onClick={() => navigate('/rec')}>
         Show All Recommended Profiles
       </RecommendedButton>
@@ -363,7 +366,7 @@ const ProfileDetails = () => {
       <RecommendedButton onClick={() => navigate('/change-password')}>
         Change password
       </RecommendedButton>
-    {/* <Photos /> */}
+      {/* <Photos /> */}
     </ProfileContainer>
   );
 };

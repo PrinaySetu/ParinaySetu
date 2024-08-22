@@ -10,34 +10,70 @@ const PhotosContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+`;
+
+const BackButton = styled.button`
+    align-self: flex-start;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #2196f3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4169E1;
+    }
 `;
 
 const CategoryContainer = styled.div`
     margin-bottom: 30px;
     width: 100%;
+    max-width: 1200px;
 `;
 
 const CategoryTitle = styled.h2`
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: left;
-    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
 `;
 
 const PhotoGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
 `;
 
 const PhotoItem = styled.img`
     width: 100%;
     height: auto;
     border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 const LoadingIndicator = styled.div`
     font-size: 1.5em;
     color: #666;
+    margin-top: 20px;
+`;
+
+const ErrorMessage = styled.div`
+    color: #e74c3c;
+    font-size: 1.2em;
     margin-top: 20px;
 `;
 
@@ -66,13 +102,13 @@ const Photos = React.memo(() => {
     useEffect(() => {
         if (user && user.additionalDetails?.documents) {
             setDocuments(user.additionalDetails.documents);
-            setPhotoLoading(false); // Assume photos are loaded immediately after documents are set
+            setPhotoLoading(false);
         }
     }, [user]);
 
     if (loading) return <LoadingIndicator>Loading user details...</LoadingIndicator>;
     if (photoLoading) return <LoadingIndicator>Loading photos...</LoadingIndicator>;
-    if (error) return <div>Error: {error}</div>;
+    if (error) return <ErrorMessage>Error: {error}</ErrorMessage>;
 
     const handlePhotoClick = (photo) => {
         setSelectedPhoto(photo);
@@ -82,18 +118,23 @@ const Photos = React.memo(() => {
         setSelectedPhoto(null);
     };
 
+    const handleBackToProfile = () => {
+        navigate('/my-dashboard');
+    };
+
     return (
         <PhotosContainer>
+            <BackButton onClick={handleBackToProfile}>Back to Profile</BackButton>
             <h1>Documents</h1>
             {Object.entries(documents).map(([category, photos]) => (
                 <CategoryContainer key={category}>
                     <CategoryTitle>{category}</CategoryTitle>
                     <PhotoGrid>
                         {(Array.isArray(photos) ? photos : []).map((photo, index) => (
-                            <PhotoItem 
-                                key={index} 
-                                src={photo} 
-                                alt={`${category}-photo-${index}`} 
+                            <PhotoItem
+                                key={index}
+                                src={photo}
+                                alt={`${category}-photo-${index}`}
                                 onClick={() => handlePhotoClick(photo)}
                             />
                         ))}

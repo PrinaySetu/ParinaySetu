@@ -370,7 +370,7 @@ function App() {
 
         {
           <Route
-            path="p"
+            path="Documents"
             element={
               <Photos />
             } />
