@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { sendOtp } from '../../../services/operations/authAPi';
 import { setSignupData } from '../../../slices/authSlice';
@@ -9,6 +10,7 @@ import { setSignupData } from '../../../slices/authSlice';
 const SignupForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,10 +20,17 @@ const SignupForm = () => {
     userType: 'user',
   });
 
+  useEffect(() => {
+    if (location.state?.formData) {
+      setFormData(location.state.formData);
+    }
+  }, [location]);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFocused1, setIsFocused1] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const { firstName, lastName, email, password, confirmPassword, userType } = formData;
 
@@ -34,25 +43,25 @@ const SignupForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-  
+
     if (password.length < 8) {
       toast.error('Password must be at least 8 characters long');
       return;
     }
-  
+
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-  
+
     const signupData = { ...formData };
-  
+
     // Setting signup data to state
     // To be used after otp verification
     dispatch(setSignupData(signupData));
     // Send OTP to user for verification
     dispatch(sendOtp(formData.email, navigate));
-  
+
     // Reset form fields
     setFormData({
       firstName: '',
@@ -62,8 +71,8 @@ const SignupForm = () => {
       confirmPassword: '',
       userType: 'user',
     });
+    setIsChecked(false);
   };
-  
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-cornsilk px-4 my-20">
@@ -141,7 +150,6 @@ const SignupForm = () => {
                 {showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB3bf' />) : (<AiOutlineEye fontSize={24} fill='#AFB3bf' />)}
               </span>
             </div>
-
           </label>
           <label className="w-full flex flex-col">
             <p className="text-sm sm:text-[0.875rem] text-gray-900 mb-1 leading-[1.375rem]">
@@ -165,13 +173,39 @@ const SignupForm = () => {
                 {showConfirmPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB3bf' />) : (<AiOutlineEye fontSize={24} fill='#AFB3bf' />)}
               </span>
             </div>
+          </label>
+          {/* Terms and Conditions Checkbox */}
+          <label className="flex items-center text-sm text-gray-900">
+            <input
+              type="checkbox"
+              className="mr-2"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+              required
+            />
+            I accept the{' '}
+            <Link
+              to="/terms"
+              state={{ formData: formData }}
+              className="text-blue-600 underline ml-1"
+            >
+              Terms and Conditions
+            </Link>
 
           </label>
-          <button type="submit" className="w-full bg-khaki-100 rounded-lg text-white py-2 mt-4 cursor-pointer">Create Account</button>
+
+
+          <button
+            type="submit"
+            className={`w-full bg-khaki-100 rounded-lg text-white py-2 mt-4 cursor-pointer ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={!isChecked}
+          >
+            Create Account
+          </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default SignupForm;

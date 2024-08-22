@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadDocument, updateDocument } from '../../../services/operations/document';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const DocumentForm = () => {
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
     const [isEdit, setIsEdit] = useState(false);
     const [dataFetched, setDataFetched] = useState(false);
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -130,6 +132,17 @@ const DocumentForm = () => {
                         {isEdit ? 'Update' : 'Upload Documents'}
                     </button>
                 </div>
+                {isEdit && (
+                    <div className="flex justify-center mt-6 md:mt-8">
+                        <button
+                            type="button"
+                            onClick={() => navigate('/')}
+                            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
+                        >
+                            Go to Home
+                        </button>
+                    </div>
+                )}
             </form>
         </div>
     );

@@ -38,6 +38,7 @@ import UpdatePassword from "./pages/UpdatePassword";
 import ChangePassword from "./components/core/Auth/UpdatePassword";
 import SubscriptionComponent from "./components/core/susbscription";
 import Photos from "./components/core/Profile/photos";
+import TermsAndConditions from "./components/Common/Terms"
 
 
 
@@ -321,6 +322,12 @@ function App() {
 
         {/* Contact page */}
         <Route
+          path="/terms"
+          element={
+            <TermsAndConditions />
+          }
+        />
+        <Route
           path="/contact"
           element={
             <ContactPage />
@@ -361,14 +368,14 @@ function App() {
             <Error />
           } />
 
-          {
-            <Route
-              path="p"
-              element={
-                <Photos/>
-              } />
-              
-          }
+        {
+          <Route
+            path="p"
+            element={
+              <Photos />
+            } />
+
+        }
       </Routes>
     </div>
   );

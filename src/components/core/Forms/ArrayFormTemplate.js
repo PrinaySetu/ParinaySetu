@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for navigation
 
 const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [isEdit, setIsEdit] = useState(false);
   const [dataFetched, setDataFetched] = useState(false);
+  const navigate = useNavigate();  // Initialize useNavigate for navigation
 
   const { register, control, handleSubmit, formState: { errors }, reset } = useForm();
   const { fields: brothers, append: addBrother, remove: removeBrother } = useFieldArray({
@@ -82,10 +84,10 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
                   </label>
                 </div>
               ))}
-              <button type="button" onClick={() => removeBrother(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out">Remove Brother</button>
+              <button type="button" onClick={() => removeBrother(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out cursor-pointer">Remove Brother</button>
             </div>
           ))}
-          <button type="button" onClick={() => addBrother({})} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Brother</button>
+          <button type="button" onClick={() => addBrother({})} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out cursor-pointer">Add Brother</button>
         </div>
 
         <div className="mt-5 p-4 bg-floral-white rounded-md">
@@ -104,20 +106,33 @@ const ArrayFormTemplate = ({ fields, createFunction, updateFunction, getData }) 
                   </label>
                 </div>
               ))}
-              <button type="button" onClick={() => removeSister(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out">Remove Sister</button>
+              <button type="button" onClick={() => removeSister(index)} className="mt-2 py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-red hover:bg-red-600 rounded-md transition duration-300 ease-in-out cursor-pointer">Remove Sister</button>
             </div>
           ))}
-          <button type="button" onClick={() => addSister({})} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Add Sister</button>
+          <button type="button" onClick={() => addSister({})} className="py-2 md:py-3 px-4 md:px-6 text-sm md:text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out cursor-pointer">Add Sister</button>
         </div>
 
         <div className="flex justify-center mt-6 md:mt-8">
           <button
             type="submit"
-            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1"
+            className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
           >
             {isEdit ? 'Update' : 'Create'}
           </button>
         </div>
+
+        {/* Go to Home Button (conditionally rendered) */}
+        {isEdit && (
+          <div className="flex justify-center mt-6 md:mt-8">
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="py-3 px-8 text-xl font-semibold text-white bg-blue-500 rounded-md transition-all duration-300 hover:bg-blue-600 transform hover:-translate-y-1 cursor-pointer"
+            >
+              Go to Home
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );
