@@ -8,6 +8,9 @@ export const endpoints = {
     RESETPASSTOKEN_API: BASE_URL + "/auth/reset-password-token",
     RESETPASSWORD_API: BASE_URL + "/auth/reset-password",
     CHANGEPASSWORD_API: BASE_URL + "/auth/changePassword",
+    ADDLINK_API: BASE_URL + "/auth/addLink",
+    GETLINKS_API: BASE_URL + "/auth/getLinks",
+    UPDATELINK_API: BASE_URL + "/auth/updateLink",
   }
 
   export const contactEndpoints = {

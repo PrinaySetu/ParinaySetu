@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link, matchPath } from 'react-router-dom';
 import ProfileDropdown from "../core/Auth/ProfileDropDown";
+import { getLink } from '../../services/operations/authAPi'; // Adjust import path if necessary
+import { toast } from 'react-hot-toast'
 
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);
   const location = useLocation();
+  const [link, setLink] = useState('');
+
+  useEffect(() => {
+    const fetchLink = async () => {
+      try {
+        const fetchedLink = await getLink();
+        console.log("Fetched link:", fetchedLink);
+        if (fetchedLink) {
+          setLink(fetchedLink);
+        }
+      } catch (error) {
+        console.error("Error fetching link:", error);
+        toast.error("Failed to fetch translation link");
+      }
+    };
+    fetchLink();
+  }, []);
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
-  };
-
-  const onContactUsTextClick = () => {
-    // Implement the functionality for contact us click
-
   };
 
   const getNavItemClass = (path) => {
@@ -24,7 +38,6 @@ const Navbar = () => {
   };
 
   return (
-    // <section className="flex flex-col flex-wrap">
     <div className="flex flex-col min-[769px]:flex-row justify-center items-center bg-khaki-100 py-4 min-[769px]:pr-20 min-[769px]:pl-6 rounded-b-[30px] sm:rounded-[30px] mx-auto sm:my-4 w-11/12 sm:w-[calc(100%_-_214px)] p-4">
       <div className="flex flex-col min-[769px]:flex-row justify-between items-center w-full">
         <div className="flex flex-col items-center min-[769px]:items-start">
@@ -39,7 +52,6 @@ const Navbar = () => {
             <Link to='/sub' style={{ color: 'inherit', textDecoration: 'none' }}>Pricing</Link>
           </div>
           <div className={getNavItemClass("/contact")}>
-
             <Link to='/contact' style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>
           </div>
           {token === null && (
@@ -53,68 +65,20 @@ const Navbar = () => {
             </>
           )}
           {token !== null && <ProfileDropdown />}
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red text-white rounded-[15px] py-3.5 px-6 text-lg sm:text-xl"
+            >
+              Translate
+            </a>
+          )}
         </div>
       </div>
     </div>
-    // </section>
   );
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-// import React from 'react'
-// import { useEffect, useState } from "react"
-// import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
-// import { BsChevronDown } from "react-icons/bs"
-// import { useSelector } from "react-redux"
-// import { Link, matchPath, useLocation } from "react-router-dom"
-// import { apiConnector } from "../../services/apiConnector"
-// import { setLoading } from '../../slices/authSlice'
-// import ProfileDropdown from "../core/Auth/ProfileDropDown"
-// const Navbar = () => {
-//   const { token } = useSelector((state) => state.auth)
-//   const { user } = useSelector((state) => state.profile)
-//   const location = useLocation();
-//   const matchRoute = (route) => {
-//     return matchPath({ path: route }, location.pathname)
-//   }
-//   return (
-//     <div>
-//       <div className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700 ${location.pathname !== "/" ? "bg-richblack-800" : ""
-//         } transition-all duration-200`}>
-//         <div>
-//           {/* Logo */}
-//           <Link to='/'>
-//             <img src='' alt='logo' width={160} height={32} loading="lazy" />
-//           </Link>
-//           {/* Navigation Links */}
-//           <nav>
-//             {token === null && (
-//               <Link to="/login">
-//                 <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-//                   Log in
-//                 </button>
-//               </Link>
-//             )}
-//             {token === null && (
-//               <Link to="/signup">
-//                 <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
-//                   Sign up
-//                 </button>
-//               </Link>
-//             )}
-//             {token !== null && <ProfileDropdown />}
-//           </nav>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar

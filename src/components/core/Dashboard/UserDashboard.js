@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../../services/operations/dashboard';
 import { Link, useNavigate } from 'react-router-dom';
-
+import LinkModal from './LinkModal';
 const UserDashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,6 +39,7 @@ const UserDashboard = () => {
           </div>
         </div>
       ))}
+      <LinkModal />
     </div>
   );
 };

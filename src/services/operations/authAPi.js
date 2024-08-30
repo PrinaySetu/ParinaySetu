@@ -15,6 +15,9 @@ const {
   RESETPASSTOKEN_API,
   RESETPASSWORD_API,
   CHANGEPASSWORD_API,
+  ADDLINK_API,
+  GETLINKS_API,
+  UPDATELINK_API,
 } = endpoints
 
 export function sendOtp(email, navigate) {
@@ -231,6 +234,76 @@ export async function changePassword(token, formData) {
     toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
+    toast.error(error.response.data.message)
+  }
+  toast.dismiss(toastId)
+}
+
+export async function addLink(token, formData) {
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("POST", ADDLINK_API, formData, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("ADD_LINK_API API RESPONSE............", response)
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    toast.success("Link Added Successfully")
+  } catch (error) {
+    console.log("ADD_LINK_API API ERROR............", error)
+    toast.error(error.response.data.message)
+  }
+  toast.dismiss(toastId)
+}
+export async function getLink() {
+  const toastId = toast.loading("Loading...");
+  try {
+    const response = await apiConnector("GET", GETLINKS_API);
+    console.log("GET_LINK_API API RESPONSE............", response);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message || "Failed to fetch link");
+    }
+    toast.success("Link fetched successfully");
+    return response.data.link;
+  } catch (error) {
+    console.error("GET_LINK_API API ERROR............", error);
+    let errorMessage = "An error occurred while fetching the link";
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      errorMessage = error.response.data.message || `Error: ${error.response.status}`;
+    } else if (error.request) {
+      // The request was made but no response was received
+      errorMessage = "No response received from server";
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      errorMessage = error.message;
+    }
+    toast.error(errorMessage);
+    throw error; // Re-throw the error so it can be caught in the component
+  } finally {
+    toast.dismiss(toastId);
+  }
+}
+
+
+export async function updateLink(token, formData) {
+  const toastId = toast.loading("Loading...")
+  try {
+    const response = await apiConnector("PUT", UPDATELINK_API, formData, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("UPDATE_LINK_API API RESPONSE............", response)
+
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    toast.success("Link Updated Successfully")
+  } catch (error) {
+    console.log("UPDATE_LINK_API API ERROR............", error)
     toast.error(error.response.data.message)
   }
   toast.dismiss(toastId)
