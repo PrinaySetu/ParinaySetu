@@ -65,16 +65,11 @@ const Navbar = () => {
             </>
           )}
           {token !== null && <ProfileDropdown />}
-          {link && (
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-red text-white rounded-[15px] py-3.5 px-6 text-lg sm:text-xl"
-            >
+          <div className="shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)] rounded-[15px] bg-white py-3.5 px-6 text-red justify-center">
+            <Link to={link} target="_blank" style={{ color: 'inherit', textDecoration: 'none' }}>
               Translate
-            </a>
-          )}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

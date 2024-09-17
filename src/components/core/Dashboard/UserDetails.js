@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMainUser, getAllOtherUsers } from '../../../services/operations/dashboard';
@@ -80,7 +80,7 @@ const MainUserDetails = () => {
       toast.error("Failed to update recommended profiles");
     }
   };
-  
+
   const handleBack = () => {
     navigate(-1);
   };
@@ -117,7 +117,7 @@ const MainUserDetails = () => {
         <button className="py-2 px-4 text-white font-semibold bg-blue-600 rounded-md transition-colors duration-300 hover:bg-blue-700"
           onClick={() => handleViewDetails(mainUserDashboard._id)}
         >
-          View Details
+          View Full Details
         </button>
       </div>
 
@@ -134,10 +134,10 @@ const MainUserDetails = () => {
               <p style={styles.detail}><strong>User ID:</strong> {user._id}</p>
               <p style={styles.detail}><strong>Account Created:</strong> {new Date(user.date).toLocaleString()}</p>
               <button className="py-2 px-4 text-white font-semibold bg-blue-600 rounded-md transition-colors duration-300 hover:bg-blue-700"
-          onClick={() => handleViewDetails(user._id)}
-        >
-          View Details
-        </button>
+                onClick={() => handleViewDetails(user._id)}
+              >
+                View Full Details
+              </button>
               <input
                 type="checkbox"
                 checked={selectedProfiles.includes(user._id)}
