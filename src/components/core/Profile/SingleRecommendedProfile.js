@@ -368,31 +368,6 @@ const SingleRecommendedProfile = () => {
     }
   ];
   return (
-    // <div style={styles.container}>
-    //   <Navbar />
-    //   {profile ? (
-    //     <div style={styles.profileCard}>
-    //       <h2 style={styles.profileName}>{profile.firstName} {profile.lastName}</h2>
-    //       <img
-    //         style={styles.profileImage}
-    //         src={profile.image}
-    //         alt={`${profile.firstName} ${profile.lastName}`}
-    //       />
-    //       <div style={styles.profileDetails}>
-    //         <p style={styles.detailItem}><strong>Email:</strong> {profile.email}</p>
-    //         <p style={styles.detailItem}><strong>Gender:</strong> {profile.additionalDetails.gender}</p>
-    //         <p style={styles.detailItem}><strong>Age:</strong> {profile.additionalDetails.Age}</p>
-    //         {/* Add more fields as needed */}
-    //         <p style={styles.detailItem}><strong>BirthDate:</strong> {profile.additionalDetails.birthDate}</p>
-            
-            
-    //       </div>
-    //       <button style={styles.backButton} onClick={handleBack}>Back</button>
-    //     </div>
-    //   ) : (
-    //     <p>No profile found.</p>
-    //   )}
-    // </div>
     <ProfileContainer>
       <Navbar />
       <ProfileHeader>{user.firstName} {user.lastName}'s Profile</ProfileHeader>
@@ -407,7 +382,7 @@ const SingleRecommendedProfile = () => {
       ) : (
         <NoDataMessage>No documents available.</NoDataMessage>
       )}
-      
+
       <RecommendedButton onClick={handleBack}>Back to Previous Page</RecommendedButton>
       <Footer />
     </ProfileContainer>
