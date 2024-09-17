@@ -8,6 +8,10 @@ const PhotosContainer = styled.div`
     padding: 20px;
     background-color: #f9f9f9;
     min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 `;
 
 const BackButton = styled.button`
@@ -23,7 +27,7 @@ const BackButton = styled.button`
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: #4169E1;
+        background-color: #4169e1;
     }
 `;
 
@@ -73,6 +77,17 @@ const PhotoItem = styled.img`
     }
 `;
 
+const NoPhotosMessage = styled.p`
+    font-size: 1rem;
+    color: #999;
+    text-align: center;
+    padding: 10px;
+`;
+
+const Placeholder = styled.div`
+    flex-grow: 1; /* Ensures this placeholder takes up remaining space to prevent layout shift */
+`;
+
 const RecommendedPhotos = ({ documents }) => {
     const navigate = useNavigate();
     const [selectedPhoto, setSelectedPhoto] = useState(null);
@@ -99,9 +114,9 @@ const RecommendedPhotos = ({ documents }) => {
 
     return (
         <PhotosContainer>
-            <BackButton onClick={handleBackToProfile}>Back to Profile</BackButton>
+            {/* <BackButton onClick={handleBackToProfile}>Back to Profile</BackButton> */}
             <h1>Documents</h1>
-            {Object.entries(documents).map(([category, photos]) => (
+            {Object.entries(documents).filter(([category]) => category !== '__v' && category !== '_id').map(([category, photos]) => (
                 <CategoryContainer key={category}>
                     <CategoryHeader onClick={() => toggleCategory(category)}>
                         <CategoryTitle>{category}</CategoryTitle>
@@ -110,19 +125,26 @@ const RecommendedPhotos = ({ documents }) => {
                         </ToggleIcon>
                     </CategoryHeader>
                     {expandedCategories[category] && (
-                        <PhotoGrid>
-                            {(Array.isArray(photos) ? photos : []).map((photo, index) => (
-                                <PhotoItem
-                                    key={index}
-                                    src={photo}
-                                    alt={`${category}-photo-${index}`}
-                                    onClick={() => handlePhotoClick(photo)}
-                                />
-                            ))}
-                        </PhotoGrid>
+                        <>
+                            {Array.isArray(photos) && photos.length > 0 ? (
+                                <PhotoGrid>
+                                    {photos.map((photo, index) => (
+                                        <PhotoItem
+                                            key={index}
+                                            src={photo}
+                                            alt={`${category}-photo-${index}`}
+                                            onClick={() => handlePhotoClick(photo)}
+                                        />
+                                    ))}
+                                </PhotoGrid>
+                            ) : (
+                                <NoPhotosMessage>No photos available in this category</NoPhotosMessage>
+                            )}
+                        </>
                     )}
                 </CategoryContainer>
             ))}
+            <Placeholder /> {/* Ensures consistent spacing and layout */}
             <PhotoViewer photo={selectedPhoto} onClose={handleCloseViewer} />
         </PhotosContainer>
     );
