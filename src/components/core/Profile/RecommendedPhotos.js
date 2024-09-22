@@ -1,92 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import PhotoViewer from './PhotoViewer';
-
-const PhotosContainer = styled.div`
-    padding: 20px;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-`;
-
-const BackButton = styled.button`
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    background-color: #2196f3;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-        background-color: #4169e1;
-    }
-`;
-
-const CategoryContainer = styled.div`
-    margin-bottom: 20px;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-`;
-
-const CategoryHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px 0;
-`;
-
-const CategoryTitle = styled.h2`
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-`;
-
-const ToggleIcon = styled.div`
-    font-size: 1.5rem;
-    color: #333;
-`;
-
-const PhotoGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 10px;
-`;
-
-const PhotoItem = styled.img`
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-`;
-
-const NoPhotosMessage = styled.p`
-    font-size: 1rem;
-    color: #999;
-    text-align: center;
-    padding: 10px;
-`;
-
-const Placeholder = styled.div`
-    flex-grow: 1; /* Ensures this placeholder takes up remaining space to prevent layout shift */
-`;
 
 const RecommendedPhotos = ({ documents }) => {
     const navigate = useNavigate();
@@ -113,40 +28,41 @@ const RecommendedPhotos = ({ documents }) => {
     };
 
     return (
-        <PhotosContainer>
-            {/* <BackButton onClick={handleBackToProfile}>Back to Profile</BackButton> */}
-            <h1>Documents</h1>
+        <div className="p-5 sm:w-4/5 min-h-screen max-w-5xl mx-auto flex flex-col">
+            {/* <button className="mb-5 py-2 px-4 text-white bg-blue-500 rounded-md text-lg font-semibold cursor-pointer transition-colors duration-300 hover:bg-indigo-600" onClick={handleBackToProfile}>Back to Profile</button> */}
+            <h1 className="text-3xl font-semibold mb-5">Documents</h1>
             {Object.entries(documents).filter(([category]) => category !== '__v' && category !== '_id').map(([category, photos]) => (
-                <CategoryContainer key={category}>
-                    <CategoryHeader onClick={() => toggleCategory(category)}>
-                        <CategoryTitle>{category}</CategoryTitle>
-                        <ToggleIcon>
+                <div key={category} className="mb-5 w-full border-b border-gray-300 pb-4">
+                    <div className="flex justify-between items-center cursor-pointer py-2 outline:none" onClick={() => toggleCategory(category)}>
+                        <h2 className="text-5xl font-semibold text-black">{category}</h2>
+                        <div className="text-xl text-black">
                             {expandedCategories[category] ? <FaChevronUp /> : <FaChevronDown />}
-                        </ToggleIcon>
-                    </CategoryHeader>
+                        </div>
+                    </div>
                     {expandedCategories[category] && (
                         <>
                             {Array.isArray(photos) && photos.length > 0 ? (
-                                <PhotoGrid>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-3">
                                     {photos.map((photo, index) => (
-                                        <PhotoItem
+                                        <img
                                             key={index}
                                             src={photo}
                                             alt={`${category}-photo-${index}`}
+                                            className="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-105 shadow-lg cursor-pointer"
                                             onClick={() => handlePhotoClick(photo)}
                                         />
                                     ))}
-                                </PhotoGrid>
+                                </div>
                             ) : (
-                                <NoPhotosMessage>No photos available in this category</NoPhotosMessage>
+                                <p className="text-gray-500 text-center py-2">No photos available in this category</p>
                             )}
                         </>
                     )}
-                </CategoryContainer>
+                </div>
             ))}
-            <Placeholder /> {/* Ensures consistent spacing and layout */}
+            <div className="flex-grow" /> {/* Ensures consistent spacing and layout */}
             <PhotoViewer photo={selectedPhoto} onClose={handleCloseViewer} />
-        </PhotosContainer>
+        </div>
     );
 };
 

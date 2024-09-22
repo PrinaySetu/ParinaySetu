@@ -11,7 +11,6 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   background-color: #f9f9f9;
   color: #333;
 `;
@@ -76,7 +75,7 @@ const Field = styled.p`
 const RecommendedButton = styled.button`
   background-color: #1a202c;
   border-radius: 30px;
-  margin-top: 20px;
+  margin: 20px 0;
   color: #fff;
   padding: 10px;
   border: none;

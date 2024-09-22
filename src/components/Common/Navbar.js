@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-col min-[769px]:flex-row justify-center items-center bg-khaki-100 py-4 min-[769px]:pr-20 min-[769px]:pl-6 rounded-b-[30px] sm:rounded-[30px] mx-auto sm:my-4 w-11/12 sm:w-[calc(100%_-_214px)] p-4">
+    <div className="flex flex-col min-[769px]:flex-row justify-center items-center bg-khaki-100 py-4 min-[769px]:pr-24 min-[769px]:pl-7 rounded-b-[30px] sm:rounded-[30px] mx-auto sm:my-4 w-11/12 min-[769px]:w-[calc(100%_-_214px)] p-4">
       <div className="flex flex-col min-[769px]:flex-row justify-between items-center w-full">
         <div className="flex flex-col items-center min-[769px]:items-start">
           <p className="text-3xl sm:text-45xl font-niconne m-0">Parinay</p>
