@@ -110,15 +110,24 @@ const Home = () => {
             </div>
           </div>
           <div className="text-sm mx-2 md:mx-5 sm:text-base md:text-lg lg:text-xl leading-normal sm:leading-relaxed md:leading-loose text-black text-justify font-body-text">
-            <p className="m-0">Lorem ipsum dolor sit amet consectetur. Tellus donec egestas et a mi fringilla lorem pharetra. Ipsum ac a quam ultrices senectus fermentum pulvinar tortor pretium. Tellus pharetra id dui euismod sed in lacinia quis. Morbi consequat nunc suspendisse leo odio nisi morbi tellus enim. Nisi massa ante egestas egestas enim venenatis facilisi nisl purus. Metus ultricies est viverra luctus eget malesuada viverra. Mollis sit nibh hac risus laoreet. Sit nibh quis nibh viverra eu ante at.</p>
+            <p className="m-0">Marriage is a very important ritual in every caste and religion in human society, which is not only social but also a very important religious ritual. Nowadays the desire to be and look modern has made marriage a business, the truth is hidden by resorting to lies and deceit. Therefore, as soon as the child becomes marriageable, the search for a suitable bride and groom and family becomes the biggest concern for the parents. Keeping all these in mind, we have formed "Parinay Setu Marriage Bureau",
+            </p>
             <p className="m-0">&nbsp;</p>
-            <p className="m-0">Morbi praesent massa ultrices tristique. Egestas et eu sed sapien quis morbi neque quis imperdiet. Tellus eget blandit arcu feugiat at viverra malesuada lacus amet. Elementum diam pellentesque morbi sem ornare pellentesque eu. Diam arcu eu iaculis risus sodales eget. Dictumst elementum commodo cursus maecenas sed leo elit erat. Purus consequat et leo pharetra dis. Cursus nibh vitae nec porta vitae elementum senectus mattis. Urna egestas quis nisl dignissim mi.</p>
+            <p className="m-0">In which members are registered by charging a fixed fee and authentic information of each registered member is made available on the "Patna". Our newly formed organization has some such main features, which give it a unique identity in terms of credibility from other matrimonial organizations running in the country.</p>
             <p className="m-0">&nbsp;</p>
-            <p className="m-0"> Non leo posuere a consequat diam sagittis pellentesque lorem in. Faucibus id iaculis vitae blandit vitae placerat. Nec sem nec proin pellentesque cras maecenas placerat. Volutpat pellentesque interdum commodo senectus ipsum nulla pulvinar lacus. Auctor vitae varius nibh ut nisi quis quis. Blandit egestas turpis et adipiscing id id ac adipiscing.</p>
-            <p className="m-0">Netus neque vel nisl sodales. Eu et lectus aliquet sed id velit vel.</p>
+            <p className="m-0"> Please refer to the following download links to Get more details</p>
           </div>
         </div>
       </div>
+      <div className='flex justify-around gap-4 mt-10'>
+        <a href='#'
+          download
+          className='bg-[#1a202c] text-white rounded-3xl px-6 py-4 no-underline border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'>Message For you</a>
+        <a href='#'
+          download
+          className='bg-[#1a202c] text-white rounded-3xl px-6 py-4 no-underline border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'>Know More</a>
+      </div>
+
       <div id='contact-form'>
         <ContactUsForm />
       </div>
@@ -141,17 +150,15 @@ const Home = () => {
               <div className="leading-[150%] font-medium text-xl text-black">General</div>
               <Link to="/signup" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Signup</Link>
               <Link to="/sub" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Pricing</Link>
-              {/* <div className="leading-[150%] font-medium">Page</div> */}
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">
-              <div className="leading-[150%] font-medium text-xl text-black">Need Help?</div>
+              <div className="leading-[150%] font-medium text-xl text-black">Helpful</div>
               <Link to="/contact" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Contact Us</Link>
-              {/* <Link to="/sub" style={{ color: 'inherit', textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:underline">Pricing</Link> */}
-              {/* <div className="leading-[150%] font-medium">Page</div> */}
+              <Link to="/terms" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Terms and Conditions</Link>
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">
               <div className="leading-[150%] font-medium text-xl text-black">Others</div>
-              <Link to="/adminlogin" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Admin Login</Link>
+              <Link to="/adminlogin" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Login</Link>
               <Link to="/my-dashboard" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Your Profile</Link>
               {/* <div className="leading-[150%] font-medium">Page</div> */}
             </div>
@@ -163,10 +170,6 @@ const Home = () => {
 
 
     </div>
-    {/* <div className="absolute justify-between items-center mt-[60px]">
-      <img className="left-[100px] w-[500px] h-[548px] object-contain" alt="" src={Heartfirst} />
-      <img className="w-[555px] h-[565px] object-contain" alt="" src={Heartsecond} />
-    </div> */}
   </>);
 
 };
