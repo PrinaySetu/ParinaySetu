@@ -119,14 +119,21 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='flex justify-around gap-4 mt-10'>
-        <a href='#'
-          download
-          className='bg-[#1a202c] text-white rounded-3xl px-6 py-4 no-underline border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'>Message For you</a>
-        <a href='#'
-          download
-          className='bg-[#1a202c] text-white rounded-3xl px-6 py-4 no-underline border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'>Know More</a>
+      <div className='flex flex-col md:flex-row items-center md:justify-around gap-4 mt-10'>
+        <button
+          onClick={() => window.location.href = 'your-download-link'}
+          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
+        >
+          Message For you
+        </button>
+        <button
+          onClick={() => window.location.href = 'your-download-link'}
+          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
+        >
+          Know More
+        </button>
       </div>
+
 
       <div id='contact-form'>
         <ContactUsForm />
