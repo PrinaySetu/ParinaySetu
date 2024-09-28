@@ -39,7 +39,7 @@ import ChangePassword from "./components/core/Auth/UpdatePassword";
 import SubscriptionComponent from "./components/core/susbscription";
 import Photos from "./components/core/Profile/photos";
 import TermsAndConditions from "./components/Common/Terms"
-
+import AdminROute from "./components/core/Auth/AdminRoute";
 
 
 function App() {
@@ -286,18 +286,18 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute>
+            <AdminROute>
               <UserDashboard />
-            </PrivateRoute>
+            </AdminROute>
           }
         />
         {/* single user from dashboard */}
         <Route
           path="/user/:id"
           element={
-            <PrivateRoute>
+            <AdminROute>
               <MainUserDetails />
-            </PrivateRoute>
+            </AdminROute>
           }
         />
         {/* All recommended Profiles */}
@@ -313,9 +313,9 @@ function App() {
         <Route
           path="/profile/:id"
           element={
-            <PrivateRoute>
+            <AdminROute>
               <SingleRecommendedProfile />
-            </PrivateRoute>
+            </AdminROute>
           }
         />
 
@@ -354,9 +354,9 @@ function App() {
         <Route
           path="change-password"
           element={
-            <PrivateRoute>
+            <AdminROute>
               <ChangePassword />
-            </PrivateRoute>
+            </AdminROute>
           }
         />
 
