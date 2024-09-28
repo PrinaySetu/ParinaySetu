@@ -37,33 +37,33 @@ export function sendOtp(email, navigate) {
         throw new Error(response.data.message)
       }
 
-      toast.success("OTP Sent Successfully")
+      // toast.success("OTP Sent Successfully")
       navigate("/verify-email")
     } catch (error) {
       console.log("SENDOTP API ERROR............", error)
-      toast.error("Could Not Send OTP")
+      // toast.error("Could Not Send OTP")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
   }
 }
 
 export function signUp(
-    firstName , 
-    lastName, 
-    email, 
-    password, 
-    confirmPassword,
-    userType,
-    otp,
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  userType,
+  otp,
   navigate
 ) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
-        
+
         firstName,
         lastName,
         email,
@@ -78,21 +78,21 @@ export function signUp(
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
-      toast.success("Signup Successful")
+      // toast.success("Signup Successful")
       navigate("/login")
     } catch (error) {
       console.log("SIGNUP API ERROR............", error)
-      toast.error("Signup Failed")
+      // toast.error("Signup Failed")
       navigate("/signup")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
   }
 }
 
 export function login(email, password, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -106,28 +106,28 @@ export function login(email, password, navigate) {
         throw new Error(response.data.message)
       }
 
-      toast.success("Login Successful")
+      // toast.success("Login Successful")
       dispatch(setToken(response.data.token))
       const userImage = response.data?.user?.image
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
-        console.log(response)
+      console.log(response)
       dispatch(setUser({ ...response.data.user, image: userImage }))
       localStorage.setItem("token", JSON.stringify(response.data.token))
       localStorage.setItem("user", JSON.stringify(response.data.user))
       navigate("/user")
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
-      toast.error("Login Failed")
+      // toast.error("Login Failed")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
-   
+    // toast.dismiss(toastId)
+
   }
 }
 export function adminLogin(email, password, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -141,87 +141,87 @@ export function adminLogin(email, password, navigate) {
         throw new Error(response.data.message)
       }
 
-      toast.success("Login Successful")
+      // toast.success("Login Successful")
       dispatch(setToken(response.data.token))
       const userImage = response.data?.user?.image
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
-        console.log(response)
+      console.log(response)
       dispatch(setUser({ ...response.data.user, image: userImage }))
       localStorage.setItem("token", JSON.stringify(response.data.token))
       localStorage.setItem("user", JSON.stringify(response.data.user))
       navigate("/dashboard")
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
-      toast.error("Login Failed")
+      // toast.error("Login Failed")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
-   
+    // toast.dismiss(toastId)
+
   }
 }
 export function logout(navigate) {
   return (dispatch) => {
     dispatch(setToken(null))
     dispatch(setUser(null))
-   
+
     localStorage.removeItem("token")
     localStorage.removeItem("user")
-    toast.success("Logged Out")
+    // toast.success("Logged Out")
     navigate("/")
   }
 }
 
 
 
-export function getPasswordResetToken(email , setEmailSent) {
-  return async(dispatch) => {
+export function getPasswordResetToken(email, setEmailSent) {
+  return async (dispatch) => {
     dispatch(setLoading(true));
-    try{
-      const response = await apiConnector("POST", RESETPASSTOKEN_API, {email,})
+    try {
+      const response = await apiConnector("POST", RESETPASSTOKEN_API, { email, })
 
       console.log("RESET PASSWORD TOKEN RESPONSE....", response);
 
-      if(!response.data.success) {
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
 
-      toast.success("Reset Email Sent");
+      // toast.success("Reset Email Sent");
       setEmailSent(true);
     }
-    catch(error) {
+    catch (error) {
       console.log("RESET PASSWORD TOKEN Error", error);
-      toast.error("Failed to send email for resetting password");
+      // toast.error("Failed to send email for resetting password");
     }
     dispatch(setLoading(false));
   }
 }
 
 export function resetPassword(password, confirmPassword, token) {
-  return async(dispatch) => {
+  return async (dispatch) => {
     dispatch(setLoading(true));
-    try{
-      const response = await apiConnector("POST", RESETPASSWORD_API, {password, confirmPassword, token});
+    try {
+      const response = await apiConnector("POST", RESETPASSWORD_API, { password, confirmPassword, token });
 
       console.log("RESET Password RESPONSE ... ", response);
 
 
-      if(!response.data.success) {
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
 
-      toast.success("Password has been reset successfully");
+      // toast.success("Password has been reset successfully");
     }
-    catch(error) {
+    catch (error) {
       console.log("RESET PASSWORD TOKEN Error", error);
-      toast.error("Unable to reset password");
+      // toast.error("Unable to reset password");
     }
     dispatch(setLoading(false));
   }
 }
 
 export async function changePassword(token, formData) {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("POST", CHANGEPASSWORD_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -231,16 +231,16 @@ export async function changePassword(token, formData) {
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
-    toast.success("Password Changed Successfully")
+    // toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    // toast.error(error.response.data.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
 }
 
 export async function addLink(token, formData) {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("POST", ADDLINK_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -250,15 +250,15 @@ export async function addLink(token, formData) {
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
-    toast.success("Link Added Successfully")
+    // toast.success("Link Added Successfully")
   } catch (error) {
     console.log("ADD_LINK_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    // toast.error(error.response.data.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
 }
 export async function getLink() {
-  const toastId = toast.loading("Loading...");
+  // const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector("GET", GETLINKS_API);
     console.log("GET_LINK_API API RESPONSE............", response);
@@ -266,7 +266,7 @@ export async function getLink() {
     if (!response.data.success) {
       throw new Error(response.data.message || "Failed to fetch link");
     }
-    toast.success("Link fetched successfully");
+    // toast.success("Link fetched successfully");
     return response.data.link;
   } catch (error) {
     console.error("GET_LINK_API API ERROR............", error);
@@ -282,16 +282,16 @@ export async function getLink() {
       // Something happened in setting up the request that triggered an Error
       errorMessage = error.message;
     }
-    toast.error(errorMessage);
+    // toast.error(errorMessage);
     throw error; // Re-throw the error so it can be caught in the component
   } finally {
-    toast.dismiss(toastId);
+    // toast.dismiss(toastId);
   }
 }
 
 
 export async function updateLink(token, formData) {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("PUT", UPDATELINK_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -301,10 +301,10 @@ export async function updateLink(token, formData) {
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
-    toast.success("Link Updated Successfully")
+    // toast.success("Link Updated Successfully")
   } catch (error) {
     console.log("UPDATE_LINK_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    // toast.error(error.response.data.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
 }
