@@ -40,6 +40,9 @@ import SubscriptionComponent from "./components/core/susbscription";
 import Photos from "./components/core/Profile/photos";
 import TermsAndConditions from "./components/Common/Terms"
 import AdminROute from "./components/core/Auth/AdminRoute";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
+import ShoppingAndDelivery from "./pages/ShoppingandDelievery";
 
 
 function App() {
@@ -375,7 +378,26 @@ function App() {
               <Photos />
             } />
 
-        }
+        }{
+          <Route
+            path="privacy-policy"
+            element={
+              <PrivacyPolicy />
+            } />
+
+        }{
+          <Route
+            path="refund-policy"
+            element={
+              <RefundPolicy />
+            } />
+
+        }{
+          <Route
+            path="shopping-and-delivery"
+            element={
+              <ShoppingAndDelivery />
+            } />  }
       </Routes>
     </div>
   );

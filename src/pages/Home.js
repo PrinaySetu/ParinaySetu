@@ -147,10 +147,15 @@ const Home = () => {
             </div>
             <div className="flex items-center gap-2">
               <img className="w-10 h-10 object-cover" alt="" src={instagram} />
-              <img className="w-10 h-10 object-cover" alt="" src={facebook} />
-              <img className="w-10 h-10 object-cover" alt="" src={youtube} />
-              <img className="w-10 h-10 object-cover" alt="" src={linkedin} />
+              <a href='https://www.facebook.com/people/%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%A3%E0%A4%AF-%E0%A4%B8%E0%A5%87%E0%A4%A4%E0%A5%81/61566915900818/'>
+                <img className="w-10 h-10 object-cover" alt="" src={facebook} />
+              </a>
             </div>
+            <div className="text-sm text-black">Address: C1 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012</div>
+            <div className="text-sm text-black">Phone: 9479425710</div>
+            <div className="text-sm text-black">Email:parinaysetu2701@gmail.com </div>
+            <Link to='/contact' style={{ textDecoration: 'none' }} className="text-sm text-black hover:text-red">Contact Us</Link>
+          
           </div>
           <div className='hidden md:flex md:gap-8 md:justify-around lg:gap-16 justify-between w-full max-w-6xl lg:px-10'>
             <div className="flex flex-col items-start lg:items-center gap-4">
@@ -162,12 +167,17 @@ const Home = () => {
               <div className="leading-[150%] font-medium text-xl text-black">Helpful</div>
               <Link to="/contact" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Contact Us</Link>
               <Link to="/terms" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Terms and Conditions</Link>
+              <Link to="/privacy-policy" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Privacy Policy</Link>
+              <Link to="/refund-policy" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Refund Policy</Link>
+              <Link to="/shopping-and-delivery" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Shopping and Delievery Policy</Link>
+
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">
               <div className="leading-[150%] font-medium text-xl text-black">Others</div>
               <Link to="/adminlogin" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Login</Link>
               <Link to="/my-dashboard" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Your Profile</Link>
               {/* <div className="leading-[150%] font-medium">Page</div> */}
+
             </div>
           </div>
         </div>
