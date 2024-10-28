@@ -166,10 +166,10 @@ const Home = () => {
             <div className="flex flex-col items-start lg:items-center gap-4">
               <div className="leading-[150%] font-medium text-xl text-black">Helpful</div>
               <Link to="/contact" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Contact Us</Link>
-              <Link to="/terms" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Terms and Conditions</Link>
+              <Link to="/terms-and-conditions" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Terms and Conditions</Link>
               <Link to="/privacy-policy" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Privacy Policy</Link>
               <Link to="/refund-policy" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Refund Policy</Link>
-              <Link to="/shopping-and-delivery" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Shopping and Delievery Policy</Link>
+              <Link to="/shipping-and-delivery" style={{ textDecoration: 'none' }} className="leading-[150%] font-medium text-darkslategray hover:text-red">Shopping and Delievery Policy</Link>
 
             </div>
             <div className="flex flex-col items-start lg:items-center gap-4">

@@ -325,7 +325,7 @@ function App() {
 
         {/* Contact page */}
         <Route
-          path="/terms"
+          path="/terms-and-conditions"
           element={
             <TermsAndConditions />
           }
@@ -394,7 +394,7 @@ function App() {
 
         }{
           <Route
-            path="shopping-and-delivery"
+            path="shipping-and-delivery"
             element={
               <ShoppingAndDelivery />
             } />  }
