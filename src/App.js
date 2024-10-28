@@ -43,6 +43,8 @@ import AdminROute from "./components/core/Auth/AdminRoute";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import ShoppingAndDelivery from "./pages/ShoppingandDelievery";
+import PdfViewer from "./pages/PdfViewer";
+import ImageViewer from "./pages/ImageViewer";
 
 
 function App() {
@@ -394,10 +396,24 @@ function App() {
 
         }{
           <Route
+            path="pdf-viewer"
+            element={
+              <PdfViewer />
+            } />
+
+        }{
+          <Route
+            path="image-viewer"
+            element={
+              <ImageViewer />
+            } />
+
+        }{
+          <Route
             path="shipping-and-delivery"
             element={
               <ShoppingAndDelivery />
-            } />  }
+            } />}
       </Routes>
     </div>
   );
