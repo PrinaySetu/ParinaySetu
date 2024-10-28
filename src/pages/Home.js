@@ -14,10 +14,11 @@ import linkedin from '../assets/Buttons/Icon-1.png'
 import facebook from '../assets/Buttons/Icon.png'
 import ContactUsForm from '../components/Common/ContactUsForm'
 import { Link, matchPath } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
-
+  const navigate = useNavigate();
 
 
   return (<>
@@ -121,14 +122,14 @@ const Home = () => {
       </div>
       <div className='flex flex-col md:flex-row items-center md:justify-around gap-4 mt-10'>
         <button
-          onClick={() => window.location.href = 'your-download-link'}
-          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
+          onClick={() => navigate('/image-viewer')}
+          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 cursor-pointer border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
         >
-          Message For you
+          Message For You
         </button>
         <button
-          onClick={() => window.location.href = 'your-download-link'}
-          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
+          onClick={() => navigate('/pdf-viewer')}
+          className='bg-[#1a202c] text-xl w-1/2 md:w-auto text-white rounded-3xl px-6 py-4 cursor-pointer border-solid border-black border-2 hover:bg-white hover:text-black hover:border-solid'
         >
           Know More
         </button>
@@ -155,7 +156,7 @@ const Home = () => {
             <div className="text-sm text-black">Phone: 9479425710</div>
             <div className="text-sm text-black">Email:parinaysetu2701@gmail.com </div>
             <Link to='/contact' style={{ textDecoration: 'none' }} className="text-sm text-black hover:text-red">Contact Us</Link>
-          
+
           </div>
           <div className='hidden md:flex md:gap-8 md:justify-around lg:gap-16 justify-between w-full max-w-6xl lg:px-10'>
             <div className="flex flex-col items-start lg:items-center gap-4">
