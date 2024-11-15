@@ -18,14 +18,14 @@ const PrivacyPolicy = () => {
                 Parinay Setu may change this policy from time to time by updating this page. You should check
                 this page periodically to ensure that you adhere to these changes.
             </p>
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Information We May Collect</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Information We May Collect</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
                 <li>Name</li>
                 <li>Contact information including email address</li>
                 <li>Demographic information such as postcode, preferences, and interests, if required</li>
                 <li>Other information relevant to customer surveys and/or offers</li>
             </ul>
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">What We Do with the Information We Gather</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">What We Do with the Information We Gather</h2>
             <p className="text-gray-700 mb-4">
                 We require this information to understand your needs and provide you with a better service, and in
                 particular for the following reasons:
@@ -42,7 +42,7 @@ const PrivacyPolicy = () => {
                 </li>
                 <li>Customizing the website according to your interests.</li>
             </ul>
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">How We Use Cookies</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">How We Use Cookies</h2>
             <p className="text-gray-700 mb-4">
                 A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree,
                 the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site.
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
                 usually modify your browser settings to decline cookies. This may prevent you from taking full advantage of
                 the website.
             </p>
-            <h2 className="text-2xl font-semibold mt-6 mb-4 text-gray-800">Controlling Your Personal Information</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Controlling Your Personal Information</h2>
             <p className="text-gray-700 mb-4">
                 You may choose to restrict the collection or use of your personal information in the following ways:
             </p>
