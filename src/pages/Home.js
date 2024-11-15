@@ -152,7 +152,7 @@ const Home = () => {
                 <img className="w-10 h-10 object-cover" alt="" src={facebook} />
               </a>
             </div>
-            <div className="text-sm text-black">Address: C1 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012</div>
+            <div className="text-sm text-black">Address: C11 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012</div>
             <div className="text-sm text-black">Phone: 9479425710</div>
             <div className="text-sm text-black">Email:parinaysetu2701@gmail.com </div>
             <Link to='/contact' style={{ textDecoration: 'none' }} className="text-sm text-black hover:text-red">Contact Us</Link>
