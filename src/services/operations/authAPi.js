@@ -258,7 +258,7 @@ export async function addLink(token, formData) {
   toast.dismiss(toastId)
 }
 export async function getLink() {
-  const toastId = toast.loading("Loading...");
+  // const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector("GET", GETLINKS_API);
     console.log("GET_LINK_API API RESPONSE............", response);
@@ -266,7 +266,7 @@ export async function getLink() {
     if (!response.data.success) {
       throw new Error(response.data.message || "Failed to fetch link");
     }
-    toast.success("Link fetched successfully");
+    // toast.success("Link fetched successfully");
     return response.data.link;
   } catch (error) {
     console.error("GET_LINK_API API ERROR............", error);
@@ -282,10 +282,10 @@ export async function getLink() {
       // Something happened in setting up the request that triggered an Error
       errorMessage = error.message;
     }
-    toast.error(errorMessage);
+    // toast.error(errorMessage);
     throw error; // Re-throw the error so it can be caught in the component
   } finally {
-    toast.dismiss(toastId);
+    // toast.dismiss(toastId);
   }
 }
 
