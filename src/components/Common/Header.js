@@ -7,7 +7,7 @@ const Header = () => {
             <div className="flex justify-center items-center gap-4">
                 <img src={logo} alt="Logo" className="w-20 h-20 xl:w-40 xl:h-40" />
                 <div className="flex flex-col justify-center items-center font-niconne">
-                    <p className="text-gray-800 m-0 text-40xl xl:text-45xl">Parinay</p>
+                    <p className="text-black m-0 text-40xl xl:text-45xl">Parinay</p>
                     <p className="self-end text-red m-0 mt-[-20px] mr-[-20px] text-40xl xl:text-45xl">Setu</p>
                 </div>
             </div>
