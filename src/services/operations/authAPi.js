@@ -59,7 +59,7 @@ export function signUp(
   navigate
 ) {
   return async (dispatch) => {
-    // const toastId = toast.loading("Loading...")
+    const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
@@ -86,13 +86,13 @@ export function signUp(
       navigate("/signup")
     }
     dispatch(setLoading(false))
-    // toast.dismiss(toastId)
+    toast.dismiss(toastId)
   }
 }
 
 export function login(email, password, navigate) {
   return async (dispatch) => {
-    // const toastId = toast.loading("Loading...")
+    const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -121,13 +121,13 @@ export function login(email, password, navigate) {
       toast.error("Login Failed")
     }
     dispatch(setLoading(false))
-    // toast.dismiss(toastId)
+    toast.dismiss(toastId)
 
   }
 }
 export function adminLogin(email, password, navigate) {
   return async (dispatch) => {
-    // const toastId = toast.loading("Loading...")
+    const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -156,7 +156,7 @@ export function adminLogin(email, password, navigate) {
       toast.error("Login Failed")
     }
     dispatch(setLoading(false))
-    // toast.dismiss(toastId)
+    toast.dismiss(toastId)
 
   }
 }
@@ -221,7 +221,7 @@ export function resetPassword(password, confirmPassword, token) {
 }
 
 export async function changePassword(token, formData) {
-  // const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("POST", CHANGEPASSWORD_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -234,13 +234,13 @@ export async function changePassword(token, formData) {
     toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
-    // toast.error(error.response.data.message)
+    toast.error(error.response.data.message)
   }
-  // toast.dismiss(toastId)
+  toast.dismiss(toastId)
 }
 
 export async function addLink(token, formData) {
-  // const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("POST", ADDLINK_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -253,12 +253,12 @@ export async function addLink(token, formData) {
     toast.success("Link Added Successfully")
   } catch (error) {
     console.log("ADD_LINK_API API ERROR............", error)
-    // toast.error(error.response.data.message)
+    toast.error(error.response.data.message)
   }
-  // toast.dismiss(toastId)
+  toast.dismiss(toastId)
 }
 export async function getLink() {
-  // const toastId = toast.loading("Loading...");
+  const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector("GET", GETLINKS_API);
     console.log("GET_LINK_API API RESPONSE............", response);
@@ -285,13 +285,13 @@ export async function getLink() {
     toast.error(errorMessage);
     throw error; // Re-throw the error so it can be caught in the component
   } finally {
-    // toast.dismiss(toastId);
+    toast.dismiss(toastId);
   }
 }
 
 
 export async function updateLink(token, formData) {
-  // const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("PUT", UPDATELINK_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -304,7 +304,7 @@ export async function updateLink(token, formData) {
     toast.success("Link Updated Successfully")
   } catch (error) {
     console.log("UPDATE_LINK_API API ERROR............", error)
-    // toast.error(error.response.data.message)
+    toast.error(error.response.data.message)
   }
   toast.dismiss(toastId)
 }
