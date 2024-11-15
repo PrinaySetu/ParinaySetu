@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { getCurrentSubscription } from "../../../services/operations/subscription"; // Adjust the path as needed
+import { getCurrentSubscription } from "../../../services/operations/subscription";
 import { toast } from "react-hot-toast";
 
 function PrivateRoute({ children }) {
@@ -14,10 +14,8 @@ function PrivateRoute({ children }) {
       const fetchSubscription = async () => {
         try {
           const result = await getCurrentSubscription(token);
-          if (result && result.status === 'expired') {
-            setSubscriptionStatus('expired');
-          } else if (result) {
-            setSubscriptionStatus('active');
+          if (result) {
+            setSubscriptionStatus(result.status);
           } else {
             setSubscriptionStatus('pending');
           }
@@ -36,14 +34,14 @@ function PrivateRoute({ children }) {
   }, [token]);
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator while checking subscription
+    return <div>Loading...</div>;
   }
 
-  if (token === null) {
+  if (!token) {
     return <Navigate to="/login" />;
   }
 
-  if (subscriptionStatus === 'expired' || subscriptionStatus === 'pending') {
+  if (subscriptionStatus !== 'active') {
     return <Navigate to="/sub" />;
   }
 
