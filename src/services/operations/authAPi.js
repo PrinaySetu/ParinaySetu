@@ -291,7 +291,7 @@ export async function getLink() {
 
 
 export async function updateLink(token, formData) {
-  const toastId = toast.loading("Loading...")
+  // const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("PUT", UPDATELINK_API, formData, {
       Authorization: `Bearer ${token}`,
@@ -301,10 +301,10 @@ export async function updateLink(token, formData) {
     if (!response.data.success) {
       throw new Error(response.data.message)
     }
-    toast.success("Link Updated Successfully")
+    // toast.success("Link Updated Successfully")
   } catch (error) {
     console.log("UPDATE_LINK_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    // toast.error(error.response.data.message)
   }
-  toast.dismiss(toastId)
+  // toast.dismiss(toastId)
 }
