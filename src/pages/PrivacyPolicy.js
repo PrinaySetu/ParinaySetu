@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
                 If you believe any information we hold about you is incorrect or incomplete, please contact us at:
             </p>
             <ul className="list-disc list-inside mt-2 text-gray-700">
-                <li>Address: C1 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012</li>
+                <li>Address: C11 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012</li>
                 <li>Phone: 9479425710</li>
                 <li>Email: parinaysetu2701@gmail.com</li>
             </ul>
