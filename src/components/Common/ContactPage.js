@@ -8,7 +8,7 @@ const ContactPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-cornsilk">
       <Navbar />
       <div className="w-full max-w-4xl p-6 bg-white shadow-md rounded-lg mt-10">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Contact Us</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center text-black">Contact Us</h1>
         <p className="text-gray-700 mb-4">
           You may contact us using the information below:
         </p>
@@ -17,7 +17,7 @@ const ContactPage = () => {
             <strong>Merchant Legal Entity Name:</strong> Parinay Setu
           </li>
           <li>
-            <strong>Registered Address:</strong> C1 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012
+            <strong>Registered Address:</strong> C11 Vinay Nagar Sector 3, Behind Power House, Gwalior, Madhya Pradesh, 474012
           </li>
           <li>
             <strong>Mobile No:</strong> 9479425710
